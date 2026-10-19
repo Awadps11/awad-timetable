@@ -1,0 +1,44 @@
+<Window x:Class="AwadTimetable.UI.Views.PrintPreviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="معاينة الطباعة"
+        Width="1100" Height="780"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{StaticResource BackgroundBrush}"
+        FontFamily="Segoe UI"
+        FontSize="14"
+        ShowInTaskbar="False">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,8">
+            <Button Content="طباعة" MinWidth="100" Margin="6,0" Padding="12,7"
+                    AutomationProperties.Name="طباعة من المعاينة"
+                    Background="{StaticResource PrimaryBrush}" Foreground="White" BorderThickness="0"
+                    Click="OnPrintClick"/>
+            <Button Content="حفظ PDF..." MinWidth="100" Margin="6,0" Padding="12,7"
+                    AutomationProperties.Name="حفظ PDF من المعاينة"
+                    Background="{StaticResource SecondaryBrush}" Foreground="White" BorderThickness="0"
+                    Click="OnSavePdfClick"/>
+            <Button Content="إغلاق" MinWidth="100" Margin="6,0" Padding="12,7"
+                    AutomationProperties.Name="إغلاق المعاينة"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"
+                    Click="OnCloseClick"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Background="White" CornerRadius="4" Padding="2">
+            <Grid>
+                <wv2:WebView2 x:Name="WebView" Visibility="Collapsed"/>
+                <TextBlock x:Name="StatusText" Visibility="Collapsed" TextWrapping="Wrap"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontFamily="{DynamicResource ArabicFont}" FontSize="13"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

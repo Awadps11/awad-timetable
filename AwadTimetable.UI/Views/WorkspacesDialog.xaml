@@ -1,0 +1,61 @@
+<Window x:Class="AwadTimetable.UI.Views.WorkspacesDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="المدارس / مساحات العمل"
+        Width="820" Height="520"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        FontFamily="{DynamicResource ArabicFont}"
+        FontSize="14">
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="كل مساحة عمل = مدرسة مستقلة ببياناتها. جدول جديد = مساحة عمل فارغة."
+                   Margin="0,0,0,8" FontWeight="Bold" TextWrapping="Wrap"/>
+
+        <ListView Grid.Row="1" x:Name="WorkspacesList" SelectionMode="Single"
+                  SelectionChanged="OnSelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="المدرسة / مساحة العمل" Width="220"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="المحتوى" Width="420"
+                                    DisplayMemberBinding="{Binding Summary}"/>
+                    <GridViewColumn Header="آخر تحديث" Width="130"
+                                    DisplayMemberBinding="{Binding UpdatedLabel}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10,0,0">
+            <TextBlock Text="الاسم:" VerticalAlignment="Center" Margin="0,0,6,0"/>
+            <TextBox x:Name="NameBox" Width="300" Padding="4,3,4,3"/>
+            <Button Content="إعادة تسمية" MinWidth="100" Margin="8,0,0,0"
+                    Click="OnRenameClick" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+        </StackPanel>
+
+        <DockPanel Grid.Row="3" Margin="0,12,0,0" LastChildFill="False">
+            <TextBlock x:Name="StatusText" DockPanel.Dock="Right" VerticalAlignment="Center" Opacity="0.75"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="فتح أحدث جدول" MinWidth="120" Margin="0,0,8,0" FontWeight="Bold"
+                        IsDefault="True" Click="OnOpenClick"
+                        Style="{StaticResource MaterialDesignRaisedButton}"/>
+                <Button Content="نسخة" MinWidth="90" Margin="0,0,8,0"
+                        Click="OnDuplicateClick" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                <Button Content="حذف" MinWidth="90" Margin="0,0,8,0"
+                        Click="OnDeleteClick" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                <Button Content="إغلاق" MinWidth="90" IsCancel="True"
+                        Style="{StaticResource MaterialDesignFlatButton}"/>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

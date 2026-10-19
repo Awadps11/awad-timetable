@@ -1,0 +1,74 @@
+<UserControl x:Class="AwadTimetable.UI.Views.ConstraintsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="280">
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- العنوان -->
+        <TextBlock Grid.Row="0" Text="قيود الجدولة" FontSize="16" FontWeight="Bold"
+                   FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"
+                   Margin="0,0,0,8"/>
+
+        <!-- قائمة القيود -->
+        <ListBox Grid.Row="1"
+                 ItemsSource="{Binding Constraints}"
+                 SelectedItem="{Binding SelectedConstraint}"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 FontFamily="{DynamicResource ArabicFont}" FontSize="12">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                    <Setter Property="Padding" Value="8,6"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Left" Text="🔒" FontSize="11" VerticalAlignment="Center" Margin="0,0,6,0"
+                                       Visibility="{Binding IsHard, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            <TextBlock Text="{Binding Name}" FontWeight="Medium" VerticalAlignment="Center"/>
+                        </DockPanel>
+                        <TextBlock Text="{Binding Description}" FontSize="11" TextWrapping="Wrap"
+                                   Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="20,2,0,0"/>
+                        <TextBlock FontSize="10" Margin="20,2,0,0">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#DC2626"/>
+                                    <Setter Property="Text" Value="معطل"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsEnabled}" Value="True">
+                                            <Setter Property="Foreground" Value="#16A34A"/>
+                                            <Setter Property="Text" Value="مفعّل"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- الأزرار -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="تفعيل/تعطيل" Command="{Binding ToggleConstraintCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                    HorizontalAlignment="Stretch"/>
+            <Button Content="🗑 حذف" Command="{Binding RemoveConstraintCommand}"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                    Foreground="Red" Margin="8,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

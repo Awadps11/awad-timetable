@@ -1,0 +1,18 @@
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\AwadTimetable.Core.csproj.AssemblyReference.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\AwadTimetable.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\AwadTimetable.Core.AssemblyInfoInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\AwadTimetable.Core.AssemblyInfo.cs
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\AwadTimetable.Core.csproj.CoreCompileInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\bin\Debug\net8.0\AwadTimetable.Core.deps.json
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\bin\Debug\net8.0\AwadTimetable.Core.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\bin\Debug\net8.0\AwadTimetable.Core.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\bin\Debug\net8.0\AwadTimetable.Core.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\AwadTimetable.Core.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\refint\AwadTimetable.Core.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\AwadTimetable.Core.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\AwadTimetable.Core.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Core\obj\Debug\net8.0\ref\AwadTimetable.Core.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Core.deps.json
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Core.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Core.pdb
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Core.xml

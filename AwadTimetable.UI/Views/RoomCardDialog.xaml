@@ -1,0 +1,38 @@
+<Window x:Class="AwadTimetable.UI.Views.RoomCardDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="بطاقة القاعة"
+        Height="240" Width="460"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        ResizeMode="NoResize"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource ArabicFont}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="بطاقة القاعة (PDF)" FontSize="18" FontWeight="Bold"
+                   Foreground="{DynamicResource PrimaryHueMidBrush}" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,12">
+            <TextBlock Text="اختر القاعة" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,4"/>
+            <ComboBox x:Name="RoomComboBox" DisplayMemberPath="Name" FontFamily="{DynamicResource ArabicFont}"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" Text="يُنشأ ملف PDF فيه جدول القاعة الأسبوعي كاملًا."
+                   FontSize="11" TextWrapping="Wrap"
+                   Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="حفظ PDF" MinWidth="110" Margin="0,0,8,0" Padding="12,6" Click="OnSaveClick"
+                    Background="{StaticResource PrimaryBrush}" Foreground="White" BorderThickness="0"/>
+            <Button Content="إغلاق" MinWidth="100" Padding="12,6" Click="OnCloseClick"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

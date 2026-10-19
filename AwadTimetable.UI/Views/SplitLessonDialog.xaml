@@ -1,0 +1,64 @@
+<Window x:Class="AwadTimetable.UI.Views.SplitLessonDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="تقسيم الحصة"
+        Width="460" Height="340"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{StaticResource BackgroundBrush}"
+        FontFamily="{DynamicResource ArabicFont}"
+        FontSize="14"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Name="HeaderText" TextWrapping="Wrap" Margin="0,0,0,10"
+                   FontWeight="SemiBold" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0,0,0,12"
+                   Foreground="{StaticResource OnSurfaceVariantBrush}"
+                   Text="يُقسَّم الدرس إلى عدة حصص تُوزَّع على أيام مختلفة وتُربط في مجموعة واحدة."/>
+
+        <Grid Grid.Row="2" Margin="0,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="عدد الأجزاء (2..7):" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" x:Name="PartsBox" Width="80" HorizontalAlignment="Right" Padding="6,4"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="أدنى أيام بين الأجزاء:" VerticalAlignment="Center"/>
+            <ComboBox Grid.Column="1" x:Name="MinDaysBox" Width="140" HorizontalAlignment="Right"/>
+        </Grid>
+
+        <CheckBox Grid.Row="4" x:Name="SplitDurationCheck" Margin="0,8,0,0"
+                  Content="تقسيم مدة الحصة على الأجزاء" IsChecked="True"/>
+
+        <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,12,0,0">
+            <Button Content="موافق" MinWidth="100" Margin="8,0" Padding="12,7"
+                    AutomationProperties.Name="موافق"
+                    Background="{StaticResource SecondaryBrush}" Foreground="White" BorderThickness="0"
+                    Click="OnOkClick"/>
+            <Button Content="إلغاء" MinWidth="100" Margin="8,0" Padding="12,7"
+                    AutomationProperties.Name="إلغاء"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"
+                    Click="OnCancelClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

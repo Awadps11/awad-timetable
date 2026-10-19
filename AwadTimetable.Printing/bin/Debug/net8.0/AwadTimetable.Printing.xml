@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AwadTimetable.Printing</name>
+    </assembly>
+    <members>
+        <member name="T:AwadTimetable.Printing.Services.IPrintService">
+            <summary>
+            خدمة الطباعة والتصدير
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Printing.Services.PrintOptions">
+            <summary>
+            خيارات الطباعة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Printing.Services.PrintService">
+            <summary>
+            خدمة الطباعة باستخدام QuestPDF
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Printing.Services.WebReportOptions">
+            <summary>خيارات تقرير الويب (HTML)</summary>
+        </member>
+        <member name="T:AwadTimetable.Printing.Services.IWebReportService">
+            <summary>
+            توليد تقرير ويب HTML كامل بأسلوب aSc Timetables:
+            صفحة واحدة تتضمن نظرة عامة + جدول أسبوعي لكل فصل + جدول أسبوعي لكل معلم،
+            بتصاميم ألوان المواد وتنقّل داخلي وترويسة/تذييل.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Printing.Services.WebReportService.AppendGrid(System.Text.StringBuilder,System.Collections.Generic.IReadOnlyList{AwadTimetable.Core.Enums.DayOfWeek},System.Int32,System.Func{AwadTimetable.Core.Enums.DayOfWeek,System.Int32,System.Collections.Generic.IReadOnlyList{AwadTimetable.Core.Entities.Lesson}},System.Func{AwadTimetable.Core.Entities.Lesson,System.String},System.Func{AwadTimetable.Core.Entities.Lesson,System.String},System.Func{AwadTimetable.Core.Entities.Lesson,System.String},System.Func{System.Int32,System.String},AwadTimetable.Printing.Templates.PrintCellStyle,System.Boolean)">
+            <summary>جدول أسبوعي: صفوف = أيام (يمين)، أعمدة = فترات مرقّمة من اليمين — بأسلوب معاينة aSc</summary>
+        </member>
+        <member name="M:AwadTimetable.Printing.Services.WebReportService.BuildLogoTag(AwadTimetable.Printing.Templates.PrintTemplate)">
+            <summary>وسم شعار المدرسة في الترويسة (base64 ليعمل دون شبكة/ملفات خارجية)</summary>
+        </member>
+        <member name="M:AwadTimetable.Printing.Services.WebReportService.AppendSummaryTable(System.Text.StringBuilder,System.String,System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.Int32}})">
+            <summary>جدول ملخص: اسم + عدد الحصص، مرتّب تنازلياً</summary>
+        </member>
+        <member name="M:AwadTimetable.Printing.Services.WebReportService.SubjectColor(AwadTimetable.Core.Entities.Lesson)">
+            <summary>لون مستقر للمادة: من الكيان إن وُجد، وإلا توليد لون ثابت من الاسم (بديل ألوان aSc)</summary>
+        </member>
+        <member name="M:AwadTimetable.Printing.Services.WebReportService.BuildCss(AwadTimetable.Printing.Templates.PrintTemplate)">
+            <summary>يولّد CSS من القالب: ألوان المتغيّرات، الخط، حجم الصفحة، والتخطيط.</summary>
+        </member>
+        <member name="T:AwadTimetable.Printing.Templates.PrintTemplate">
+            <summary>
+            قالب طباعة قابل للتخصيص: ألوان، خط، حجم صفحة، ومكوّنات العرض.
+            القوالب الجاهزة تُقرأ فقط، ويمكن للمستخدم نسخها وتعديلها وحفظها.
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Printing.Templates.PrintTemplate.LogoPath">
+            <summary>مسار شعار المدرسة المطبوع في الترويسة (اختياري)</summary>
+        </member>
+        <member name="P:AwadTimetable.Printing.Templates.PrintTemplate.MergeConsecutive">
+            <summary>دمج الحصص الفردية المتتالية المتماثلة في الطباعة فقط (بأسلوب aSc)</summary>
+        </member>
+        <member name="T:AwadTimetable.Printing.Templates.PrintTemplatePresets">
+            <summary>القوالب الجاهزة: أنماط aSc، حديث، أنيق، مضغوط، فارغ، وبطاقات.</summary>
+        </member>
+        <member name="T:AwadTimetable.Printing.Templates.PrintTemplateStore">
+            <summary>حفظ/تحميل القوالب المخصصة بجانب إعدادات التطبيق.</summary>
+        </member>
+        <member name="M:AwadTimetable.Printing.Templates.PrintTemplateStore.LoadAll(System.String)">
+            <summary>كل القوالب: المخصصة ثم الجاهزة</summary>
+        </member>
+    </members>
+</doc>

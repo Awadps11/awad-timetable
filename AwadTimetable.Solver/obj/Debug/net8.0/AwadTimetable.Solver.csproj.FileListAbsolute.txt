@@ -1,0 +1,22 @@
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\bin\Debug\net8.0\AwadTimetable.Solver.deps.json
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\bin\Debug\net8.0\AwadTimetable.Solver.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\bin\Debug\net8.0\AwadTimetable.Solver.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\bin\Debug\net8.0\AwadTimetable.Solver.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\bin\Debug\net8.0\AwadTimetable.Core.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\bin\Debug\net8.0\AwadTimetable.Core.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\bin\Debug\net8.0\AwadTimetable.Core.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.csproj.AssemblyReference.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.AssemblyInfoInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.AssemblyInfo.cs
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.csproj.CoreCompileInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTime.E09A64BB.Up2Date
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\refint\AwadTimetable.Solver.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\ref\AwadTimetable.Solver.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Solver.deps.json
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Solver.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Solver.pdb
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Solver.xml

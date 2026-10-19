@@ -1,0 +1,1613 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AwadTimetable.Core</name>
+    </assembly>
+    <members>
+        <member name="T:AwadTimetable.Core.Common.Entity`1">
+            <summary>
+            الفئة الأساسية للكيانات مع معرف قوي النوع
+            </summary>
+            <typeparam name="TId">نوع المعرف</typeparam>
+        </member>
+        <member name="T:AwadTimetable.Core.Common.Entity">
+            <summary>
+            الفئة الأساسية للكيانات ذات المعرف من نوع Guid
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Common.ValueObject`1">
+            <summary>
+            الفئة الأساسية للقيم (Value Objects) - غير قابلة للتغيير
+            </summary>
+            <typeparam name="T">نوع القيمة</typeparam>
+        </member>
+        <member name="M:AwadTimetable.Core.Common.ValueObject`1.#ctor(`0)">
+            <summary>
+            الفئة الأساسية للقيم (Value Objects) - غير قابلة للتغيير
+            </summary>
+            <typeparam name="T">نوع القيمة</typeparam>
+        </member>
+        <member name="T:AwadTimetable.Core.Common.AggregateRoot`1">
+            <summary>
+            الفئة الأساسية للتجمعات (Aggregates)
+            </summary>
+            <typeparam name="TId">نوع المعرف</typeparam>
+        </member>
+        <member name="T:AwadTimetable.Core.Common.AggregateRoot">
+            <summary>
+            الفئة الأساسية للتجمعات ذات المعرف Guid
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constants.AppConstants">
+            <summary>
+            الثوابت العامة للتطبيق
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.ApplicationName">
+            <summary>
+            اسم التطبيق
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.DeveloperName">
+            <summary>
+            اسم المطور
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Constants.AppConstants.CopyrightNotice">
+            <summary>
+            حقوق النشر الديناميكية (السنة الحالية)
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.Version">
+            <summary>
+            إصدار التطبيق
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.BuildYear">
+            <summary>
+            سنة البناء
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.DatabaseFileName">
+            <summary>
+            اسم ملف قاعدة البيانات
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.TimetableFileExtension">
+            <summary>
+            امتداد ملف الجدول
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.DefaultArabicFont">
+            <summary>
+            اسم الخط العربي الافتراضي
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.ArabicCultureCode">
+            <summary>
+            كود اللغة العربية (السعودية)
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.DaysPerWeek">
+            <summary>
+            عدد الأيام في الأسبوع
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.MaxPeriodsPerDay">
+            <summary>
+            الحد الأقصى لعدد الحصص في اليوم
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.MinLessonDurationMinutes">
+            <summary>
+            الحد الأدنى لمدة الحصة (بالدقائق)
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.MaxLessonDurationMinutes">
+            <summary>
+            الحد الأقصى لمدة الحصة (بالدقائق)
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.RegistryLicenseKey">
+            <summary>
+            مفتاح الترخيص في السجل
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.RegistryRegistrationCode">
+            <summary>
+            مفتاح كود التسجيل في السجل
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.RegistryPath">
+            <summary>
+            مسار السجل
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.SupportEmail">
+            <summary>
+            رابط الدعم التقني
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.AppConstants.WebsiteUrl">
+            <summary>
+            رابط الموقع الإلكتروني
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constants.SettingsKeys">
+            <summary>
+            مفاتيح الإعدادات
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constants.DefaultPrintTemplates">
+            <summary>
+            قوالب الطباعة الافتراضية
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constants.PeriodNames">
+            <summary>
+            أسماء الفترات الدراسية بالعربية (الأولى، الثانية، ...)
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.PeriodNames.GetFullName(System.Int32)">
+            <summary>الاسم الكامل: "الحصة الأولى"</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.PeriodNames.GetName(System.Int32)">
+            <summary>الاسم المختصر: "الأولى"</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constants.SchoolTimingPresets">
+            <summary>
+            قوالب توقيت جاهزة لنماذج المدارس:
+            - مشترك (متوسط +ثانوي): لكل مرحلة توقيتها ومكان استراحتها
+            - متوسط فقط / ثانوي فقط: توقيت موحّد
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.SchoolTimingPresets.SharedMiddleSecondary">
+            <summary>مشترك: متوسط (7×45 استراحة بعد الحصة الثانية كل الأيام) + ثانوي (الأحد/الاثنين 7×45 استراحة بعد الثالثة، الثلاثاء-الخميس 6×50 استراحة بعد الثالثة)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.SchoolTimingPresets.MiddleOnly">
+            <summary>متوسط فقط: 7×45 كل الأيام، استراحة بعد الحصة الثانية</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.SchoolTimingPresets.SecondaryOnly">
+            <summary>ثانوي فقط: 7×45 كل الأيام، استراحة بعد الحصة الثالثة</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.SchoolTimingPresets.DefaultGeneral">
+            <summary>افتراضي عام: 8 فترات متساوية من 07:30 (بدون تمييز مرحلة/يوم)</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Constants.SchoolTimingPresets.DefaultWorkDays">
+            <summary>السبت-الخميس (قيم enum DayOfWeek)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.SchoolTimingPresets.DefaultStageConfigs(System.String)">
+            <summary>
+            إعدادات أيام العمل/الحصص اليومية المقابلة لنمط التوقيت المختار:
+            مشترك: متوسط+ثانوي 7 حصص/يوم (سبت-خميس) — الثلاثاء-الخميس يقتصر فعلياً على 6 عبر توقيت الفترات.
+            متوسط/ثانوي فقط: مرحلة واحدة. افتراضي عام: بدون قيود (سلوك الجدول القديم).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.SchoolTimingPresets.MiddlePattern(System.Int32)">
+            <summary>متوسط: 7 فترات 45 دقيقة — فسحة أولى بعد الثانية وفسحة ثانية بعد الرابعة (10 دقائق لكل فسحة)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.SchoolTimingPresets.SecondaryPatternFull(System.Int32)">
+            <summary>ثانوي يوم كامل: 7×45 — استراحة بعد الثالثة — ينتهي 12:35</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.SchoolTimingPresets.SecondaryPatternShort(System.Int32)">
+            <summary>ثانوي اليوم القصير (الثلاثاء-الخميس): 6×50 — استراحة بعد الثالثة — ينتهي 12:20</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constants.TimingBuilder">
+            <summary>
+            بنّاء توقيت الفترات من إعدادات بسيطة (نوع المدرسة، أيام الدراسة، عدد الحصص، زمن الحصة).
+            يضع الفسح تلقائياً حسب المرحلة:
+            - ابتدائي: فسحة واحدة بعد الحصة الثالثة (10 دقائق).
+            - متوسط: فسحة أولى بعد الثانية (10) وفسحة ثانية بعد الرابعة (10).
+            - ثانوي: فسحة واحدة دائماً بعد الثالثة (20 دقيقة).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.TimingBuilder.BreakPlan(AwadTimetable.Core.Enums.SchoolType)">
+            <summary>فسح المرحلة: (بعد الحصة رقم، المدة بالدقائق)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constants.TimingBuilder.BuildForStages(System.Collections.Generic.IReadOnlyList{System.ValueTuple{AwadTimetable.Core.Enums.SchoolType,System.String,System.Int32,System.Int32}},System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.IReadOnlyDictionary{System.Int32,System.Int32}},System.Int32)">
+            <summary>بناء توقيت لكل مرحلة على حدة (توقيت محصص للمتوسط وتوقيت مخصص للثانوي)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.IConstraint">
+            <summary>
+            واجهة القيد الأساسية
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.TimetableContext">
+            <summary>
+            سياق التقييم للقيود
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.ConstraintViolation">
+            <summary>
+            انتهاك قيد
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.Constraint">
+            <summary>
+            القيد الأساسي المجرد
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.HardConstraint">
+            <summary>
+            القيد الصلب الأساسي
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.SoftConstraint">
+            <summary>
+            القيد اللين الأساسي
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.NoTeacherConflictConstraint">
+            <summary>
+            قيد عدم تضارب المعلم
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constraints.NoTeacherConflictConstraint.IntervalOf(AwadTimetable.Core.Entities.Timetable,AwadTimetable.Core.Entities.Lesson)">
+            <summary>الفاصل الزمني لحصة بحسب مرحلة فصلها</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.NoRoomConflictConstraint">
+            <summary>
+            قيد عدم تضارب الغرفة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.TeacherAvailabilityConstraint">
+            <summary>
+            قيد توفر المعلم
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.TeacherLowPriorityBlockConstraint">
+            <summary>
+            إغلاق وقت المعلم بأولوية منخفضة (لين): يمكن تجاوزه عند الحاجة لكن يُعاقَب.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.RoomCapacityConstraint">
+            <summary>
+            قيد سعة الغرفة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.MaxPeriodsPerDayConstraint">
+            <summary>
+            قيد الحد الأقصى للحصص اليومية
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.NoLessonDuringBreakConstraint">
+            <summary>
+            لا حصص في فترات الاستراحة (صلب) — يشمل استراحة الغداء
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.MinPeriodsPerDayConstraint">
+            <summary>
+            الحد الأدنى لعدد الحصص اليومية للفصل (لين): إن قلّت حصص اليوم عن حد المرحلة يُعاقَب
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.DoublePeriodAcrossBreakConstraint">
+            <summary>
+            الحصص المزدوجة عبر الاستراحة (لين): مادة بحصتين متتاليتين في يوم واحد يفصلهما استراحة تُعاقَب
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.TeacherBuildingChangeConstraint">
+            <summary>
+            زمن الانتقال بين المباني (لين): حصتان متتاليتان لمعلم في مبنيين مختلفين بلا فاصل تُعاقَبان
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.UserRulesConstraint">
+            <summary>
+            قواعد المستخدم الصلبة (RuleItem بأولوية Hard): حجب أوقات، منع بعد فترة، وحد يومي للمادة.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constraints.UserRulesConstraint.TargetKey(AwadTimetable.Core.Entities.Lesson,AwadTimetable.Core.Entities.RuleScope)">
+            <summary>معرّف الهدف (معلم/فصل/مادة/قاعة) لحصة وفق النطاق.</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constraints.UserRulesConstraint.ActiveDaysFor(AwadTimetable.Core.Services.DailyLoadRule,AwadTimetable.Core.Constraints.TimetableContext)">
+            <summary>أيام العمل الفعلية لقاعدة عبء يومي (فصل مباشرة، أو اتحاد فصول المعلم/المادة).</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.ScheduleRules">
+            <summary>
+            قواعد مشتركة بين القيود اللينة: أيام العمل الفعلية، الهدف اليومي، وبناء الانتهاك
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constraints.ScheduleRules.ActiveDays(AwadTimetable.Core.Entities.Timetable,System.Guid)">
+            <summary>أيام العمل لنفس المنطق المستخدم في المحلّل (أيام مرحلة الفصل، وإلا كل الأيام عدا الجمعة)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constraints.ScheduleRules.TargetPerDay(System.Int32,System.Int32)">
+            <summary>العدد المقبول للحصص في اليوم الواحد (نفس هدف المحلّل: ⌈الإجمالي / الأيام⟩)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constraints.ScheduleRules.CollectDaysOverTarget(System.Collections.Generic.IEnumerable{AwadTimetable.Core.Entities.Lesson},System.Int32)">
+            <summary>الحصص التي تتجاوز الهدف اليومي في اليوم الذي تجاوزت فيه الكمية المسموحة</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constraints.ScheduleRules.Soft(AwadTimetable.Core.ValueObjects.ConstraintId,System.String,AwadTimetable.Core.Enums.ConstraintPriority,System.String,System.Collections.Generic.IReadOnlyList{AwadTimetable.Core.Entities.Lesson},System.Double)">
+            <summary>بناء انتهاك لين: العقوبة تكبر مع عدد الحصص المتأثرة (بحد أقصى 1000)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.TeacherPreferenceConstraint">
+            <summary>
+            قيد توفر المعلم (لين)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.ConsecutivePeriodsConstraint">
+            <summary>
+            قيد الفترات المتتالية (لين)
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Constraints.ConsecutivePeriodsConstraint.CollectOverlongRuns(System.Collections.Generic.List{AwadTimetable.Core.Entities.Lesson})">
+            <summary>الحصص الداخلة في سلاسل فترات متتالية أطول من المسموح في يوم واحد</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.DistributionConstraint">
+            <summary>
+            قيد توزيع الحصص (لين)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.MinDaysPerWeekConstraint">
+            <summary>
+            قيد الحد الأدنى للأيام في الأسبوع (لين)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.RoomPreferenceConstraint">
+            <summary>
+            قيد تفضيل الغرفة (لين)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.SubjectDistributionConstraint">
+            <summary>
+            قيد توزيع المواد (لين)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.TeacherWorkloadBalanceConstraint">
+            <summary>
+            قيد توازن عبء المعلم (لين)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.SubjectOncePerDayConstraint">
+            <summary>
+            قيد عدم تكرار المادة في اليوم نفسه للفصل الواحد (لين).
+            يُعاقَب كل يوم تظهر فيه المادة أكثر من مرة لنفس الفصل.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Constraints.ConstraintRegistry">
+            <summary>
+            سجل القيود
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.School">
+            <summary>
+            المدرسة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.Teacher">
+            <summary>
+            المعلم
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Teacher.CustomShortName">
+            <summary>اسم مختصر مخصص (يُحفظ خارج قاعدة البيانات في ملف الإعدادات).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Teacher.CustomColorHex">
+            <summary>لون مخصص للمعلم (يُحفظ خارج قاعدة البيانات في ملف الإعدادات).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Teacher.DisplayShortName">
+            <summary>الاسم المختصر المعروض: المخصص إن وُجد وإلا المحسوب تلقائيًا.</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Teacher.SetAppearance(System.String,System.String)">
+            <summary>يضبط الاسم المختصر واللون المخصصين (لا يُخزَّنان في قاعدة البيانات).</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.TeacherAvailability">
+            <summary>
+            توفر المعلم
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.TeacherAvailability.Priority">
+            <summary>أولوية الإغلاق: Low = قابل للتجاوز (لين)، High = ملزم (صلب)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.TeacherAvailability.IsHardBlock">
+            <summary>إغلاق ملزم (يُحترم دائماً): غير متاح وأولويته عالية</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.TeacherAvailability.IsSoftBlock">
+            <summary>إغلاق لين (يُتجاوز عند الحاجة): غير متاح وأولويته منخفضة</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.Subject">
+            <summary>
+            المادة الدراسية
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.Room">
+            <summary>
+            الغرفة/القاعة
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Room.AssignedTeacherId">
+            <summary>معلم مخصَّص له هذه القاعة (قاعة المعلم) — تُسند حصصه إليها تلقائياً عند التوليد.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Room.IsShared">
+            <summary>قاعة مشتركة بين أكثر من شعبة/معلم (لا تُخصَّص لشعبة واحدة).</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Room.SetTeacherAssignment(System.Nullable{System.Guid})">
+            <summary>يخصّص القاعة لمعلم (قاعة المعلم) أو يلغي التخصيص بتمرير null.</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Room.SetShared(System.Boolean)">
+            <summary>يجعل القاعة مشتركة (بين عدة شعب/معلمين) أو مخصّصة.</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.Class">
+            <summary>
+            الفصل/الصف
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Class.DisplayShortName">
+            <summary>الاسم المختصر للعرض في الجدول والطباعة، وإن لم يُضبط يُستخدم الاسم</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Class.SetShortName(System.String)">
+            <summary>ضبط الاسم المختصر للعرض</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.Group">
+            <summary>
+            مجموعة طلابية (شعبة فرعية داخل الفصل)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.Student">
+            <summary>
+            طالب
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.Lesson">
+            <summary>
+            الحصة/الدرس
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Lesson.Subject">
+            <summary>العلاقة تُملأ صراحةً عند بناء/تحميل الجدول (EF تملأها أثناء التتبع)؛ لا تُحفظ مع الملف</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Lesson.#ctor(System.Guid,AwadTimetable.Core.ValueObjects.TimetableId,AwadTimetable.Core.ValueObjects.SubjectId,AwadTimetable.Core.ValueObjects.TeacherId,AwadTimetable.Core.ValueObjects.ClassId,AwadTimetable.Core.Enums.DayOfWeek,AwadTimetable.Core.ValueObjects.PeriodNumber,AwadTimetable.Core.ValueObjects.Duration)">
+            <summary>ينشئ حصة بمعرّف محدد (للحفظ المستقر والحفاظ على ربط البدائل بالمعرّف).</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Lesson.AttachReferences(AwadTimetable.Core.Entities.Subject,AwadTimetable.Core.Entities.Teacher,AwadTimetable.Core.Entities.Class,AwadTimetable.Core.Entities.Room)">
+            <summary>ربط الكيانات المرجعية — تُستدعى بعد التحميل/الإنشاء حتى تعمل رسائل القيود وأسماء العرض</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.Timetable">
+            <summary>
+            الجدول الزمني
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Timetable.Engine">
+            <summary>محرك التوليد المختار لهذا الجدول (CP-SAT افتراضياً)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Timetable.SchoolType">
+            <summary>نوع المدرسة (يحدد قالب الفسح وزمن الحصص الافتراضي)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Timetable.PeriodTimes">
+            <summary>توقيت الفترات (غير مخزّن في قاعدة البيانات — يُحفظ مع ملف الجدول)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Timetable.Assignments">
+            <summary>طبقة الإسناد المركزية (معلم+مادة+فصل+عدد الحصص) — غير مخزّنة في مخطط قاعدة البيانات، تُحفظ مع الجدول</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Timetable.Rules">
+            <summary>بنود القواعد/السجل (وقت انتهاء، ربط معلمين، …) — غير مخزّنة في EF، تُحفظ مع الجدول في RulesJson</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Timetable.StageConfigs">
+            <summary>إعدادات أيام العمل والحصص اليومية لكل مرحلة (غير مخزّنة في EF — تُحفظ مع الجدول)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Timetable.ClassGradeLevels">
+            <summary>خريطة معرف الفصل → رقم الصف (تُملأ عند التحميل؛ تُستخدم للتعرف على مرحلة الفصل)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.Timetable.ClassNames">
+            <summary>خريطة معرف الفصل → اسم الفصل (تُملأ عند التحميل؛ تُستخدم للتعرف الدقيق على المرحلة من الاسم)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.RegisterClass(System.Guid,System.String,System.Int32)">
+            <summary>يسجّل الفصل (اسمه وصفه) لاستخدامه في تحديد المرحلة لاحقاً</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.GetStageForClass(System.Guid)">
+            <summary>مرحلة الفصل من الاسم أو رقم الصف؛ null إذا كان الفصل غير معروف</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.StagesInUse">
+            <summary>المراحل المستخدمة في هذا الجدول (من إعدادات المراحل)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.TryGetPeriodInterval(System.Int32,System.Int32,System.String,System.Int32@,System.Int32@)">
+            <summary>
+            الفاصل الزمني الفعلي لفترة (دقيقة البداية/النهاية) مع مراعاة اليوم والمرحلة.
+            ضروري لحساب تضارب المعلم المشترك بين مرحلتين بتوقيتين مختلفين.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.IsBreakPeriod(System.Int32,System.Int32,System.String)">
+            <summary>هل الفترة استراحة لهذا (اليوم، المرحلة)؟ الاستراحة العامة (Day=-1, Stage=null) تُطابق الجميع.</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.GetPeriodTime(System.Int32,System.Int32,System.String)">
+            <summary>
+            إيجاد توقيت فترة: المطابقة الأدق أولاً (اليوم+المرحلة) ثم (اليوم فقط) ثم (المرحلة فقط) ثم (عام).
+            day: -1 = كل الأيام، stage: null = كل المراحل
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.GetPeriodTimeForDisplay(System.Int32)">
+            <summary>
+            توقيت فترة للعرض العام (الجدول الكامل/الطباعة): يُرجع التوقيت إذا كان موحّداً،
+            و null إذا اختلفت التوقيات بين المراحل/الأيام (حتى لا يُعرض توقيت مرحلة بعينها كأنه للجميع).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.HasPeriodTime(System.Int32,System.Int32,System.String)">
+            <summary>
+            هل توجد فترة معرّفة صراحة لهذا (فترة، يوم، مرحلة)؟
+            يقبل اليوم العام (-1) والمرحلة العامة (null/فارغ)، بدون التراجع لمرحلة أو يوم آخر
+            (لذلك يختلف عن GetPeriodTime الذي يرجع candidates[0] كملاذ أخير).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.#ctor(System.Guid,AwadTimetable.Core.ValueObjects.SchoolId,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>ينشئ جدولاً بمعرّف محدد (للحفظ المستقر بنفس المعرّف دون تغييره في كل حفظ).</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.Timetable.ReassignSchool(AwadTimetable.Core.ValueObjects.SchoolId)">
+            <summary>إعادة ربط الجدول بمساحة عمل/مدرسة أخرى (يُستخدم عند استيراد ملف يحمل مدرسة غير موجودة).</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.PeriodTime">
+            <summary>
+            توقيت فترة دراسية: يُحدد بداية ونهاية الحصة، مع إمكانية التخصيص حسب اليوم والمرحلة.
+            Day: -1 = كل الأيام، Stage: null/farigh = كل المراحل.
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.PeriodTime.IsBreak">
+            <summary>هل هذه الفترة استراحة (لا تُجدَّل فيها حصص)؟ مثال: استراحة الغداء.</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.StageScheduleConfig">
+            <summary>إعداد جدول مرحلة تعليمية: أيام العمل وعدد الحصص اليومي</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.StageScheduleConfig.Stage">
+            <summary>اسم المرحلة: ابتدائي / متوسط / ثانوي</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.StageScheduleConfig.WorkDays">
+            <summary>أيام العمل كقيم enum DayOfWeek (0=السبت … 5=الخميس؛ الجمعة=6 لا تُدرَج)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.StageScheduleConfig.LessonsPerDay">
+            <summary>الحد الأقصى لعدد الحصص في اليوم الواحد لهذه المرحلة</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.StageScheduleConfig.MinLessonsPerDay">
+            <summary>الحد الأدنى لعدد الحصص في اليوم الواحد لهذه المرحلة (0 = بلا حد أدنى)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.StageScheduleConfig.LessonsPerDayByDay">
+            <summary>عدد حصص مخصص لأيام معينة (مفتاح = رقم اليوم)؛ ما ليس فيه يستخدم LessonsPerDay</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.StageScheduleConfig.GetLessonsPerDay(System.Int32)">
+            <summary>عدد الحصص لهذا اليوم: المخصص إن وُجد، وإلا العام</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.StageHelper">
+            <summary>مساعد تحديد المرحلة التعليمية من الصف أو من اسم الفصل</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.StageHelper.GetStage(System.Int32,System.String)">
+            <summary>
+            المرحلة من اسم الفصل أولاً (أسماء الفصول السعودية تحمل المرحلة صراحة مثل «أول متوسط 2»)،
+            ثم من رقم الصف كاحتياط. هذا ضروري لأن أرقام الصفوف تتكرر بين المراحل (1-3 في الابتدائي والمتوسط والثانوي).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.StageHelper.ParseGrade(System.String)">
+            <summary>
+            يستنتج رقم الصف (1..12) من اسم الفصل العربي: «أول متوسط 1» = 7، «ثاني ثانوي 2» = 11، «ثالث ابتدائي» = 3.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Entities.StageHelper.ParseSection(System.String)">
+            <summary>يستنتج الشعبة من آخر مقطع في اسم الفصل إن كان حرفاً عربياً واحداً، وإلا «أ».</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.RuleKind">
+            <summary>تصنيف القاعدة/البند.</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.EndTime">
+            <summary>وقت انتهاء</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.TeacherLink">
+            <summary>ربط معلمين</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.Availability">
+            <summary>توفر معلم</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.SubjectDistribution">
+            <summary>صعوبة مادة / توزيع</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.MaxConsecutive">
+            <summary>حد الحصص المتتالية: منع أكثر من N حصة متتابعة بلا فراغ</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.MaxGapsPerDay">
+            <summary>فجوات يومية: حد أقصى لعدد الفجوات (الفراغات بين الحصص) في اليوم</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.DailyLoad">
+            <summary>عبء يومي: حد أدنى/أقصى لعدد الحصص في اليوم</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.MaxDaysPerWeek">
+            <summary>أقصى أيام عمل في الأسبوع (معلم/فصل/مادة)</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.MaxGapsPerWeek">
+            <summary>أقصى فجوات في الأسبوع</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.MaxSpanPerDay">
+            <summary>أقصى امتداد اليوم (من أول حصة إلى آخرها)</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.BeginsEarly">
+            <summary>بدايات مبكرة: أقصى عدد أيام يبدأ فيها اليوم من الحصة الثانية</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.SubjectPair">
+            <summary>علاقة زوج مواد: منع نفس اليوم و/أو التتابع</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.SubjectTwicePerDay">
+            <summary>مادة مرتين يومياً: بحد أقصى مرتين مع خيار التتابع</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.BlockLessons">
+            <summary>كتلة تعليم: حصص النطاق في أي يوم متصلة بلا فجوات داخلية</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.SameStartingTime">
+            <summary>نفس البداية (نفس اليوم والحصة) لمجموعة حصص</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.NotOverlapping">
+            <summary>عدم التداخل: حصص النطاق لا تتقاطع في (يوم/حصة)</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.MinDaysBetweenActivities">
+            <summary>أدنى عدد أيام بين تكرارات نفس المادة/النطاق</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.PreferredRoom">
+            <summary>قاعة مفضّلة/إلزامية لنطاق (مادة/فصل)</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.RoomChangeLimit">
+            <summary>حد تغيّر القاعة للمعلم/الفصل يومياً أو أسبوعياً</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.MinDaysPerWeek">
+            <summary>أدنى أيام عمل في الأسبوع (معلم/فصل/مادة)</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RuleKind.General">
+            <summary>قاعدة عامة</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.RuleScope">
+            <summary>الكيان/العلاقة التي تنطبق عليها القاعدة.</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.RulePriority">
+            <summary>أولوية القاعدة عند توليد الجدول.</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RulePriority.Hard">
+            <summary>صلبة: لا يجوز خرقها إطلاقًا</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RulePriority.High">
+            <summary>عالية: تُحاول بأولوية</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RulePriority.Medium">
+            <summary>متوسطة: افتراضية للقواعد الجديدة والقادمة من المساعد</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RulePriority.Low">
+            <summary>منخفضة: تُطبَّق إن أمكن دون إفساد غيرها</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Entities.RulePriority.Ignore">
+            <summary>تجاهل: يُبرزها للمستخدم لكن لا تُطبَّق عند التوليد</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.RuleItem">
+            <summary>
+            بند قاعدة/سجل قابل للتحكم: يصف قاعدة (وقت انتهاء، ربط معلمين، …) أو أي سجل أنشأه المساعد الذكي.
+            يُحفظ مع ملف الجدول (غير مخزّن في مخطط قاعدة البيانات) في عمود RulesJson.
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.Kind">
+            <summary>نوع القاعدة/البند.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.Scope">
+            <summary>الكيان الذي تنطبق عليه القاعدة.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.TargetId">
+            <summary>معرّف الهدف (معلم/فصل/مادة/قاعة) — فارغ للقواعد العامة.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.Title">
+            <summary>عنوان/وصف مختصر للبند.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.Parameters">
+            <summary>تفاصيل/معاملات حرة (نص أو JSON).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.Priority">
+            <summary>الأولوية عند التوليد (افتراضي: متوسطة).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.IsEnabled">
+            <summary>هل البند مُفعَّل؟</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.Source">
+            <summary>المصدر: user (المستخدم) أو ai (المساعد الذكي).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.RuleItem.Notes">
+            <summary>ملاحظات حرة.</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Entities.TeachingAssignment">
+            <summary>
+            إسناد تدريسي مركزي: (معلم + مادة + فصل) بعدد حصص أسبوعية.
+            وحدة الإسناد هي العلاقة الثلاثية؛ قد يدرّس المعلم المادة نفسها في أكثر من فصل،
+            أو أكثر من مادة لنفس الفصل. القاعة ثانوية ولا تُحدَّد هنا.
+            تُحفظ مع ملف الجدول (غير مخزّنة في مخطط قاعدة البيانات).
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.TeachingAssignment.WeeklyPeriods">
+            <summary>عدد الحصص الأسبوعية المطلوبة لهذا الإسناد.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Entities.TeachingAssignment.IsEnabled">
+            <summary>هل هذا الإسناد مُفعَّل؟ الإسناد المعطَّل يبقى محفوظًا لكنه لا يولّد حصصًا.</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.DayOfWeek">
+            <summary>
+            أيام الأسبوع
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.DayOfWeek.Saturday">
+            <summary>السبت</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.DayOfWeek.Sunday">
+            <summary>الأحد</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.DayOfWeek.Monday">
+            <summary>الاثنين</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.DayOfWeek.Tuesday">
+            <summary>الثلاثاء</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.DayOfWeek.Wednesday">
+            <summary>الأربعاء</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.DayOfWeek.Thursday">
+            <summary>الخميس</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.DayOfWeek.Friday">
+            <summary>الجمعة</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.LessonType">
+            <summary>
+            نوع الحصة
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.LessonType.Regular">
+            <summary>عادية</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.LessonType.Lab">
+            <summary>مختبر</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.LessonType.Activity">
+            <summary>نشاط</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.LessonType.Exam">
+            <summary>امتحان</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.LessonType.Break">
+            <summary>استراحة</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.ConstraintType">
+            <summary>
+            نوع القيد
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.ConstraintType.Hard">
+            <summary>قيد صلب (لا يمكن كسره)</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.ConstraintType.Soft">
+            <summary>قيد لين (مع عقوبة)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.ConstraintPriority">
+            <summary>
+            أولوية القيد
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.TimetableStatus">
+            <summary>
+            حالة الجدول
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.AvailabilityPriority">
+            <summary>
+            أولوية إغلاق وقت المعلم (تفريغ/ندب):
+            Low = يمكن التجاوز عند الضرورة (لين)، High = ملزم ولا يُتجاوز (صلب).
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.SchoolType">
+            <summary>نوع المدرسة: يحدد قالب الفسح وزمن الحصص الافتراضي</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.GeneratorEngine">
+            <summary>
+            محرك توليد الجدول الذي يختاره المستخدم عند إنشاء الجدول
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.GeneratorEngine.CpSat">
+            <summary>CP-SAT (OR-Tools): محرك افتراضي بقيود صلبة ولينة</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.GeneratorEngine.Fet">
+            <summary>FET عبر سطر الأوامر: محرك خارجي يعمل بالكامل</summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.GeneratorEngine.Asc">
+            <summary>aSc Timetables: يُصدَّر الجدول إلى aSc ليُولَّد داخل واجهته ثم يُستورد الناتج</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.DayType">
+            <summary>
+            نوع اليوم
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.ExportFormat">
+            <summary>
+            نوع التصدير
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.ExportFormat.AscXml">
+            <summary>aSc Timetables XML — قابل للفتح مباشرة في برنامج aSc Timetables</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.ImportFormat">
+            <summary>
+            نوع الاستيراد
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Core.Enums.ImportFormat.AscXml">
+            <summary>aSc Timetables XML</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.HardConstraintType">
+            <summary>
+            نوع القيد الصلب
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Enums.SoftConstraintType">
+            <summary>
+            نوع القيد اللين
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Events.IDomainEvent">
+            <summary>
+            واجهة الأحداث النطاقية (Domain Events)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Events.DomainEvent">
+            <summary>
+            حدث نطاق أساسي
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Events.EntityEvents">
+            <summary>
+            أحداث الكيانات
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Events.TimetableEvents">
+            <summary>
+            أحداث الجدولة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Events.EntitySpecificEvents">
+            <summary>
+            أحداث الكيانات الأساسية
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.AscCard">
+            <summary>بطاقة حصة من aSc مع الأيام محلولة (من البطاقة أو من daysdef)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.AscCard.#ctor(System.String,System.Int32,System.String)">
+            <summary>بطاقة حصة من aSc مع الأيام محلولة (من البطاقة أو من daysdef)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.AscParsedFile">
+            <summary>ناتج قراءة ملف aSc XML: التعريفات والبطاقات جاهزة للاستهلاك</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.AscXmlReader">
+            <summary>
+            قارئ صيغة aSc Timetables XML (‎2027): تفصل القراءة والتحليل عن كتابة قاعدة البيانات
+            لتصبح قابلة للاختبار على ملفات aSc الحقيقية.
+            يدعم ترميز windows-1256 (العربية) و UTF-8، وأقنعة الأيام "10000" (الموضع 0 = الأحد).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.AscXmlReader.ReadXmlText(System.String)">
+            <summary>قراءة نص الملف مع استشعار الترميز من ترويسة XML (يعالج windows-1256)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.AscXmlReader.ParseDayBits(System.String)">
+            <summary>
+            قناع أيام بخمس خانات: "10000" الخانة 0 = الأحد … 4 = الخميس.
+            يدعم الصيغة المفصولة بفواصل "10000,01000,..." باتحاد الأيام بلا تكرار.
+            enums.DayOfWeek: السبت=0 الأحد=1 … الخميس=5.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ClassRoomAssigner">
+            <summary>
+            إسناد القاعات عند التوليد (فقط إذا كانت هناك قاعات مُعرَّفة):
+            1) قاعة المعلم (Room.AssignedTeacherId) لحصص ذلك المعلم.
+            2) قاعة الفصل المخصّصة (Class.DefaultRoom ثم إسناد جشع لقاعة مخصّصة لكل شعبة).
+            3) القاعات المشتركة (Room.IsShared) كاحتياط للشعب التي لم تحصل على قاعة، وبشرط كفاية عددها
+               (قاعة مختلفة لكل شعبة حتى لا يُنشئ إسنادٌ متعارض استحالة في المحرك).
+            لا يمسّ الحصص التي لها قاعة محددة مسبقاً.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ComponentRow">
+            <summary>صف مكوّن (معلم/مادة/فصل/قاعة) للتصدير والاستيراد</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.ComponentRow.#ctor(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>صف مكوّن (معلم/مادة/فصل/قاعة) للتصدير والاستيراد</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ComponentTransfer">
+            <summary>
+            تصدير واستيراد مكوّن واحد (معلمين، مواد، فصول، قاعات) بصيغة CSV.
+            الأعمدة: الاسم، الاختصار، رقم (عدد الحصص للمادة / عدد الطلاب للفصل / السعة للقاعة).
+            يقرأ ملفات Excel أيضًا عبر SubjectListImporter.ReadXlsxRows.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.DayShifter">
+            <summary>
+            إزاحة حصص الجدول عند تغيير أيام الدراسة:
+            - اليوم المحتفظ به ينتقل إلى موضعه الجديد بنفس الترتيب.
+            - اليوم المحذوف تنتقل حصصه إلى أقرب يوم موجود (الأقرب في الترتيب الأصلي).
+            النتيجة: الجدول يتحرك تلقائياً للأمام أو للخلف دون فقد حصص.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.GeneratorEngineCatalog">
+            <summary>
+            كتالوج محركات التوليد: الاسم والوصف وحالة التفعيل لكل محرك يعرضه مربع «جدول جديد»
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.LessonImportRow">
+            <summary>حصة مستوردة من ملف جدولي (CSV/Excel)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.LessonImportRow.#ctor(System.String,System.String,System.String,System.String,AwadTimetable.Core.Enums.DayOfWeek,System.Int32)">
+            <summary>حصة مستوردة من ملف جدولي (CSV/Excel)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.LessonCsvImporter">
+            <summary>
+            مستورد جدولي عام للدروس (يغطي صادرات Untis / WinLD / Vulcan / SchILD وغيرها):
+            يكتشف الترويسة ويطابق أسماء الأعمدة بلغات متعددة (عربي/إنجليزي/ألماني/تشيكي/بولندي).
+            بلا ترويسة: الترتيب الافتراضي: الفصل، المعلم، المادة، اليوم، الفترة، القاعة.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.PlacementState">
+            <summary>حالة موضع حصة محتمل: ممنوع / مقبول (بتبديل) / جيد (خلية فارغة).</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.LessonPlacementEvaluator">
+            <summary>
+            تقييم مواضع الحصص بقواعد نقية لا تعتمد على الواجهة.
+            تطابق القواعد التي يطبقها نقل الحصة بالسحب والإفلات، فيكون التلوين أثناء السحب
+            والتشخيص متسقين مع النتيجة الفعلية.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.LessonPlacementEvaluator.Evaluate(AwadTimetable.Core.Entities.Timetable,AwadTimetable.Core.Entities.Lesson,AwadTimetable.Core.Enums.DayOfWeek,AwadTimetable.Core.ValueObjects.PeriodNumber,System.Guid)">
+            <summary>
+            يقيّم موضعًا (يوم، فترة) للحصة داخل فصل محدد.
+            </summary>
+            <param name="timetable">الجدول الحالي (مصدر الحصص الأخرى).</param>
+            <param name="lesson">الحصة المراد وضعها.</param>
+            <param name="targetDay">اليوم المستهدف.</param>
+            <param name="targetPeriod">الفترة المستهدفة.</param>
+            <param name="targetClassId">الفصل المستهدف (في وضع المصفوفة هو صف الشبكة).</param>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.LessonPlacementEvaluator.IsClassAssigned(AwadTimetable.Core.Entities.Timetable,AwadTimetable.Core.Entities.Lesson,System.Guid)">
+            <summary>
+            هل يجوز نقل حصة (معلم+مادة) إلى الفصل الهدف؟ يُقيَّد ذلك بطبقة الإسناد المركزية:
+            إن كانت لإسنادات الجدول مدخلات لـ(هذا المعلم، هذه المادة) فيلزم أن يكون الفصل الهدف ضمن شعبها.
+            إن لم تُستخدم طبقة الإسناد لهذا الزوج فتُترك الحركة اليدوية حرّة.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.LessonPlacementEvaluator.Diagnose(AwadTimetable.Core.Entities.Timetable,AwadTimetable.Core.Entities.Lesson,System.Collections.Generic.IEnumerable{AwadTimetable.Core.Enums.DayOfWeek})">
+            <summary>
+            يحسب كل المواضع الممكنة (يوم × فترة من 1 إلى 12) لحصة، ويجمع أسباب الرفض.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.PlacementDiagnosis">
+            <summary>نتيجة تشخيص حصة: المواضع المناسبة وأسباب الرفض مرتبة حسب التكرار.</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.LessonSplitResult">
+            <summary>نتيجة تقسيم حصة إلى عدة أجزاء موزّعة على أيام مختلفة.</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.LessonSplitResult.#ctor(System.Collections.Generic.IReadOnlyList{AwadTimetable.Core.Entities.Lesson},System.Guid,AwadTimetable.Core.Entities.Group,AwadTimetable.Core.Entities.RuleItem)">
+            <summary>نتيجة تقسيم حصة إلى عدة أجزاء موزّعة على أيام مختلفة.</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.LessonSplitter">
+            <summary>
+            تقسيم حصة (Split) إلى عدة حصص مترابطة تشترك في مجموعة واحدة وتُوزَّع على أيام مختلفة،
+            مع إمكانية إنشاء قاعدة «أدنى أيام بين الحصص» تلقائياً (على نمط FET).
+            القسمة تُقسّم المدة على عدد الأجزاء عندما تكون النتيجة مدة صحيحة (بين 30 و120 ومضاعف 5).
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.RuleParameters">
+            <summary>معاملات القاعدة كما تُحفظ في RuleItem.Parameters (JSON)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MaxConsecutive">
+            <summary>حد الحصص المتتالية (MaxConsecutive): أقصى عدد حصص متتابعة بلا فراغ.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MaxGapsPerDay">
+            <summary>حد الفجوات اليومية (MaxGapsPerDay): أقصى عدد فراغات بين الحصص في اليوم.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MinPerDay">
+            <summary>الحد الأدنى للحصص في اليوم (DailyLoad).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MaxDaysPerWeek">
+            <summary>أقصى أيام عمل أسبوعياً (MaxDaysPerWeek).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MaxGapsPerWeek">
+            <summary>أقصى فجوات أسبوعياً (MaxGapsPerWeek).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MaxSpanPerDay">
+            <summary>أقصى امتداد لليوم (MaxSpanPerDay).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MaxBeginningsSecondHour">
+            <summary>أقصى عدد أيام تبدأ من الحصة الثانية (BeginsEarly).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.SecondTargetId">
+            <summary>معرّف المادة الثانية في علاقة زوج المواد (SubjectPair) أو القاعة المفضّلة.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.NoSameDay">
+            <summary>منع نفس اليوم (SubjectPair).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.NoConsecutive">
+            <summary>منع التتابع (SubjectPair / SubjectTwicePerDay: true = يجب التتابع).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MustBeConsecutive">
+            <summary>يجب أن تكون الحصتان متتاليتين (SubjectTwicePerDay).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MinDaysBetween">
+            <summary>أدنى عدد أيام بين تكرارات (MinDaysBetweenActivities).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MaxRoomChangesPerDay">
+            <summary>حد تغيّر القاعة في اليوم (RoomChangeLimit).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MaxRoomChangesPerWeek">
+            <summary>حد تغيّر القاعة في الأسبوع (RoomChangeLimit).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.RuleParameters.MinDaysPerWeek">
+            <summary>أدنى أيام عمل أسبوعياً (MinDaysPerWeek).</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SlotBlockRule">
+            <summary>حجب أوقات عن نطاق (معلم/فصل) — صلب أو لين</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SlotBlockRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Collections.Generic.IReadOnlyList{System.Int32},System.Collections.Generic.IReadOnlyList{System.Int32},System.Boolean,System.String)">
+            <summary>حجب أوقات عن نطاق (معلم/فصل) — صلب أو لين</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.NoAfterPeriodRule">
+            <summary>منع الحصص بعد فترة معينة لنطاق ما</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.NoAfterPeriodRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>منع الحصص بعد فترة معينة لنطاق ما</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.MaxPerDayRule">
+            <summary>حد أقصى لعدد حصص مادة في اليوم الواحد</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.MaxPerDayRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>حد أقصى لعدد حصص مادة في اليوم الواحد</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.MaxConsecutiveRule">
+            <summary>أقصى عدد حصص متتابعة (بلا فراغ) لنطاق ما في اليوم</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.MaxConsecutiveRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>أقصى عدد حصص متتابعة (بلا فراغ) لنطاق ما في اليوم</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.MaxGapsPerDayRule">
+            <summary>أقصى عدد فجوات (فراغات بين أول وآخر حصة) لنطاق ما في اليوم</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.MaxGapsPerDayRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>أقصى عدد فجوات (فراغات بين أول وآخر حصة) لنطاق ما في اليوم</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.DailyLoadRule">
+            <summary>عبء يومي: حد أدنى/أقصى لعدد الحصص في اليوم لنطاق ما</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.DailyLoadRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.String)">
+            <summary>عبء يومي: حد أدنى/أقصى لعدد الحصص في اليوم لنطاق ما</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.MaxDaysPerWeekRule">
+            <summary>أقصى أيام عمل أسبوعياً لنطاق ما</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.MaxDaysPerWeekRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>أقصى أيام عمل أسبوعياً لنطاق ما</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.MinDaysPerWeekRule">
+            <summary>أدنى أيام عمل أسبوعياً لنطاق ما</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.MinDaysPerWeekRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>أدنى أيام عمل أسبوعياً لنطاق ما</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.MaxGapsPerWeekRule">
+            <summary>أقصى فجوات أسبوعياً لنطاق ما</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.MaxGapsPerWeekRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>أقصى فجوات أسبوعياً لنطاق ما</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.MaxSpanPerDayRule">
+            <summary>أقصى امتداد اليوم لنطاق ما</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.MaxSpanPerDayRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>أقصى امتداد اليوم لنطاق ما</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.BeginsEarlyRule">
+            <summary>بدايات مبكرة: أقصى عدد أيام تبدأ من الحصة الثانية</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.BeginsEarlyRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>بدايات مبكرة: أقصى عدد أيام تبدأ من الحصة الثانية</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SubjectPairRule">
+            <summary>علاقة زوج مواد: منع نفس اليوم و/أو التتابع</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SubjectPairRule.#ctor(System.Guid,System.Guid,System.Boolean,System.Boolean,System.Boolean,System.String)">
+            <summary>علاقة زوج مواد: منع نفس اليوم و/أو التتابع</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SubjectTwicePerDayRule">
+            <summary>مادة بحد أقصى مرتين يومياً، مع خيار إلزام التتابع</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SubjectTwicePerDayRule.#ctor(System.Guid,System.Boolean,System.Boolean,System.String)">
+            <summary>مادة بحد أقصى مرتين يومياً، مع خيار إلزام التتابع</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.BlockLessonsRule">
+            <summary>كتلة تعليم: حصص النطاق في اليوم متصلة بلا فجوات داخلية</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.BlockLessonsRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Boolean,System.String)">
+            <summary>كتلة تعليم: حصص النطاق في اليوم متصلة بلا فجوات داخلية</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SameStartingTimeRule">
+            <summary>نفس البداية (نفس اليوم والحصة) لمجموعة حصص النطاق</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SameStartingTimeRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Boolean,System.String)">
+            <summary>نفس البداية (نفس اليوم والحصة) لمجموعة حصص النطاق</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.NotOverlappingRule">
+            <summary>عدم التداخل: لا حصتان من النطاق في نفس (يوم/حصة)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.NotOverlappingRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Boolean,System.String)">
+            <summary>عدم التداخل: لا حصتان من النطاق في نفس (يوم/حصة)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.MinDaysBetweenRule">
+            <summary>أدنى عدد أيام بين تكرارات النطاق</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.MinDaysBetweenRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Int32,System.Boolean,System.String)">
+            <summary>أدنى عدد أيام بين تكرارات النطاق</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.PreferredRoomRule">
+            <summary>قاعة مفضّلة/إلزامية لنطاق (مادة/فصل)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.PreferredRoomRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Guid,System.Boolean,System.String)">
+            <summary>قاعة مفضّلة/إلزامية لنطاق (مادة/فصل)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.RoomChangeLimitRule">
+            <summary>حد تغيّر القاعة للمعلم/الفصل يومياً أو أسبوعياً</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.RoomChangeLimitRule.#ctor(AwadTimetable.Core.Entities.RuleScope,System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.String)">
+            <summary>حد تغيّر القاعة للمعلم/الفصل يومياً أو أسبوعياً</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.RuleProgram">
+            <summary>برنامج القواعد المُصرَّف من RuleItem — جاهز للتطبيق في المحرك والمدقق</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.RuleCompiler">
+            <summary>
+            يُصرّف قواعد المستخدم/الذكاء الاصطناعي (RuleItem) إلى قيود قابلة للتطبيق:
+            - Availability (نطاق معلم): حجب أوقات (Days × Periods).
+            - EndTime (أي نطاق): منع الحصص بعد فترة معينة.
+            - SubjectDistribution (نطاق مادة): حد أقصى لعدد الحصص يومياً.
+            Priority = Hard → قيد صلب، وإلا لين. Priority = Ignore → يُتجاهل.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.RuleCompiler.Applies(AwadTimetable.Core.Services.SlotBlockRule,AwadTimetable.Core.Entities.Lesson)">
+            <summary>هل تنطبق القاعدة على هذه الحصة؟ (النطاق + المعرّف)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.RuleCompiler.AppliesScope(AwadTimetable.Core.Entities.RuleScope,System.Guid,AwadTimetable.Core.Entities.Lesson)">
+            <summary>هل ينطبق النطاق + المعرّف على الحصة؟</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.RuleCompiler.Applies(AwadTimetable.Core.Services.SubjectPairRule,AwadTimetable.Core.Entities.Lesson)">
+            <summary>هل الحصة من إحدى مادتي الزوج؟</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.RuleCompiler.Applies(AwadTimetable.Core.Services.SubjectTwicePerDayRule,AwadTimetable.Core.Entities.Lesson)">
+            <summary>هل الحصة من مادة قاعدة «مرتين يومياً»؟</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.RuleCompiler.Blocks(AwadTimetable.Core.Services.SlotBlockRule,AwadTimetable.Core.Entities.Lesson,AwadTimetable.Core.Enums.DayOfWeek,System.Int32)">
+            <summary>هل يُحجب هذا الموضع (يوم/فترة) عن الحصة وفق قاعدة الحجب؟</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.AdvisorFinding">
+            <summary>ملاحظة تشخيصية واحدة من مستشار الجدول</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.AdvisorFinding.#ctor(System.String,AwadTimetable.Core.Services.AdvisorSeverity,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String})">
+            <summary>ملاحظة تشخيصية واحدة من مستشار الجدول</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ScheduleAdvisor">
+            <summary>
+            مستشار الجدول (Advisor): فحوصات تشخيصية مشابهة لتلك الموجودة في aSc قبل التوليد وبعده،
+            مثل الفصول المكتظة، والقاعات غير الموجودة، وعبء المعلم، والتعطل الكثير، ومادة تتجاوز أيام الأسبوع.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ITimetableGenerator">
+            <summary>
+            واجهة مولد الجدول الزمني
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.GenerationComplexity">
+            <summary>درجة تعقيد التوليد — تُضبط ميزانية البحث (الوقت/التكرارات/عدد المحاولات).</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.GenerationOptions">
+            <summary>
+            خيارات التوليد
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.GenerationOptions.Complexity">
+            <summary>درجة التعقيد: Normal / Large / Huge (تُضاعف ميزانية البحث).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.GenerationOptions.VariantCount">
+            <summary>عدد المتغيّرات المولَّدة لاختيار أفضلها (1 = متغيّر واحد فقط).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.GenerationOptions.DraftMode">
+            <summary>وضع المسودة: توليد سريع تقريبي لجدول مبدئي.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.GenerationOptions.EffectiveTimeLimit">
+            <summary>المهلة الفعلية بعد تطبيق درجة التعقيد (وضع المسودة يضغطها).</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.GenerationOptions.EffectiveMaxIterations">
+            <summary>أقصى عدد تكرارات فعلي بعد تطبيق درجة التعقيد.</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.GenerationOptions.EffectiveVariantCount">
+            <summary>أقصى عدد محاولات (بذور) فعلية — وضع المسودة يحصرها بواحد.</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.OptimizationOptions">
+            <summary>
+            خيارات التحسين
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.GenerationResult">
+            <summary>
+            نتيجة التوليد
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.OptimizationResult">
+            <summary>
+            نتيجة التحسين
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ValidationResult">
+            <summary>
+            نتيجة التحقق
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.IConstraintValidator">
+            <summary>
+            واجهة مدقق القيود
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.IConflictDetector">
+            <summary>
+            واجهة كاشف التضاربات
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.Conflict">
+            <summary>
+            تمثيل التضارب
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ConflictType">
+            <summary>
+            نوع التضارب
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ConflictSeverity">
+            <summary>
+            شدة التضارب
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.IScheduler">
+            <summary>
+            واجهة المجدول (Scheduler)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ScheduleOptions">
+            <summary>
+            خيارات الجدولة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.ScheduleResult">
+            <summary>
+            نتيجة الجدولة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SubjectImportRow">
+            <summary>صف مادة مُستورَد: الاسم، الاختصار، عدد الحصص الأسبوعي</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SubjectImportRow.#ctor(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>صف مادة مُستورَد: الاسم، الاختصار، عدد الحصص الأسبوعي</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SubjectListImporter">
+            <summary>
+            استيراد قائمة مواد من CSV أو Excel (xlsx) إلى صفوف موحّدة.
+            يكتشف الترويسة تلقائياً، ويدعم الفاصلة والفاصلة المنقوطة والمُحدِّد الجدولي، والعربية.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SubjectListImporter.SplitLine(System.String,System.Char)">
+            <summary>تقسيم بسيط يدعم الاقتباس المزدوج</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SubjectListImporter.ReadXlsxRows(System.IO.Stream)">
+            <summary>قراءة أول ورقة عمل من xlsx (يدعم inlineStr و sharedStrings والأرقام)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SubstitutionAssignmentRow">
+            <summary>
+            صف نتيجة تعيين بديل لحصة واحدة
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SubstitutionAssignmentRow.#ctor(System.Guid,AwadTimetable.Core.Enums.DayOfWeek,System.Byte,System.Guid,System.Guid,System.Guid,System.Nullable{System.Guid},System.Nullable{System.Int32},System.String)">
+            <summary>
+            صف نتيجة تعيين بديل لحصة واحدة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SubstitutionGenerator">
+            <summary>
+            مولّد تعيين المعلمين البديلين (نظام الانتظار بثلاث فئات):
+            لكل معلم غائب تُولَّد الحصص البديلة بأولوية البديل الأول ثم الثاني ثم الثالث،
+            ويُرفض البديل المشغول في نفس الفترة أو المكلف بتغطية غائب آخر.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SubstitutionGenerator.GetTimetableDayIndex(System.DateOnly)">
+            <summary>تحويل تاريخ ميلادي إلى رقم يوم الجدول: السبت=0 … الخميس=5، الجمعة=6 (لا حصص)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SubstitutionGenerator.Generate(AwadTimetable.Core.Entities.Timetable,System.Collections.Generic.IReadOnlyList{AwadTimetable.Core.Entities.Teacher},System.Collections.Generic.IReadOnlyCollection{System.Guid},System.DateOnly)">
+            <summary>
+            توليد تعيينات البديل ليوم محدد للمعلمين الغائبين المحددين
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SupervisionKind">
+            <summary>نوع الإشراف: استراحة، أو بين الحصص، أو فسحة</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SupervisionAssignmentRow">
+            <summary>تعيين إشراف واحد: قاعة في فترة معينة، بمعلم مشرف (قد يكون بلا مشرف)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.SupervisionAssignmentRow.#ctor(System.Guid,System.String,AwadTimetable.Core.Enums.DayOfWeek,System.Byte,System.Nullable{System.Guid},System.String,AwadTimetable.Core.Services.SupervisionKind,System.String)">
+            <summary>تعيين إشراف واحد: قاعة في فترة معينة، بمعلم مشرف (قد يكون بلا مشرف)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.SupervisionGenerator">
+            <summary>
+            مولّد الإشراف (Dozor): يوزّع فترات الاستراحة على القاعات، ويكلّف كل قاعة بمعلم غير مشغول
+            (لا يُدرّس في الفترة، وليس غائباً، ولم يُكلَّف بإشراف آخر في الفترة نفسها).
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.TeachingAssignmentImportRow">
+            <summary>صف إسناد مستورد: (معلم، مادة، فصل، عدد الحصص الأسبوعية).</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.TeachingAssignmentImportRow.#ctor(System.String,System.String,System.String,System.Int32)">
+            <summary>صف إسناد مستورد: (معلم، مادة، فصل، عدد الحصص الأسبوعية).</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.TeachingAssignmentImporter">
+            <summary>
+            استيراد الإسنادات مجمّعةً من CSV أو Excel.
+            الأعمدة: المعلم، المادة، الفصل، عدد الحصص الأسبوعية (العمود الرابع اختياري ويُفترض 1).
+            يتجاهل صف العنوان والصفوف الفارغة أو الناقصة.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.AssignmentSyncResult">
+            <summary>نتيجة مزامنة الحصص مع الإسنادات</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.AssignmentSyncResult.#ctor(System.Int32,System.Int32)">
+            <summary>نتيجة مزامنة الحصص مع الإسنادات</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.TeachingAssignmentLessonSync">
+            <summary>
+            مزامنة الحصص مع طبقة الإسناد المركزية (معلم + مادة + فصل + عدد حصص أسبوعية).
+            المصدر هو <see cref="P:AwadTimetable.Core.Entities.Timetable.Assignments"/>؛ تُنشأ الحصص الناقصة كغير مُسندة (Period = 0)
+            وتُحذف الزائدة لنفس العلاقة الثلاثية، فتظل عملية التوليد قابلة للتكرار دون تكرار الحصص.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.VendorXmlImporter">
+            <summary>
+            مستورد XML للأنظمة المدرسية (Untis / WinLD / Vulcan / SchILD)، متسامح مع أسماء الوسوم
+            بالعربية والإنجليزية والألمانية والتشيكية والبولندية، ويدعم:
+            - حصص مجدولة (يوم + فترة) → حصص موضوعة.
+            - بيانات أساسية فقط (فصل/مادة/معلم/عدد حصص أسبوعي) → حصص غير موضوعة (Period = 0).
+            ملف aSc XML يُفوَّض إلى AscXmlReader.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.WaitingLessonPlan">
+            <summary>خطة حصة انتظار: تُنشأ كحصة حقيقية لشعبة انتظار (صف في الجدول)</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.WaitingLessonPlan.#ctor(AwadTimetable.Core.Enums.DayOfWeek,System.Int32,System.String,System.String,System.Guid)">
+            <summary>خطة حصة انتظار: تُنشأ كحصة حقيقية لشعبة انتظار (صف في الجدول)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.WaitingLessonPlanner">
+            <summary>
+            يخطط حصص الانتظار بطريقة aSc: شعب انتظار (صفوف) تُجدول لها حصص في الفترات التي
+            فيها دروس للمرحلة، ويُختار لكل حصة المعلم الأقل نصاباً الحر في تلك الفترة.
+            النتيجة: أنصبة المعلمين (تدريس + انتظار) تتقارب.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.WaitingPlanEntry">
+            <summary>
+            بند في خطة الانتظار: معلم يُضاف لفئة انتظار في مرحلة، بعدد حصص أسبوعية.
+            (يمكن للمعلم أن يظهر في أكثر من فئة/مرحلة.)
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.WaitingPlanEntry.#ctor(System.String,System.Int32,System.Guid,System.Int32)">
+            <summary>
+            بند في خطة الانتظار: معلم يُضاف لفئة انتظار في مرحلة، بعدد حصص أسبوعية.
+            (يمكن للمعلم أن يظهر في أكثر من فئة/مرحلة.)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.WaitingPlan">
+            <summary>
+            التحقق من خطة الانتظار قبل توليد الحصص:
+            - الفئة بين 1 و3.
+            - الحصص ≥ 1.
+            - مجموع حصص الفئة لا يتجاوز سعة شعبة الانتظار (أيام المرحلة × حصصها اليومية).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.WaitingPlan.ClassName(System.String,System.Int32)">
+            <summary>أسماء شعب الانتظار: «انتظار {المرحلة} {الفئة}»</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.WaitingPlan.SubjectName(System.Int32)">
+            <summary>اسم مادة الانتظار: «انتظار {الفئة}»</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.WaitingDuty">
+            <summary>تكليف انتظار أساسي: (يوم، فترة، فصل) → معلم انتظار 1</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.WaitingDuty.#ctor(AwadTimetable.Core.Enums.DayOfWeek,System.Int32,System.Guid,System.Guid)">
+            <summary>تكليف انتظار أساسي: (يوم، فترة، فصل) → معلم انتظار 1</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.WaitingBackup">
+            <summary>احتياط انتظار 2/3: معلم حر في (يوم، فترة) يُستخدم عند غياب الأساسي</summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.WaitingBackup.#ctor(AwadTimetable.Core.Enums.DayOfWeek,System.Int32,System.Int32,System.Guid)">
+            <summary>احتياط انتظار 2/3: معلم حر في (يوم، فترة) يُستخدم عند غياب الأساسي</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.WaitingSchedule">
+            <summary>جدول الانتظار المولّد</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.WaitingSchedule.Duties">
+            <summary>تكليفات انتظار 1: واحد لكل (فصل، فترة)</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.WaitingSchedule.Backups">
+            <summary>احتياط انتظار 2 و3 لكل (يوم، فترة) — لا تُحتسب تكليفات</summary>
+        </member>
+        <member name="P:AwadTimetable.Core.Services.WaitingSchedule.Uncovered">
+            <summary>خانات لم يُعثر لها على مشرف أساسي (نقص معلمين حرين)</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.Services.WaitingScheduleGenerator">
+            <summary>
+            مولّد جدول الانتظار (المعلم البديل) بنموذج «بديل لكل حصة»:
+            - انتظار 1: معلم واحد لكل (فصل، فترة) — إلزامي، يُغطّي غياب معلم الحصة.
+            - انتظار 2 و3: قائمة احتياط لكل (يوم، فترة) تُستخدم عند غياب الأساسي (لا تُحتسب تكليفاً).
+            - العدالة: يُختار الأقل نصاباً تراكمياً (تدريس + انتظار) من الفئة الأنسب، ولا يُكلَّف معلم
+              أكثر من مرة في الفترة الواحدة.
+            - سبب وجود احتياط للفترة بدل تكليف 3 لكل فصل: عند 12 فصلاً و40 معلماً، المتاح في الفترة
+              الواحدة ≈ 28 معلماً، بينما 3 مشرفين لكل فصل تعني 36 معلماً وهو غير ممكن.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.Services.WaitingScheduleGenerator.Resolve(AwadTimetable.Core.Services.WaitingSchedule,AwadTimetable.Core.Enums.DayOfWeek,System.Int32,System.Guid,System.Collections.Generic.IReadOnlyCollection{System.Guid})">
+            <summary>
+            تغطية غياب حصة: انتظار 1 للفصل، فإن كان غائباً يُختار احتياط 2 ثم 3 في نفس الفترة.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.SchoolId">
+            <summary>
+            معرف المدرسة
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.SchoolId.#ctor(System.Guid)">
+            <summary>
+            معرف المدرسة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.TeacherId">
+            <summary>
+            معرف المعلم
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.TeacherId.#ctor(System.Guid)">
+            <summary>
+            معرف المعلم
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.RoomId">
+            <summary>
+            معرف الغرفة
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.RoomId.#ctor(System.Guid)">
+            <summary>
+            معرف الغرفة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.ClassId">
+            <summary>
+            معرف الفصل
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.ClassId.#ctor(System.Guid)">
+            <summary>
+            معرف الفصل
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.SubjectId">
+            <summary>
+            معرف المادة
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.SubjectId.#ctor(System.Guid)">
+            <summary>
+            معرف المادة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.LessonId">
+            <summary>
+            معرف الحصة
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.LessonId.#ctor(System.Guid)">
+            <summary>
+            معرف الحصة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.ConstraintId">
+            <summary>
+            معرف القيد
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.ConstraintId.#ctor(System.Guid)">
+            <summary>
+            معرف القيد
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.TimetableId">
+            <summary>
+            معرف الجدول
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.TimetableId.#ctor(System.Guid)">
+            <summary>
+            معرف الجدول
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.PeriodNumber">
+            <summary>
+            رقم الفترة (0-12). القيمة 0 تعني «غير مُسندة» (حصة لم تُوضع في الجدول بعد).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.PeriodNumber.#ctor(System.Byte)">
+            <summary>
+            رقم الفترة (0-12). القيمة 0 تعني «غير مُسندة» (حصة لم تُوضع في الجدول بعد).
+            </summary>
+        </member>
+        <member name="P:AwadTimetable.Core.ValueObjects.PeriodNumber.Unscheduled">
+            <summary>الفترة «غير مُسندة» (لم تُوضع في الجدول بعد).</summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.Duration">
+            <summary>
+            المدة بالدقائق
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.Duration.#ctor(System.Int32)">
+            <summary>
+            المدة بالدقائق
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.ConstraintWeight">
+            <summary>
+            وزن القيد (للقيود اللينة)
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.ConstraintWeight.#ctor(System.Double)">
+            <summary>
+            وزن القيد (للقيود اللينة)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.Score">
+            <summary>
+            النقاط (للترتيب/الترقيم)
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.Score.#ctor(System.Double)">
+            <summary>
+            النقاط (للترتيب/الترقيم)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.Percentage">
+            <summary>
+            النسبة المئوية (0-100)
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.Percentage.#ctor(System.Double)">
+            <summary>
+            النسبة المئوية (0-100)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.TimeOfDay">
+            <summary>
+            الوقت (الساعة والدقيقة)
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.TimeOfDay.#ctor(System.Byte,System.Byte)">
+            <summary>
+            الوقت (الساعة والدقيقة)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.TimeRange">
+            <summary>
+            نطاق زمني (بداية ونهاية)
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.TimeRange.#ctor(AwadTimetable.Core.ValueObjects.TimeOfDay,AwadTimetable.Core.ValueObjects.TimeOfDay)">
+            <summary>
+            نطاق زمني (بداية ونهاية)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Core.ValueObjects.ContactInfo">
+            <summary>
+            معلومات الاتصال
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Core.ValueObjects.ContactInfo.#ctor(System.String,System.String,System.String)">
+            <summary>
+            معلومات الاتصال
+            </summary>
+        </member>
+    </members>
+</doc>

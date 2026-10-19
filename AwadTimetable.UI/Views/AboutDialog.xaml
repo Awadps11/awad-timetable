@@ -1,0 +1,95 @@
+<Window x:Class="AwadTimetable.UI.Views.AboutDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="حول التطبيق"
+        Height="620" Width="560"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        FlowDirection="RightToLeft"
+        Background="{StaticResource SurfaceBrush}"
+        WindowStyle="SingleBorderWindow">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- العنوان -->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,16">
+            <TextBlock Text="نظام عوض للجداول المدرسية" FontSize="22" FontWeight="Bold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceBrush}" HorizontalAlignment="Center"/>
+            <TextBlock Text="الإصدار 2.0.0" FontSize="14"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}"
+                       HorizontalAlignment="Center" Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <Separator Grid.Row="1" Margin="0,0,0,12"/>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <TextBlock Text="الوصف" FontSize="14" FontWeight="Bold" Margin="0,0,0,6"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+                <TextBlock TextWrapping="Wrap" LineHeight="22" FontSize="12"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}"
+                           Text="تطبيق سطح مكتب عربي (RTL) لبناء الجداول المدرسية: إدخال المعلمين والمواد والفصول، الإسنادات، القيود المخصصة، توليد الجدول بمحركات متعددة، الاستبدال والإشراف، والطباعة بقوالب قابلة للتخصيص."/>
+
+                <TextBlock Text="محركات توليد الجدول" FontSize="14" FontWeight="Bold" Margin="0,14,0,6"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+                <StackPanel Margin="12,0,0,0">
+                    <TextBlock Text="• CP-SAT (Google OR-Tools): المحرك الافتراضي — قيود صلبة ولينة وبحث أفضل-من-ن." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• FET 7.12 (خارجي): تصدير ملف .fet وتشغيل fet-cl ثم استيراد النتيجة." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• aSc Timetables (بالتعاون): تصدير بصيغة aSc، والتوليد داخل aSc ثم الاستيراد." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                </StackPanel>
+
+                <TextBlock Text="بنية التطبيق (7 مشاريع)" FontSize="14" FontWeight="Bold" Margin="0,14,0,6"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+                <StackPanel Margin="12,0,0,0">
+                    <TextBlock Text="• Core: الكيانات والقيود وقواعد العمل والاستيراد/التصدير." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• Data: EF Core + SQLite (المستودعات والترحيل)." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• Solver: محرك CP-SAT ومصدّرات FET/aSc XML." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• AI: عميل Ollama والأدوات الذكية." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• Printing: PDF (QuestPDF) وتقارير HTML وقوالب الطباعة." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• UI: واجهة WPF (Material Design 3 + Fluent Icons)." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• Tests: أكثر من 200 اختبار (xUnit) للقيود والمحرك والاستيراد والطباعة." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                </StackPanel>
+
+                <TextBlock Text="المزايا الرئيسية" FontSize="14" FontWeight="Bold" Margin="0,14,0,6"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+                <StackPanel Margin="12,0,0,0">
+                    <TextBlock Text="• معالج جدول جديد: مراحل متعددة، أيام دراسة، توقيت مستقل لكل مرحلة، وفسح تلقائية." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• تفريغ وندب بأولوية (ملزم/قابل للتجاوز) وشارات الألوان لكل معلم." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• استيراد من Excel/CSV/الصور بالذكاء الاصطناعي، وتصدير/استيراد كل مكوّن على حدة." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• استيراد دروس من XML (Untis/WinLD/Vulcan/SchILD) وaSc." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• خطة انتظار (شعب لكل مرحلة وفئة) وتوزيع عادل للأنصبة، وإشراف (Dozor) للفسح." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• قواعد/قيود مخصصة تُصرَّف إلى قيود فعلية في المحرك، مع معاملات JSON وأوامر ذكاء اصطناعي." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                    <TextBlock Text="• طباعة ومعاينة: 8 قوالب جاهزة + قوالب مخصصة (ألوان/خط/خيارات)، وبطاقة قاعة PDF." FontSize="12" TextWrapping="Wrap" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}" Margin="0,2"/>
+                </StackPanel>
+
+                <TextBlock Text="التقنيات" FontSize="14" FontWeight="Bold" Margin="0,14,0,6"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+                <TextBlock TextWrapping="Wrap" FontSize="12" LineHeight="20"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}"
+                           Text=".NET 8 / WPF / C#، Google OR-Tools (CP-SAT)، Entity Framework Core + SQLite، QuestPDF، Material Design 3، Fluent Icons، Serilog، Ollama."/>
+
+                <TextBlock Text="الحقوق" FontSize="14" FontWeight="Bold" Margin="0,14,0,6"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+                <TextBlock TextWrapping="Wrap" FontSize="12"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}"
+                           Text="جميع الحقوق محفوظة © 2026 - عوض لافي الزبيدي"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button Grid.Row="3" Content="إغلاق" MinWidth="100" Padding="12,6" Margin="0,12,0,0"
+                HorizontalAlignment="Center" Click="OnCloseClick"
+                Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"/>
+    </Grid>
+</Window>

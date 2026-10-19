@@ -1,0 +1,66 @@
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.csproj.AssemblyReference.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.AssemblyInfoInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.AssemblyInfo.cs
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.csproj.CoreCompileInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-Black.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-BlackItalic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-Bold.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-BoldItalic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-ExtraBold.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-ExtraBoldItalic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-ExtraLight.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-ExtraLightItalic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-Italic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-Light.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-LightItalic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-Medium.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-MediumItalic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-Regular.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-SemiBold.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-SemiBoldItalic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\LatoFont\OFL.txt
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Printing.deps.json
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Printing.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Printing.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Printing.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.AI.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Core.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Data.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Core.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Core.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Data.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.Data.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.AI.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\bin\Debug\net8.0\AwadTimetable.AI.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTime.C22E5D95.Up2Date
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\refint\AwadTimetable.Printing.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\ref\AwadTimetable.Printing.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-Black.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-BlackItalic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-Bold.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-BoldItalic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-ExtraBold.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-ExtraBoldItalic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-ExtraLight.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-ExtraLightItalic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-Italic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-Light.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-LightItalic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-Medium.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-MediumItalic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-Regular.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-SemiBold.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-SemiBoldItalic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-Thin.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\Lato-ThinItalic.ttf
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\LatoFont\OFL.txt
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Printing.deps.json
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Printing.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Printing.pdb
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Printing.xml

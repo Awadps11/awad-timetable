@@ -1,0 +1,39 @@
+<Window x:Class="AwadTimetable.UI.Views.StageWorkConfigDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="أيام العمل والحصص اليومية"
+        Width="640" Height="430"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{StaticResource BackgroundBrush}"
+        FontFamily="Segoe UI"
+        FontSize="14"
+        ResizeMode="CanResize"
+        ShowInTaskbar="False">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="0,0,0,10"
+                   Foreground="{StaticResource OnSurfaceVariantBrush}"
+                   Text="حدد أيام العمل وعدد الحصص اليومي لكل مرحلة. تُطبَّق هذه القيود أثناء توليد الجدول (الجمعة ليست يوم دراسي)."/>
+
+        <Border Grid.Row="1" Background="{StaticResource SurfaceBrush}" CornerRadius="8" Padding="10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="RowsPanel"/>
+            </ScrollViewer>
+        </Border>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,12,0,0">
+            <Button Content="حفظ" MinWidth="100" Margin="8,0" Padding="12,7"
+                    Background="{StaticResource SecondaryBrush}" Foreground="White" BorderThickness="0"
+                    Click="OnSaveClick"/>
+            <Button Content="إلغاء" MinWidth="100" Margin="8,0" Padding="12,7"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"
+                    Click="OnCancelClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

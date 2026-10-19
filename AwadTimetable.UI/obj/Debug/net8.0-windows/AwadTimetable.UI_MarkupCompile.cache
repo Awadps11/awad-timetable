@@ -1,0 +1,20 @@
+﻿AwadTimetable.UI
+2.1.2.0
+
+winexe
+C#
+.cs
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\obj\Debug\net8.0-windows\
+AwadTimetable.UI
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\App.xaml
+35-1848463133
+3-488477416
+701883946250
+280-656132427
+Themes\ClassicStyles.xaml;Themes\Colors.xaml;Themes\DataGridStyles.xaml;Views\AboutDialog.xaml;Views\AIChatPanel.xaml;Views\AiSetupDialog.xaml;Views\ClassesView.xaml;Views\ConstraintsView.xaml;Views\CopyLessonsDialog.xaml;Views\DbTimetablesDialog.xaml;Views\LessonDialog.xaml;Views\LessonPropertiesView.xaml;Views\MainWindow.xaml;Views\NewTimetableDialog.xaml;Views\OverviewView.xaml;Views\PeriodTimesDialog.xaml;Views\PrintPreviewWindow.xaml;Views\PrintTemplatesDialog.xaml;Views\RoomCardDialog.xaml;Views\RoomsView.xaml;Views\RuleEditorDialog.xaml;Views\SettingsWindow.xaml;Views\ShareWindow.xaml;Views\SplitLessonDialog.xaml;Views\StageWorkConfigDialog.xaml;Views\StatsView.xaml;Views\SubjectsView.xaml;Views\SubstitutionWindow.xaml;Views\SupervisionDialog.xaml;Views\TeacherAvailabilityDialog.xaml;Views\TeachersView.xaml;Views\TimetableView.xaml;Views\WaitingPlanDialog.xaml;Views\WaitingScheduleDialog.xaml;Views\WorkspacesDialog.xaml;
+
+False
+

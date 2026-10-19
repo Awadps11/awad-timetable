@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AwadTimetable.Solver</name>
+    </assembly>
+    <members>
+        <member name="T:AwadTimetable.Solver.AscEngine">
+            <summary>
+            محرك aSc بالتعاون: لا يُولِّد الجدول آلياً (aSc لا يملك وضع توليد من سطر الأوامر).
+            يكتب الجدول بصيغة aSc، ويفتح aSc إن أمكن، ثم يُعيد للمستخدم تعليمات الاستيراد.
+            النتيجة تُستورد لاحقاً عبر مستورِد aSc المعتاد.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Solver.AscXmlFormat">
+            <summary>
+            مُصدِّر صيغة aSc Timetables XML (الإصدار 2027.7.1)، بنفس بنية الملف الذي صدّره البرنامج فعلياً:
+            ترميز windows-1256، معرّفات سداسية، periods، daysdefs، lessons، cards.
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Solver.AscXmlFormat.MaskOrder">
+            <summary>ترتيب أيام aSc في قناع daysdef (الموضع 0 = الأحد)</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.AscXmlFormat.DeriveId(System.Guid,System.Guid,System.Guid)">
+            <summary>معرّف حتمي لحصة مجمّعة من (فصل، مادة، معلم) لا يتغير بين التصديرات</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.AscXmlFormat.MaskFor(AwadTimetable.Core.Enums.DayOfWeek)">
+            <summary>قناع يوم واحد: 1 في موضع اليوم وصفر في البقية (الموضع 0 = الأحد)</summary>
+        </member>
+        <member name="T:AwadTimetable.Solver.CpSatTimetableSolver">
+            <summary>
+            محول CP-SAT من OR-Tools: يبني نموذجًا حقيقيًا، يطبّق الحل على الجدول نفسه،
+            ويقيس النتيجة بالتحقق الفعلي من القيود.
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Solver.CpSatTimetableSolver.GenerationGate">
+            <summary>بوابة تمنع تشغيل توليدين/تحسينين متزامنين على نفس الجدول (الواجهة + أدوات المساعد).</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.IsSlotAllowed(AwadTimetable.Core.Entities.Timetable,System.String,AwadTimetable.Core.Enums.DayOfWeek,System.Int32)">
+            <summary>هل يمكن جدولة حصة في (اليوم، الفترة)؟ أيام العمل من StageConfigs والفترات المفتوحة من PeriodTimes</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.BuildAllowedSlots(AwadTimetable.Core.Entities.Timetable,AwadTimetable.Core.Services.GenerationOptions,AwadTimetable.Core.Services.RuleProgram,AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Entities.Lesson,System.String)">
+            <summary>المواضع (يوم، فترة) المسموحة لحصة في مرحلة معيّنة.</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.DiagnoseCapacity(AwadTimetable.Core.Entities.Timetable,AwadTimetable.Solver.CpSatTimetableSolver.ModelData)">
+            <summary>
+            فحص الجدوى قبل الحل: هل تتجاوز حصص كل فصل/معلم عدد الفترات المتاحة فعلياً؟
+            يعطي رسالة دقيقة بدل انتظار المحلّل حتى يثبت تعذّر الحل.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.IsBlockedByHardRule(AwadTimetable.Core.Services.RuleProgram,AwadTimetable.Core.Entities.Lesson,AwadTimetable.Core.Enums.DayOfWeek,System.Int32)">
+            <summary>هل يمنع موضعاً (يوم/فترة) قاعدةُ مستخدم صلبة (حجب أو منع بعد فترة)؟</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.LessonsForScope(AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Entities.RuleScope,System.Guid)">
+            <summary>حصص نطاق (معلم/فصل/مادة) من بيانات النموذج.</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.VarsByPeriodForDay(AwadTimetable.Solver.CpSatTimetableSolver.ModelData,System.Collections.Generic.IEnumerable{AwadTimetable.Core.Entities.Lesson},AwadTimetable.Core.Enums.DayOfWeek)">
+            <summary>متغيرات الحصص مجمّعة حسب رقم الفترة في يوم معيّن.</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.AddUserExtensionHardConstraints(Google.OrTools.Sat.CpModel,AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Services.RuleProgram)">
+            <summary>
+            قواعد المستخدم الصلبة الإضافية:
+            MaxConsecutive (حد التتابع)، DailyLoad (حد أدنى/أقصى يومي)، MaxGapsPerDay (حد الفجوات اليومية).
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.ScopeUnits(AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Entities.RuleScope,System.Guid)">
+            <summary>وحدات النطاق: للفصل/المعلم وحدة واحدة، ولمادة وحدة لكل فصل على حدة.</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.ClassSubjectVarsByPeriod(AwadTimetable.Solver.CpSatTimetableSolver.ModelData,System.Guid,System.Guid,AwadTimetable.Core.Enums.DayOfWeek)">
+            <summary>متغيرات مادة داخل فصل مجمّعة حسب الفترة في يوم معيّن.</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.NewSumBool(Google.OrTools.Sat.CpModel,System.String,System.Collections.Generic.IReadOnlyList{Google.OrTools.Sat.IntVar})">
+            <summary>متغير بولياني يساوي 1 إذا كان مجموع المتغيرات ≥ 1.</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.AddUserDayScopeHardConstraints(Google.OrTools.Sat.CpModel,AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Services.RuleProgram)">
+            <summary>
+            القواعد الصلبة الإضافية المعتمدة على الأيام: أقصى أيام/أسبوع، امتداد اليوم، بدايات مبكرة،
+            زوج المواد، مرتين يومياً، كتلة بلا فجوات، وأدنى أيام بين التكرارات.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.AddTeacherTimeConstraints(Google.OrTools.Sat.CpModel,AwadTimetable.Solver.CpSatTimetableSolver.ModelData)">
+            <summary>
+            يمنع أن يدرّس المعلم حصتين متداخلتين زمنياً في اليوم نفسه.
+            نجزّئ الخط الزمني لليوم إلى مقاطع بحدود كل الفترات، ونشترط ألا يغطي أكثر من متغير المقطع الواحد.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.BuildUserExtensionObjectiveTerms(Google.OrTools.Sat.CpModel,AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Services.RuleProgram)">
+            <summary>عقوبات لينة لقواعد المستخدم الإضافية (تتابع/عبء يومي).</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.AddUserDayScopeSoftTerms(Google.OrTools.Sat.CpModel,AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Services.RuleProgram)">
+            <summary>عقوبات لينة لقواعد الأيام/المواد/القاعات الجديدة (تُطبَّق عند اختيار الأولوية اللينة).</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.BuildRoomChangeObjectiveTerms(Google.OrTools.Sat.CpModel,AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Services.RuleProgram)">
+            <summary>
+            حدّ تغيّر القاعة (RoomChangeLimit): يبني عدد تغيّرات القاعة بين الحصص المتتالية في اليوم،
+            فيفرضه صلباً عند الطلب ويُعاقب تجاوزه ليناً. القاعة ثابتة لكل حصة، فيُقاس التغيّر بين الفترات.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.SolveBestByScoreAsync(Google.OrTools.Sat.CpModel,AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Entities.Timetable,AwadTimetable.Core.Services.GenerationOptions,System.Threading.CancellationToken,System.IProgress{System.String})">
+            <summary>
+            يشغّل عدة محاولات على نفس النموذج ببذور مختلفة، يحتفظ بالأفضل حسب درجة المدقق.
+            النتيجة لا تكون أسوأ من محاولة واحدة لأنه يبدأ بها دائماً.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.CpSatTimetableSolver.HintCurrentAssignment(Google.OrTools.Sat.CpModel,AwadTimetable.Solver.CpSatTimetableSolver.ModelData,AwadTimetable.Core.Entities.Timetable)">
+            <summary>تلميح الجدول الحالي لـ CP-SAT: يبدأ الحل من التوزيع القائم بدل الحفّ صفرًا</summary>
+        </member>
+        <member name="P:AwadTimetable.Solver.CpSatTimetableSolver.ModelData.TeacherSlotTimes">
+            <summary>فترات المعلم بأزمنتها الفعلية لحساب التضارب بتداخل الزمن (المعلم المشترك بين المراحل)</summary>
+        </member>
+        <member name="P:AwadTimetable.Solver.CpSatTimetableSolver.ModelData.Declared">
+            <summary>الفترات التي أعلنت فيها معلمين صراحةً عن توفرها (تفضيل لين)</summary>
+        </member>
+        <member name="P:AwadTimetable.Solver.CpSatTimetableSolver.ModelData.SoftBlocked">
+            <summary>أوقات أغلقها المعلم بأولوية منخفضة: مسموحة لكن يُعاقَب الجدولة فيها</summary>
+        </member>
+        <member name="P:AwadTimetable.Solver.CpSatTimetableSolver.ModelData.DeclaredTeachers">
+            <summary>المعلمون الذين لديهم إعلان توفر واحد على الأقل</summary>
+        </member>
+        <member name="T:AwadTimetable.Solver.FetEngine">
+            <summary>
+            محرك FET خارجي: يصدّر الجدول إلى ملف .fet، يشغّل fet-cl، ثم يقرأ نتيجة الحصص من XML.
+            لا يُدمج أي شيفرة من FET؛ التكامل عبر سطر الأوامر فقط.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Solver.FetExporter">
+            <summary>
+            بناء ملف .fet (XML) من الجدول. البنية مأخوذة من أمثلة FET الرسمية (الإصدار 7.12.0):
+            Days_List, Hours_List, Teachers_List, Subjects_List, Students_List, Activities_List، والقيود الأساسية.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.FetExporter.Build(AwadTimetable.Core.Entities.Timetable)">
+            <summary>
+            ترتيب أيام FET من أيام العمل الفعلية للجدول. أسماء الأيام فريدة وتُستخدم كمعرّفات.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.FetExporter.ActiveHours(AwadTimetable.Core.Entities.Timetable)">
+            <summary>الفترات المستخدمة فعلاً في الحصص (فترات الاستراحة لا تظهر لأنها بلا حصص)</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.FetExporter.GroupName(System.String)">
+            <summary>اسم المجموعة الطلابية للفصل (فريد عن اسم العام)</summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.FetExporter.SubgroupName(System.String)">
+            <summary>اسم المجموعة الفرعية للفصل (فريد عن كل الأسماء الأخرى)</summary>
+        </member>
+        <member name="T:AwadTimetable.Solver.FetResultReader">
+            <summary>
+            يقرأ نتيجة FET (ملف *_activities.xml) ويحوّلها إلى (يوم، فترة) لكل معرّف حصة.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Solver.FetResultReader.ReadActivities(System.String,System.String)">
+            <summary>يعيد: معرّف النشاط → (اليوم، رقم الفترة). الفارغ يعني أن FET لم يجدول النشاط.</summary>
+        </member>
+        <member name="T:AwadTimetable.Solver.ConstraintValidator">
+            <summary>
+            تنفيذ مدقق القيود
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Solver.ConflictDetector">
+            <summary>
+            تنفيذ كاشف التضاربات
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Solver.TimetableContextFactory">
+            <summary>
+            يبني سياق تقييم القيود من الجدول الفعلي (بدلاً من سياق فارغ لا يكتشف شيئًا).
+            العلاقات (Teacher/Room/Class/Subject) قد تكون null عند بناء الجدول في الذاكرة،
+            لذلك تُجمع هنا بأمان وتُستبعد القيم الفارغة.
+            </summary>
+        </member>
+    </members>
+</doc>

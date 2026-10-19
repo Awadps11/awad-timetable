@@ -1,0 +1,157 @@
+<Window x:Class="AwadTimetable.UI.Views.PrintTemplatesDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="قوالب الطباعة"
+        Height="720" Width="1000"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource ArabicFont}">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="قوالب الطباعة والمعاينة" FontSize="18" FontWeight="Bold"
+                       Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+            <TextBlock Text="اختر قالباً جاهزاً أو خصّص الألوان والخيارات ثم احفظه كقالب جديد."
+                       FontSize="11" TextWrapping="Wrap"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- القوالب -->
+            <Border Grid.Column="0" Background="{StaticResource SurfaceVariantBrush}" CornerRadius="6" Padding="8">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Margin="0,8,0,0">
+                        <Button Content="حفظ كقالب جديد" Click="OnSaveAsNewClick" Padding="10,5" Margin="0,0,0,4"
+                                Background="{StaticResource PrimaryBrush}" Foreground="White" BorderThickness="0"/>
+                        <Button Content="حذف القالب المخصص" Click="OnDeleteClick" Padding="10,5" Margin="0,0,0,4"
+                                Background="{StaticResource SurfaceBrush}" BorderThickness="0"/>
+                        <Button Content="تعيين كافتراضي" Click="OnSetDefaultClick" Padding="10,5"
+                                Background="{StaticResource SurfaceBrush}" BorderThickness="0"/>
+                    </StackPanel>
+                    <ListBox x:Name="TemplateList" DisplayMemberPath="Name" SelectionChanged="OnTemplateSelected"
+                             FontFamily="{DynamicResource ArabicFont}" Background="Transparent" BorderThickness="0"/>
+                </DockPanel>
+            </Border>
+
+            <!-- الخيارات -->
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="اسم القالب" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,2"/>
+                    <TextBox x:Name="NameBox" Margin="0,0,0,10"/>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="حجم الصفحة" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,2"/>
+                            <ComboBox x:Name="PageSizeCombo" SelectedIndex="0">
+                                <ComboBoxItem Content="A4"/>
+                                <ComboBoxItem Content="A3"/>
+                                <ComboBoxItem Content="Letter"/>
+                                <ComboBoxItem Content="Legal"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="الاتجاه" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,2"/>
+                            <ComboBox x:Name="OrientationCombo" SelectedIndex="1">
+                                <ComboBoxItem Content="طولي"/>
+                                <ComboBoxItem Content="عرضي"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4">
+                            <TextBlock Text="الخط / الحجم" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,2"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="FontBox" Width="110" Margin="0,0,6,0" Text="Segoe UI"/>
+                                <TextBox x:Name="FontSizeBox" Width="50" TextAlignment="Center" FlowDirection="LeftToRight" Text="10"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="الألوان (Hex)" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="الترويسة" FontSize="10" Margin="0,0,0,2"/>
+                            <TextBox x:Name="HeaderColorBox" FlowDirection="LeftToRight" Text="#4B6BAC"/>
+                            <TextBlock Text="اليوم" FontSize="10" Margin="0,6,0,2"/>
+                            <TextBox x:Name="DayColorBox" FlowDirection="LeftToRight" Text="#3D5990"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="الصف 1" FontSize="10" Margin="0,0,0,2"/>
+                            <TextBox x:Name="Row1Box" FlowDirection="LeftToRight" Text="#E9F7FF"/>
+                            <TextBlock Text="الصف 2" FontSize="10" Margin="0,6,0,2"/>
+                            <TextBox x:Name="Row2Box" FlowDirection="LeftToRight" Text="#D3E8FC"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4">
+                            <TextBlock Text="اللون المميز" FontSize="10" Margin="0,0,0,2"/>
+                            <TextBox x:Name="AccentBox" FlowDirection="LeftToRight" Text="#4B6BAC"/>
+                            <TextBlock Text="النص" FontSize="10" Margin="0,6,0,2"/>
+                            <TextBox x:Name="TextColorBox" FlowDirection="LeftToRight" Text="#112233"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="نمط الخلايا" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                    <ComboBox x:Name="CellStyleCombo" SelectedIndex="0" Margin="0,0,0,10">
+                        <ComboBoxItem Content="ممتلئ (ألوان)"/>
+                        <ComboBoxItem Content="محدّد بإطار"/>
+                        <ComboBoxItem Content="بسيط (بلا خلفية)"/>
+                    </ComboBox>
+
+                    <TextBlock Text="مكوّنات العرض" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                    <WrapPanel Margin="0,0,0,10">
+                        <CheckBox x:Name="ShowTimesCheck" Content="أوقات الفترات" Margin="0,0,16,6" IsChecked="True"/>
+                        <CheckBox x:Name="ShowTeacherCheck" Content="المعلم" Margin="0,0,16,6" IsChecked="True"/>
+                        <CheckBox x:Name="ShowRoomCheck" Content="القاعة" Margin="0,0,16,6" IsChecked="True"/>
+                        <CheckBox x:Name="ShowClassCheck" Content="الفصل" Margin="0,0,16,6" IsChecked="True"/>
+                        <CheckBox x:Name="ShowSummaryCheck" Content="تقرير الملخص" Margin="0,0,16,6" IsChecked="True"/>
+                        <CheckBox x:Name="ShowLegendCheck" Content="شريط التنقل" Margin="0,0,16,6" IsChecked="True"/>
+                        <CheckBox x:Name="ZebraCheck" Content="تخطيط الألوان المتبادل" Margin="0,0,16,6" IsChecked="True"/>
+                        <CheckBox x:Name="GridLinesCheck" Content="خطوط الشبكة" Margin="0,0,16,6" IsChecked="True"/>
+                        <CheckBox x:Name="MergeCheck" Content="دمج الحصص المتتالية (طباعة)" Margin="0,0,16,6"/>
+                    </WrapPanel>
+
+                    <TextBlock Text="نص التذييل" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,2"/>
+                    <TextBox x:Name="FooterBox" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="شعار المدرسة (يُطبع في الترويسة)" FontSize="11" FontWeight="SemiBold" Margin="0,0,0,2"/>
+                    <DockPanel Margin="0,0,0,10">
+                        <Button x:Name="LogoBrowse" Content="اختيار…" DockPanel.Dock="Right" Padding="10,3" Margin="6,0,0,0" Click="OnBrowseLogoClick"/>
+                        <TextBox x:Name="LogoBox" IsReadOnly="True"/>
+                    </DockPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button Content="معاينة" MinWidth="110" Margin="0,0,8,0" Padding="12,6" Click="OnPreviewClick"
+                    Background="{StaticResource PrimaryBrush}" Foreground="White" BorderThickness="0"/>
+            <Button Content="حفظ HTML" MinWidth="110" Margin="0,0,8,0" Padding="12,6" Click="OnSaveHtmlClick"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"/>
+            <Button Content="إغلاق" MinWidth="100" Padding="12,6" Click="OnCloseClick"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

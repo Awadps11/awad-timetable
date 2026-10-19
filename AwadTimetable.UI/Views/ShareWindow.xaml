@@ -1,0 +1,63 @@
+<Window x:Class="AwadTimetable.UI.Views.ShareWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="مشاركة الجدول (QR / رابط)"
+        Width="520" Height="560"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        FontFamily="Segoe UI, Arial"
+        FontSize="14"
+        Closing="Window_Closing">
+
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="امسح الرمز من هاتفك لعرض الجدول في المتصفح"
+                   FontWeight="Bold" FontSize="16" Margin="0,0,0,4"/>
+        <TextBlock Grid.Row="1" x:Name="StatusText" Opacity="0.75" Margin="0,0,0,12"
+                   Text="جاري تشغيل خادم المشاركة..."/>
+
+        <Border Grid.Row="2" Background="White" CornerRadius="8" Padding="12"
+                HorizontalAlignment="Center" BorderBrush="#DDDDDD" BorderThickness="1">
+            <Image x:Name="QrImage" Width="230" Height="230" Stretch="Uniform"/>
+        </Border>
+
+        <StackPanel Grid.Row="3" Margin="0,14,0,0">
+            <TextBlock Text="رابط الجدول على الشبكة المحلية:" Margin="0,0,0,4"/>
+            <ComboBox x:Name="LinksComboBox" Height="34"
+                      HorizontalContentAlignment="Right"
+                      SelectionChanged="LinksComboBox_SelectionChanged"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,12,0,0">
+            <Button Content="نسخ الرابط" MinWidth="110" Margin="0,0,8,0" FontWeight="Bold"
+                    Click="CopyButton_Click"
+                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+            <Button Content="فتح في المتصفح" MinWidth="130" Margin="0,0,8,0"
+                    Click="OpenBrowserButton_Click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            <Button Content="إيقاف الخادم" MinWidth="110"
+                    Click="StopButton_Click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="5" x:Name="HintText" Opacity="0.7" TextWrapping="Wrap"
+                   Margin="0,14,0,0"
+                   Text="لا يعمل الرابط إلا أثناء فتح هذه النافذة. الجهاز يجب أن يكون على نفس شبكة الواي فاي."/>
+
+        <Button Grid.Row="6" Content="إغلاق" HorizontalAlignment="Left"
+                VerticalAlignment="Bottom" MinWidth="100" IsCancel="True"
+                Click="CloseButton_Click"
+                Style="{StaticResource MaterialDesignFlatButton}"/>
+    </Grid>
+</Window>

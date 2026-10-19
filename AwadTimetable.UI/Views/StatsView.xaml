@@ -1,0 +1,92 @@
+<UserControl x:Class="AwadTimetable.UI.Views.StatsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="280">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="8">
+        <StackPanel>
+            <!-- العنوان -->
+            <DockPanel Margin="0,0,0,12">
+                <Button DockPanel.Dock="Left" Content="⟳" Command="{Binding RefreshStatsCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}" Width="32" Height="32"
+                        ToolTip="تحديث الإحصائيات"/>
+                <TextBlock Text="الإحصائيات" FontSize="16" FontWeight="Bold"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+            </DockPanel>
+
+            <!-- العدادات -->
+            <Border Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12" Margin="0,0,0,8">
+                <StackPanel>
+                    <TextBlock Text="قاعدة البيانات" FontSize="12" Foreground="{StaticResource OnSurfaceVariantBrush}"
+                               FontFamily="{DynamicResource ArabicFont}" Margin="0,0,0,8"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding TeachersCount}" FontSize="22" FontWeight="Bold"
+                                       Foreground="{StaticResource OnSurfaceBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="معلم" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                                       Foreground="{StaticResource OnSurfaceVariantBrush}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding SubjectsCount}" FontSize="22" FontWeight="Bold"
+                                       Foreground="{StaticResource OnSurfaceBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="مادة" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                                       Foreground="{StaticResource OnSurfaceVariantBrush}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,10" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding RoomsCount}" FontSize="22" FontWeight="Bold"
+                                       Foreground="{StaticResource OnSurfaceBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="غرفة" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                                       Foreground="{StaticResource OnSurfaceVariantBrush}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding ClassesCount}" FontSize="22" FontWeight="Bold"
+                                       Foreground="{StaticResource OnSurfaceBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="فصل" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                                       Foreground="{StaticResource OnSurfaceVariantBrush}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding LessonsCount}" FontSize="22" FontWeight="Bold"
+                                       Foreground="{StaticResource SuccessColorBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="حصة في الجدول" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                                       Foreground="{StaticResource OnSurfaceVariantBrush}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- حالة النظام -->
+            <Border Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12">
+                <StackPanel>
+                    <TextBlock Text="حالة النظام" FontSize="12" Foreground="{StaticResource OnSurfaceVariantBrush}"
+                               FontFamily="{DynamicResource ArabicFont}" Margin="0,0,0,8"/>
+                    <TextBlock FontSize="12" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"
+                               TextWrapping="Wrap" Margin="0,2">
+                        <Run Text="التضاربات: "/>
+                        <Run Text="{Binding ConflictsCount, Mode=OneWay}" FontWeight="Bold"/>
+                    </TextBlock>
+                    <TextBlock FontSize="12" FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"
+                               TextWrapping="Wrap" Margin="0,2">
+                        <Run Text="درجة الجودة: "/>
+                        <Run Text="{Binding QualityScoreText, Mode=OneWay}" FontWeight="Bold"/>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

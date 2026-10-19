@@ -1,0 +1,140 @@
+<UserControl x:Class="AwadTimetable.UI.Views.LessonPropertiesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="320"
+             FlowDirection="RightToLeft">
+
+    <StackPanel Margin="16">
+
+        <!-- رأس اللوحة -->
+        <TextBlock Text="خصائص الحصة"
+                   FontSize="16" FontWeight="Bold"
+                   FontFamily="{DynamicResource ArabicFont}"
+                   Foreground="{StaticResource OnSurfaceBrush}"
+                   Margin="0,0,0,16"/>
+
+        <!-- المادة -->
+        <Border Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12" Margin="0,0,0,8">
+            <StackPanel>
+                <TextBlock Text="المادة" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                <TextBlock Text="{Binding SubjectName}" FontSize="14" FontWeight="Bold"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- المعلم -->
+        <Border Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12" Margin="0,0,0,8">
+            <StackPanel>
+                <TextBlock Text="المعلم" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                <TextBlock Text="{Binding TeacherName}" FontSize="14"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- الفصل -->
+        <Border Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12" Margin="0,0,0,8">
+            <StackPanel>
+                <TextBlock Text="الفصل" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                <TextBlock Text="{Binding ClassName}" FontSize="14"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- الغرفة -->
+        <Border Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12" Margin="0,0,0,8">
+            <StackPanel>
+                <TextBlock Text="الغرفة" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                <TextBlock Text="{Binding RoomName}" FontSize="14"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- اليوم والفترة -->
+        <Grid Margin="0,0,0,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12">
+                <StackPanel>
+                    <TextBlock Text="اليوم" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                    <TextBlock Text="{Binding DayName}" FontSize="14" FontWeight="Bold"
+                               FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource PrimaryBrush}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="2" Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12">
+                <StackPanel>
+                    <TextBlock Text="الفترة" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                    <TextBlock Text="{Binding PeriodName}" FontSize="14" FontWeight="Bold"
+                               FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource PrimaryBrush}"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- المدة والنوع -->
+        <Grid Margin="0,0,0,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12">
+                <StackPanel>
+                    <TextBlock Text="المدة" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                    <TextBlock Text="{Binding DurationText}" FontSize="14"
+                               FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="2" Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12">
+                <StackPanel>
+                    <TextBlock Text="النوع" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                    <TextBlock Text="{Binding TypeText}" FontSize="14"
+                               FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- الحالة -->
+        <Border Background="{StaticResource PrimaryLightBrush}" CornerRadius="8" Padding="12" Margin="0,0,0,8">
+            <StackPanel>
+                <TextBlock Text="الحالة" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                <TextBlock Text="{Binding StatusText}" FontSize="13" FontWeight="Bold"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource PrimaryBrush}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ملاحظات -->
+        <Border Background="{StaticResource SurfaceVariantBrush}" CornerRadius="8" Padding="12">
+            <StackPanel>
+                <TextBlock Text="ملاحظات" FontSize="11" FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,2"/>
+                <TextBlock Text="{Binding Notes}" FontSize="13" TextWrapping="Wrap"
+                           FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- تلميح -->
+        <TextBlock Text="💡 نقر مزدوج على خلية يفتح هذه اللوحة — من القائمة اليمنى يمكنك النسخ أو القص أو الحذف."
+                   FontSize="11" TextWrapping="Wrap"
+                   FontFamily="{DynamicResource ArabicFont}"
+                   Foreground="{StaticResource OnSurfaceVariantBrush}"
+                   Margin="0,16,0,0"/>
+    </StackPanel>
+</UserControl>

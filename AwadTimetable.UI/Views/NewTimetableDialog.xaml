@@ -1,0 +1,172 @@
+<Window x:Class="AwadTimetable.UI.Views.NewTimetableDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="إنشاء جدول جديد"
+        Height="700" Width="560"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        FlowDirection="RightToLeft"
+        Background="{DynamicResource MaterialDesignPaper}">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- شريط الخطوات -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,16">
+            <TextBlock x:Name="Step1Badge" Text="١. المعلومات الأساسية" FontSize="13" FontWeight="Bold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{DynamicResource PrimaryHueMidBrush}" Margin="0,0,12,0"/>
+            <TextBlock Text="›" FontSize="13" Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,12,0"/>
+            <TextBlock x:Name="Step2Badge" Text="٢. أيام الدراسة والفترات" FontSize="13"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+        </StackPanel>
+
+        <!-- ===== الخطوة 1: المعلومات الأساسية ===== -->
+        <StackPanel x:Name="BasicPanel" Grid.Row="1">
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="اسم الجدول *" FontSize="12" FontWeight="SemiBold"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                <TextBox x:Name="NameTextBox"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontFamily="{DynamicResource ArabicFont}" FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="اسم المدرسة *" FontSize="12" FontWeight="SemiBold"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                <TextBox x:Name="SchoolNameTextBox"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontFamily="{DynamicResource ArabicFont}" FontSize="14"/>
+            </StackPanel>
+
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="سنة البداية" FontSize="12" FontWeight="SemiBold"
+                               FontFamily="{DynamicResource ArabicFont}"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                    <ComboBox x:Name="StartYearComboBox"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                              FontFamily="{DynamicResource ArabicFont}" FontSize="14" DisplayMemberPath="."/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="سنة النهاية" FontSize="12" FontWeight="SemiBold"
+                               FontFamily="{DynamicResource ArabicFont}"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                    <ComboBox x:Name="EndYearComboBox"
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                              FontFamily="{DynamicResource ArabicFont}" FontSize="14" DisplayMemberPath="."/>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="المراحل الدراسية *" FontSize="12" FontWeight="SemiBold"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                <WrapPanel x:Name="StageWrap"/>
+                <TextBlock Text="يمكن اختيار أكثر من مرحلة (مثل متوسط وثانوي) ولكل مرحلة توقيت مستقل في الخطوة التالية."
+                           FontSize="11" TextWrapping="Wrap"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,4,0,0"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="الفصل الدراسي" FontSize="12" FontWeight="SemiBold"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                <ComboBox x:Name="TermComboBox"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          FontFamily="{DynamicResource ArabicFont}" FontSize="14" SelectedIndex="0">
+                    <ComboBoxItem Content="1" Tag="1"/>
+                    <ComboBoxItem Content="2" Tag="2"/>
+                    <ComboBoxItem Content="3" Tag="3"/>
+                    <ComboBoxItem Content="4" Tag="4"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12">
+                <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" Padding="10">
+                    <StackPanel>
+                        <TextBlock Text="كل جدول جديد يبدأ بمساحة عمل فارغة تماماً: لا معلمين ولا مواد ولا فصول ولا قاعات."
+                                   FontSize="12" TextWrapping="Wrap" FontWeight="SemiBold"
+                                   FontFamily="{DynamicResource ArabicFont}"/>
+                        <CheckBox x:Name="ReuseExistingCheck"
+                                  Content="استخدام بيانات مدرسة محفوظة سابقاً بنفس الاسم"
+                                  FontFamily="{DynamicResource ArabicFont}" FontSize="12" Margin="0,8,0,0"/>
+                        <TextBlock Text="حدّده فقط إذا أردت إعادة استخدام معلمي/مواد/فصول مدرسة أدخلتها سابقاً. اتركه فارغاً لبداية نظيفة."
+                                   FontSize="11" TextWrapping="Wrap"
+                                   FontFamily="{DynamicResource ArabicFont}"
+                                   Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- ===== الخطوة 2: أيام الدراسة والفترات ===== -->
+        <StackPanel x:Name="DaysPanel" Grid.Row="1" Visibility="Collapsed">
+            <TextBlock Text="أيام الدراسة (ستظهر فقط في العرض والطباعة)" FontSize="12" FontWeight="SemiBold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,6"/>
+            <WrapPanel x:Name="DaysWrap" Margin="0,0,0,14"/>
+
+            <TextBlock Text="توقيت كل مرحلة (عدد الحصص وزمن الحصة)" FontSize="12" FontWeight="SemiBold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,6"/>
+            <StackPanel x:Name="StagesTimingPanel" Margin="0,0,0,12"/>
+
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="محرك توليد الجدول" FontSize="12" FontWeight="SemiBold"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                <ComboBox x:Name="EngineComboBox"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          FontFamily="{DynamicResource ArabicFont}" FontSize="14"
+                          DisplayMemberPath="DisplayName" SelectedValuePath="Engine"/>
+                <TextBlock x:Name="EngineDescriptionText" FontSize="11" TextWrapping="Wrap"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,4,0,0"/>
+            </StackPanel>
+
+            <Border Background="{StaticResource SurfaceBrush}" CornerRadius="8" Padding="10">
+                <StackPanel>
+                    <TextBlock Text="الفسح (تلقائي حسب نوع المدرسة)" FontSize="12" FontWeight="SemiBold"
+                               FontFamily="{DynamicResource ArabicFont}"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                    <TextBlock x:Name="BreakSummaryText" FontSize="12" TextWrapping="Wrap"
+                               FontFamily="{DynamicResource ArabicFont}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- الأزرار -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button x:Name="CancelButton" Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="100" Height="36" Margin="0,0,12,0"
+                    FontFamily="{DynamicResource ArabicFont}"
+                    Click="OnCancelClick" Content="إلغاء"/>
+            <Button x:Name="BackButton" Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="100" Height="36" Margin="0,0,12,0" Visibility="Collapsed"
+                    FontFamily="{DynamicResource ArabicFont}"
+                    Click="OnBackClick" Content="السابق"/>
+            <Button x:Name="NextButton" Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="100" Height="36" Margin="0,0,12,0"
+                    FontFamily="{DynamicResource ArabicFont}"
+                    Click="OnNextClick" Content="التالي"/>
+            <Button x:Name="CreateButton" Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="100" Height="36" Visibility="Collapsed"
+                    FontFamily="{DynamicResource ArabicFont}" IsDefault="True"
+                    Click="OnCreateClick" Content="إنشاء"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,146 @@
+<UserControl x:Class="AwadTimetable.UI.Views.AIChatPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fi="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
+             xmlns:local="clr-namespace:AwadTimetable.UI.Views"
+             xmlns:vm="clr-namespace:AwadTimetable.UI.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="350"
+             FlowDirection="RightToLeft"
+             Background="{StaticResource SurfaceBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!-- Header -->
+            <RowDefinition Height="*"/>     <!-- Messages -->
+            <RowDefinition Height="Auto"/>  <!-- Input -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Padding="12,8" CornerRadius="4,4,0,0"
+                Background="{StaticResource PrimaryBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                
+                
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="المساعد الذكي"
+                               FontSize="14" FontWeight="Bold"
+                               Foreground="White"
+                               FontFamily="{DynamicResource ArabicFont}"/>
+                    <TextBlock Text="{Binding AiStatusText}"
+                               FontSize="10" Opacity="0.85"
+                               Foreground="White"
+                               TextTrimming="CharacterEllipsis"
+                               FontFamily="{DynamicResource ArabicFont}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Command="{Binding RefreshAiStatusCommand}"
+                            ToolTip="إعادة فحص المساعد والنموذج"
+                            Style="{StaticResource MaterialDesignIconButton}" Padding="4"
+                            Content="⟳" Foreground="White"/>
+                    <Button Command="{Binding ToggleSuggestionsCommand}" 
+                            ToolTip="إظهار/إخفاء الاقتراحات"
+                            Style="{StaticResource MaterialDesignIconButton}" Padding="4"
+                            Content="💡" Foreground="White"/>
+                    
+                    <Button Command="{Binding ClearChatCommand}" 
+                            ToolTip="مسح المحادثة"
+                            Style="{StaticResource MaterialDesignIconButton}" Padding="4"
+                            Content="🗑" Foreground="White"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Messages Area -->
+        <ScrollViewer Grid.Row="1" x:Name="MessagesScrollViewer" 
+                      VerticalScrollBarVisibility="Auto" 
+                      Padding="8">
+            <ItemsControl ItemsSource="{Binding Messages}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:ChatMessageViewModel}">
+                        <Border Margin="0,4" Padding="12" 
+                                Background="{Binding Role, Converter={StaticResource RoleToBrush}}"
+                                CornerRadius="12"
+                                HorizontalAlignment="{Binding IsFromUser, Converter={StaticResource BoolToHorizontalAlignmentConverter}, ConverterParameter=Right}">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="4" ShadowDepth="1" Opacity="0.1" Direction="270"/>
+                            </Border.Effect>
+                            
+                            <StackPanel>
+                                <!-- رسالة خطأ -->
+                                <TextBlock Text="❌ حدث خطأ" 
+                                           Foreground="Red" FontSize="11" 
+                                           Visibility="{Binding IsError, Converter={StaticResource BoolToVisibilityConverter}}"
+                                           Margin="0,0,0,4"/>
+                                
+                                <!-- نتيجة أداة -->
+                                <Border Background="#FFF3E0" CornerRadius="6" Padding="8" Margin="0,0,0,8"
+                                        Visibility="{Binding IsToolResult, Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <StackPanel Orientation="Horizontal">
+                                        
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding ToolName, StringFormat='أداة: {0}'}" 
+                                                       FontSize="11" FontWeight="Bold" Foreground="#E65100"/>
+                                            <TextBlock Text="{Binding Content}" 
+                                                       FontSize="11" Foreground="#BF360C" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                                
+                                <!-- محتوى الرسالة -->
+                                <TextBlock Text="{Binding Content}" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="13" 
+                                           LineHeight="20"
+                                           FontFamily="{DynamicResource ArabicFont}"
+                                           Foreground="{Binding IsFromUser, Converter={StaticResource BoolToBrushConverter}, ConverterParameter=White;#1C1C1C}"/>
+                                
+                                <!-- وقت الإرسال -->
+                                <TextBlock Text="{Binding Timestamp, StringFormat='HH:mm'}" 
+                                           FontSize="10" 
+                                           Foreground="{StaticResource OnSurfaceVariantBrush}" 
+                                           HorizontalAlignment="Left" 
+                                           Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Input Area -->
+        <Border Grid.Row="2" BorderBrush="{StaticResource OutlineBrush}" BorderThickness="0,1,0,0" Padding="8" Background="{StaticResource SurfaceBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0" 
+                         Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                         ToolTip="اكتب رسالتك هنا... (Enter للإرسال، Shift+Enter لسطر جديد)"
+                         Style="{StaticResource ArabicTextBox}"
+                         KeyDown="OnTextBoxKeyDown"
+                         IsEnabled="{Binding IsProcessing, Converter={StaticResource InverseBoolConverter}}"
+                         VerticalAlignment="Center"/>
+
+                <Button Grid.Column="1" 
+                        Command="{Binding SendMessageCommand}" 
+                        ToolTip="إرسال"
+                        IsEnabled="{Binding IsProcessing, Converter={StaticResource InverseBoolConverter}}"
+                        Style="{StaticResource MaterialDesignIconButton}" 
+                        Content="➤"
+                        Padding="8" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

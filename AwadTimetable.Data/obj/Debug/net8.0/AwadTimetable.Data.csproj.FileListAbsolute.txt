@@ -1,0 +1,28 @@
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.Data.deps.json
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.Data.runtimeconfig.json
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.Data.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.Data.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.Data.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.AI.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.Core.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.Core.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.Core.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.AI.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\bin\Debug\net8.0\AwadTimetable.AI.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.csproj.AssemblyReference.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.AssemblyInfoInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.AssemblyInfo.cs
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.csproj.CoreCompileInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTime.5034A08C.Up2Date
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\refint\AwadTimetable.Data.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.genruntimeconfig.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\ref\AwadTimetable.Data.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.deps.json
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.runtimeconfig.json
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.pdb
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.xml

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+<ItemGroup>
+    <ProjectReference Include="..\AwadTimetable.Core\AwadTimetable.Core.csproj" />
+    <ProjectReference Include="..\AwadTimetable.Data\AwadTimetable.Data.csproj" />
+    <ProjectReference Include="..\AwadTimetable.Solver\AwadTimetable.Solver.csproj" />
+    <ProjectReference Include="..\AwadTimetable.AI\AwadTimetable.AI.csproj" />
+    <ProjectReference Include="..\AwadTimetable.Printing\AwadTimetable.Printing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="FluentIcons.WPF" Version="1.0.4" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+</Project>

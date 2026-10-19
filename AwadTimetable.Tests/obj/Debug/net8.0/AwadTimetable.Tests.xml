@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AwadTimetable.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:AwadTimetable.Tests.AscXmlFormatTests">
+            <summary>
+            اختبارات مُصدِّر aSc: الترميز، البنية، وتطابق الحصص عند القراءة بمنطق المستورِد.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.AscXmlReaderTests">
+            <summary>
+            تحقق من قارئ aSc على ملف تصدير حقيقي أنتجه aSc 2027 (windows-1256، معرّفات سداسية).
+            الملف في Fixtures يُنسَخ لمجلد التشغيل، فالاختبار قائم بذاته.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.ClassRoomAssignerTests">
+            <summary>اختبارات إسناد قاعة لكل شعبة.</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.ConstraintTests">
+            <summary>
+            اختبارات القيود: هوية القيود، الحصص بلا قاعة، والحد اليومي المُهيَّأ.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.FetEngineTests">
+            <summary>
+            اختبارات محرك FET. تتطلب تثبيت fet-cl في المسار المحدد بمتغير البيئة AWAD_FET_CL.
+            إن لم يُحدَّد المتغير تُتخطّى (لا تفشل).
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.LessonPlacementEvaluatorTests">
+            <summary>اختبارات تقييم مواضع الحصص وتشخيصها (نفس قواعد السحب والإفلات).</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.MultiSchoolScaleTests">
+            <summary>
+            اختبار مقياس متعدد: مدارس بسعات مختلفة (لا تقل عن 36 معلماً و12 فصلاً و50 مادة)،
+            بعض المعلمين يدرّسون أكثر من مادة. كل حالة تبني المدرسة وتولّد جدولها كاملاً وتتحقق من الصحة.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Tests.MultiSchoolScaleTests.Build(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>يبني مدرسة بإعدادات مرنة ويعيد عدد الحصص المطلوبة وعدد المعلمين متعددي المواد.</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.PipelineIntegrationTests">
+            <summary>
+            اختبار مسار العمل الكامل: إسنادات → حصص غير موضوعة → توليد → جدول بلا تضارب.
+            يحاكي ما يفعله زر «توليد الحصص من الإسنادات» ثم «توليد الجدول».
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.PrintServiceTests">
+            <summary>اختبارات خدمة الطباعة (QuestPDF + HTML)</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.RealAscFileTests">
+            <summary>
+            تحقق من المحلّل على ملف aSc الكامل الحقيقي (168KB، إصدار 2024.24.1، 17 فصلاً و38 معلماً و100+ حصة).
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.RealDataEngineTests">
+            <summary>
+            اختبار على بيانات aSc الحقيقية (ملف 168KB: 17 فصلاً، 38 معلماً، 30+ مادة):
+            1) إعادة بناء الإسنادات من الحصص الحقيقية وتوليد جدول كامل من الصفر.
+            2) تصدير الجدول إلى صيغة aSc ثم قراءته مرة أخرى (aSc engine استعمالاً حقيقياً).
+            3) تصدير صيغة FET والتحقق منها (وتشغيل fet-cl إن كان متاحاً).
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.RealFilePipelineTests">
+            <summary>
+            اختبار كامل على ملف aSc الحقيقي: استيراد البيانات → بناء الجدول → توليد → تحقق.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.SampleTimetable">
+            <summary>
+            بناء جداول صغيرة واقعية للاختبار:
+            كل الصفوف تدرس نفس المواد بنفس المعلمين (مثل المدرسة الحقيقية)，
+            لذلك تنشأ تضاربات معلمين حقيقية يجب على المحلّال حلّها.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Tests.SampleTimetable.GeneralPeriodTimes(System.Int32,System.Int32,System.Int32)">
+            <summary>توقيت فترات عام (اليوم -1 = كل الأيام) لعدد محدد من الفترات</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.ScaleGenerationTests">
+            <summary>
+            اختبار مقياس مدرسة كبيرة واقعية: 12 فصلاً على مرحلتين، 40 مادة، 40 معلماً،
+            ثم توليد فعلي بمحلّل CP-SAT والتحقق من احترام القيود الصلبة.
+            </summary>
+        </member>
+        <member name="F:AwadTimetable.Tests.ScaleGenerationTests.Pattern35">
+            <summary>الأنماط الأسبوعية: 5 مواد × 4 حصص + 5 مواد × 3 حصص = 35 حصة/فصل.</summary>
+        </member>
+        <member name="F:AwadTimetable.Tests.ScaleGenerationTests.Pattern30">
+            <summary>النمط المخفّف: 10 مواد × 3 حصص = 30 حصة/فصل.</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.SharedTeacherTimingTests">
+            <summary>
+            معلم مشترك بين المرحلتين (متوسط + ثانوي) بتوقيتين مختلفين:
+            التضارب يجب أن يُحسب بتداخل الزمن الفعلي، لا برقم الفترة.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.SoftConstraintTests">
+            <summary>
+            اختبارات القيود اللينة: كل قيد يجب أن يكتشف انتهاكه فعليًا من بيانات الجدول،
+            وأن يعود null عندما لا تكون هناك مشكلة أو لا تتوفّر بيانات لقياسها.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.SolverGenerationTests">
+            <summary>
+            اختبارات الحلّال: هل يُطبَّق الحل فعلًا على الجدول، وهل تُحترم القيود، وهل يُلغى فورًا.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Tests.SolverGenerationTests.Fast">
+            <summary>مهلة قصيرة: الحلول الممكنة تظهر خلال مللي ثانية ثم يستهلك الحلّال بقية المهلة في إثبات الأفضلية</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.StageDetectionTests">
+            <summary>
+            تحديد مرحلة الفصل: أرقام الصفوف تتكرر بين المراحل (1-3)، لذا يجب أن يعتمد التعرف على
+            اسم الفصل («أول ثانوي 1») لا على رقم الصف وحده، وإلا استحال توليد الجدول في المدارس المشتركة.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.StageHelperTests">
+            <summary>اختبارات استنتاج الصف والشعبة من اسم الفصل العربي (تُستخدم عند الاستيراد).</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.StressGenerationTests">
+            <summary>
+            سيناريوهات ضغط أقسى من الواقع: عدد فصول أكبر، حصص مزدحمة 100%، معلمون محمّلون،
+            وتفريغ صلب (TeacherAvailability) لبعض المعلمين. كلها يجب أن تُولّد جدولاً كاملاً بلا تضاربات.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Tests.SubjectListImporterTests.BuildXlsx(System.Collections.Generic.IReadOnlyList{System.String[]})">
+            <summary>يبني ملف xlsx بسيط (inlineStr) في الذاكرة</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.SubstitutionGeneratorTests">
+            <summary>
+            اختبارات مولّد البدلاء بنظام الفئات الثلاث (الأول ثم الثاني ثم الثالث)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.TeachingAssignmentImporterTests">
+            <summary>اختبارات استيراد الإسنادات من CSV.</summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.TeachingAssignmentSyncTests">
+            <summary>
+            اختبارات مزامنة الإسنادات مع الحصص، وسيناريو توليد واقعي كامل الأسبوع.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.TimetableJsonTests">
+            <summary>
+            اختبار نسخ الجدول عبر JSON (يُستخدم في Undo/Redo والنسخ/اللصق).
+            يمنع كسر التسلسل عند إضافة مُنشئين لكيان Lesson.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Tests.WebReportServiceTests">
+            <summary>اختبارات تقرير الويب HTML (ب-style aSc: نظرة عامة + فصول + معلمون)</summary>
+        </member>
+    </members>
+</doc>

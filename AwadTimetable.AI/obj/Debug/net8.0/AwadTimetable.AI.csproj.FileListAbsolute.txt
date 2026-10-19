@@ -1,0 +1,22 @@
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.csproj.AssemblyReference.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.AssemblyInfoInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.AssemblyInfo.cs
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.csproj.CoreCompileInputs.cache
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\bin\Debug\net8.0\AwadTimetable.AI.deps.json
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\bin\Debug\net8.0\AwadTimetable.AI.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\bin\Debug\net8.0\AwadTimetable.AI.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\bin\Debug\net8.0\AwadTimetable.AI.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\bin\Debug\net8.0\AwadTimetable.Core.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\bin\Debug\net8.0\AwadTimetable.Core.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\bin\Debug\net8.0\AwadTimetable.Core.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTime.AFA34848.Up2Date
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\refint\AwadTimetable.AI.dll
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.pdb
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\ref\AwadTimetable.AI.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.AI.deps.json
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.AI.dll
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.AI.pdb
+C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.AI.xml

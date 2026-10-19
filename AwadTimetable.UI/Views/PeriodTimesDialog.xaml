@@ -1,0 +1,80 @@
+<Window x:Class="AwadTimetable.UI.Views.PeriodTimesDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="توقيت الفترات الدراسية"
+        Width="720" Height="520"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{StaticResource BackgroundBrush}"
+        FontFamily="Segoe UI"
+        FontSize="14"
+        ResizeMode="CanResize"
+        ShowInTaskbar="False">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="0,0,0,10"
+                   Foreground="{StaticResource OnSurfaceVariantBrush}"
+                   Text="حدد بداية ونهاية كل حصة. يمكن التخصيص حسب اليوم أو المرحلة، أو تركهما على العام ليُطبَّق على الجميع."/>
+
+        <Border Grid.Row="1" Background="{StaticResource SurfaceBrush}" CornerRadius="8" Padding="10">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top" Margin="0,0,0,8">
+                    <Button DockPanel.Dock="Right" Content="+ إضافة فترة"
+                            HorizontalAlignment="Right" Padding="12,5"
+                            Background="{StaticResource PrimaryBrush}" Foreground="White" BorderThickness="0"
+                            Click="OnAddRowClick"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="قوالب:" VerticalAlignment="Center" Margin="0,0,6,0"
+                                   Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                        <Button Content="مشترك (متوسط+ثانوي)" Tag="shared" Margin="4,0" Padding="10,4" FontSize="12"
+                                Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"
+                                Click="OnPresetClick"/>
+                        <Button Content="متوسط فقط" Tag="middle" Margin="4,0" Padding="10,4" FontSize="12"
+                                Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"
+                                Click="OnPresetClick"/>
+                        <Button Content="ثانوي فقط" Tag="secondary" Margin="4,0" Padding="10,4" FontSize="12"
+                                Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"
+                                Click="OnPresetClick"/>
+                        <Button Content="افتراضي عام" Tag="default" Margin="4,0" Padding="10,4" FontSize="12"
+                                Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"
+                                Click="OnPresetClick"/>
+                    </StackPanel>
+                </DockPanel>
+                <Grid DockPanel.Dock="Top" Margin="0,0,0,6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.6*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="الفترة" Margin="8,0,0,0" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBlock Grid.Column="1" Text="من" Margin="8,0,0,0" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBlock Grid.Column="2" Text="إلى" Margin="8,0,0,0" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBlock Grid.Column="3" Text="اليوم" Margin="8,0,0,0" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBlock Grid.Column="4" Text="المرحلة" Margin="8,0,0,0" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBlock Grid.Column="5" Text="استراحة" Margin="8,0,0,0" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                </Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="RowsPanel"/>
+                </ScrollViewer>
+            </DockPanel>
+        </Border>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,12,0,0">
+            <Button Content="حفظ" MinWidth="100" Margin="8,0" Padding="12,7"
+                    Background="{StaticResource SecondaryBrush}" Foreground="White" BorderThickness="0"
+                    Click="OnSaveClick"/>
+            <Button Content="إلغاء" MinWidth="100" Margin="8,0" Padding="12,7"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"
+                    Click="OnCancelClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

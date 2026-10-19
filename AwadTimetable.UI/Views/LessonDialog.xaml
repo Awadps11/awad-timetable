@@ -1,0 +1,162 @@
+<Window x:Class="AwadTimetable.UI.Views.LessonDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="إضافة حصة"
+        Height="700" Width="480"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        FlowDirection="RightToLeft"
+        Background="{DynamicResource MaterialDesignPaper}">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- العنوان -->
+        <TextBlock Grid.Row="0"
+                   Text="إضافة حصة جديدة"
+                   FontSize="22" FontWeight="Bold"
+                   Foreground="{DynamicResource PrimaryHueMidBrush}"
+                   Margin="0,0,0,20"
+                   HorizontalAlignment="Center"
+                   FontFamily="{DynamicResource ArabicFont}"/>
+
+        <!-- المادة -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,12">
+            <TextBlock Text="المادة *" FontSize="12" FontWeight="SemiBold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+            <ComboBox x:Name="SubjectComboBox"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      DisplayMemberPath="Name"
+                      FontFamily="{DynamicResource ArabicFont}"
+                      FontSize="14"/>
+        </StackPanel>
+
+        <!-- المعلم -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,12">
+            <TextBlock Text="المعلم *" FontSize="12" FontWeight="SemiBold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+            <ComboBox x:Name="TeacherComboBox"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      DisplayMemberPath="FullName"
+                      FontFamily="{DynamicResource ArabicFont}"
+                      FontSize="14"/>
+        </StackPanel>
+
+        <!-- الفصل -->
+        <StackPanel Grid.Row="3" Margin="0,0,0,12">
+            <TextBlock Text="الفصل *" FontSize="12" FontWeight="SemiBold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+            <ComboBox x:Name="ClassComboBox"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      DisplayMemberPath="FullName"
+                      FontFamily="{DynamicResource ArabicFont}"
+                      FontSize="14"/>
+        </StackPanel>
+
+        <!-- الغرفة (اختياري) -->
+        <StackPanel Grid.Row="4" Margin="0,0,0,12">
+            <TextBlock Text="الغرفة (اختياري)" FontSize="12" FontWeight="SemiBold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+            <ComboBox x:Name="RoomComboBox"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      DisplayMemberPath="Name"
+                      FontFamily="{DynamicResource ArabicFont}"
+                      FontSize="14"/>
+        </StackPanel>
+
+        <!-- اليوم -->
+        <StackPanel Grid.Row="5" Margin="0,0,0,12">
+            <TextBlock Text="اليوم *" FontSize="12" FontWeight="SemiBold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+            <ComboBox x:Name="DayComboBox"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      FontFamily="{DynamicResource ArabicFont}"
+                      FontSize="14"/>
+        </StackPanel>
+
+        <!-- الفترة والمدة -->
+        <Grid Grid.Row="6" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="الفترة *" FontSize="12" FontWeight="SemiBold"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                <ComboBox x:Name="PeriodComboBox"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          FontFamily="{DynamicResource ArabicFont}"
+                          FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="المدة (دقيقة)" FontSize="12" FontWeight="SemiBold"
+                           FontFamily="{DynamicResource ArabicFont}"
+                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+                <ComboBox x:Name="DurationComboBox"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          FontFamily="{DynamicResource ArabicFont}"
+                          FontSize="14"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- ملاحظات -->
+        <StackPanel Grid.Row="7" Margin="0,0,0,8">
+            <TextBlock Text="ملاحظات (اختياري)" FontSize="12" FontWeight="SemiBold"
+                       FontFamily="{DynamicResource ArabicFont}"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,4"/>
+            <TextBox x:Name="NotesTextBox"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="{DynamicResource ArabicFont}"
+                     FontSize="14"/>
+        </StackPanel>
+
+        <!-- أزرار الإجراءات -->
+        <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,16,0,0">
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="110" Height="38"
+                    Click="OnCancelClick"
+                    Margin="0,0,12,0"
+                    FontFamily="{DynamicResource ArabicFont}">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="✕" FontSize="15" Margin="0,0,8,0"/>
+                        <TextBlock Text="إلغاء" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="130" Height="38"
+                    Click="OnCreateClick"
+                    FontFamily="{DynamicResource ArabicFont}"
+                    IsDefault="True">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="✓" FontSize="15" Margin="0,0,8,0"/>
+                        <TextBlock Text="إضافة الحصة" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

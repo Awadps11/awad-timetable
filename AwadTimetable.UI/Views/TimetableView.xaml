@@ -1,0 +1,121 @@
+<UserControl x:Class="AwadTimetable.UI.Views.TimetableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fi="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
+             xmlns:local="clr-namespace:AwadTimetable.UI.Views"
+             xmlns:vm="clr-namespace:AwadTimetable.UI.ViewModels"
+             xmlns:converters="clr-namespace:AwadTimetable.UI.Converters"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="800"
+             FlowDirection="RightToLeft">
+
+    <UserControl.Resources>
+        <converters:SubjectColorConverter x:Key="SubjectColorConverter"/>
+        <converters:DayOfWeekToColumnIndexConverter x:Key="DayOfWeekToColumnIndexConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:BoolToBrushConverter x:Key="BoolToBrushConverter"/>
+        <converters:DayOfWeekToStringConverter x:Key="DayOfWeekToStringConverter"/>
+
+        <DataTemplate x:Key="LessonCellTemplate" DataType="{x:Type vm:ScheduledLessonViewModel}">
+            <Border Background="{Binding CardBackgroundBrush}" 
+                    CornerRadius="4" Margin="2" Padding="4"
+                    ToolTip="{Binding TooltipText}"
+                    Effect="{StaticResource CardShadow}"
+                    Cursor="Hand">
+                <Border.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding EditCommand}"/>
+                </Border.InputBindings>
+                <StackPanel>
+                    <TextBlock Text="{Binding SubjectShortName}" 
+                               FontWeight="Bold" FontSize="11" 
+                               Foreground="White" HorizontalAlignment="Center"
+                               TextTrimming="CharacterEllipsis"/>
+                    <TextBlock Text="{Binding TeacherShortName}" 
+                               FontSize="9" Foreground="#FFFFFFCC"
+                           HorizontalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                    <TextBlock Text="{Binding RoomShortName}" 
+                               FontSize="9" Foreground="#FFFFFF99"
+                               HorizontalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="EmptyCellTemplate">
+            <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="0"/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- شريط أدوات الجدول -->
+        <ToolBarTray Grid.Row="0">
+            <ToolBar Style="{StaticResource MaterialDesignToolBar}">
+                <Button Command="{Binding GenerateTimetableCommand}" ToolTip="توليد جدول (Ctrl+G)" Style="{StaticResource MaterialDesignIconButton}">
+                    
+                </Button>
+                <Button Command="{Binding OptimizeTimetableCommand}" ToolTip="تحسين الجدول" Style="{StaticResource MaterialDesignIconButton}">
+                    
+                </Button>
+                <Button Command="{Binding CheckConflictsCommand}" ToolTip="فحص التضاربات (Ctrl+Shift+C)" Style="{StaticResource MaterialDesignIconButton}">
+                    
+                </Button>
+                <Separator/>
+                <Button Command="{Binding AddLessonCommand}" ToolTip="إضافة حصة (Ctrl+L)" Style="{StaticResource MaterialDesignIconButton}">
+                    
+                </Button>
+                <Button Command="{Binding AddConstraintCommand}" ToolTip="إضافة قيد" Style="{StaticResource MaterialDesignIconButton}">
+                    
+                </Button>
+                <Separator/>
+                <ToggleButton IsChecked="{Binding ColorByTeacher, Mode=TwoWay}"
+                              AutomationProperties.Name="تلوين حسب المعلم"
+                              ToolTip="تلوين البطاقات بلون المعلم (للتفرقة أثناء المراجعة)"
+                              Style="{StaticResource MaterialDesignIconButton}">
+                    <TextBlock Text="🎨" FontSize="14" VerticalAlignment="Center"/>
+                </ToggleButton>
+                <TextBlock Text="تلوين حسب المعلم" VerticalAlignment="Center" Margin="4,0,8,0" FontSize="12"/>
+                <Separator/>
+                <Button Command="{Binding OpenPeriodTimesCommand}" ToolTip="توقيت الفترات (بداية ونهاية كل حصة، مع تخصيص حسب اليوم والمرحلة)"
+                        AutomationProperties.Name="توقيت الفترات"
+                        Style="{StaticResource MaterialDesignIconButton}">
+                    <TextBlock Text="⏱" FontSize="14" VerticalAlignment="Center"/>
+                </Button>
+                <TextBlock Text="توقيت الفترات" VerticalAlignment="Center" Margin="4,0,8,0" FontSize="12"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- شبكة الجدول -->
+<DataGrid Grid.Row="1" 
+                  ItemsSource="{Binding TimetableGridRows}" 
+                  Style="{StaticResource TimetableDataGrid}"
+                  SelectedItem="{Binding SelectedLesson, Mode=TwoWay}"
+                  AutoGenerateColumns="False"
+                  CanUserSortColumns="False"
+                  CanUserResizeRows="False"
+                  CanUserResizeColumns="True"
+                  CanUserReorderColumns="False"
+                  SelectionMode="Single"
+                  SelectionUnit="Cell"
+                  VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.ScrollUnit="Pixel"
+                  EnableRowVirtualization="True"
+                  EnableColumnVirtualization="True"
+                  AlternationCount="2"
+                  ContextMenu="{Binding LessonContextMenu}">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="الفترة" Binding="{Binding PeriodName}" Width="60" IsReadOnly="True"
+                                    HeaderStyle="{StaticResource TimetableColumnHeader}"
+                                    CellStyle="{StaticResource TimetableCell}"/>
+
+                <!-- أعمدة الأيام تُولد ديناميكياً من ViewModel -->
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

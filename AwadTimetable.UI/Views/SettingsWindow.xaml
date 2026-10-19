@@ -1,0 +1,167 @@
+<Window x:Class="AwadTimetable.UI.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="الإعدادات"
+        Height="520" Width="560"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{StaticResource SurfaceBrush}"
+        WindowStyle="SingleBorderWindow">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="الإعدادات" FontSize="20" FontWeight="Bold"
+                   FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"
+                   Margin="0,0,0,16"/>
+
+        <TabControl Grid.Row="1" Background="Transparent" BorderThickness="0"
+                    FontFamily="{DynamicResource ArabicFont}" FontSize="13">
+
+            <TabItem Header="المظهر">
+                <StackPanel Margin="12">
+                    <TextBlock Text="السمة" Margin="0,8,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <ComboBox x:Name="ThemeComboBox" SelectedValue="{Binding Theme}" SelectedValuePath="Tag" Width="200" HorizontalAlignment="Right">
+                        <ComboBoxItem Content="فاتح" Tag="Light"/>
+                        <ComboBoxItem Content="داكن" Tag="Dark"/>
+                        <ComboBoxItem Content="تباين عالي" Tag="HighContrast"/>
+                    </ComboBox>
+
+                    <TextBlock Text="حجم الخط" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <Slider Minimum="10" Maximum="24" TickFrequency="1" IsSnapToTickEnabled="True"
+                            Value="{Binding FontSize}" Width="200" HorizontalAlignment="Right"/>
+
+                    <TextBlock Text="خط الواجهة" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <ComboBox ItemsSource="{Binding AvailableFonts}" SelectedItem="{Binding FontFamily}"
+                              Width="200" MaxDropDownHeight="280" HorizontalAlignment="Right"/>
+
+                    <TextBlock Text="الحفظ التلقائي" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <CheckBox IsChecked="{Binding AutoSave}" Content="تفعيل الحفظ التلقائي" HorizontalAlignment="Right"/>
+
+                    <TextBlock Text="الفاصل الزمني للحفظ (دقائق)" Margin="0,8,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBox Text="{Binding AutoSaveInterval}" Width="80" HorizontalAlignment="Right"
+                             TextAlignment="Center" FlowDirection="LeftToRight"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="الذكاء الاصطناعي">
+                <StackPanel Margin="12">
+                    <CheckBox IsChecked="{Binding EnableAI}" Content="تفعيل المساعد الذكي"
+                              Margin="0,8,0,12" HorizontalAlignment="Right"
+                              FontFamily="{DynamicResource ArabicFont}" FontSize="13"/>
+
+                    <TextBlock Text="مزوّد النموذج" Margin="0,0,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <ComboBox Width="280" HorizontalAlignment="Right" SelectedValuePath="Tag"
+                              SelectedValue="{Binding AiProvider, Mode=TwoWay}"
+                              FontFamily="{DynamicResource ArabicFont}" FontSize="12">
+                        <ComboBoxItem Content="Ollama (محلي)" Tag="ollama"/>
+                        <ComboBoxItem Content="OpenAI متوافق (LM Studio / vLLM / OpenAI)" Tag="openai"/>
+                    </ComboBox>
+
+                    <TextBlock Text="عنوان المزوّد المتوافق (OpenAI)" Margin="0,10,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBox Text="{Binding OpenAiBaseUrl}" Width="280" HorizontalAlignment="Right"
+                             FlowDirection="LeftToRight" TextAlignment="Left"/>
+
+                    <TextBlock Text="مفتاح API (اختياري)" Margin="0,8,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBox Text="{Binding OpenAiApiKey}" Width="280" HorizontalAlignment="Right"
+                             FlowDirection="LeftToRight" TextAlignment="Left"/>
+
+                    <TextBlock Text="ملاحظة: تغيير المزوّد يسري بعد إعادة تشغيل التطبيق."
+                               Margin="0,6,0,8" FontSize="11" TextWrapping="Wrap"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+
+                    <TextBlock Text="عنوان Ollama" Margin="0,8,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBox Text="{Binding OllamaUrl}" Width="280" HorizontalAlignment="Right"
+                             FlowDirection="LeftToRight" TextAlignment="Left"/>
+
+                    <TextBlock Text="اسم النموذج" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <ComboBox ItemsSource="{Binding InstalledModels}"
+                              SelectedItem="{Binding OllamaModel, Mode=TwoWay}"
+                              Width="280" HorizontalAlignment="Right"
+                              IsEditable="True"
+                              FontFamily="{DynamicResource ArabicFont}" FontSize="12"/>
+                    <Button Content="🔄 تحديث قائمة النماذج" Command="{Binding RefreshInstalledModelsCommand}"
+                            Style="{StaticResource MaterialDesignFlatButton}" Height="30" Margin="0,6,0,0"
+                            HorizontalAlignment="Right"
+                            FontFamily="{DynamicResource ArabicFont}" FontSize="12"/>
+
+                    <TextBlock Text="تنزيل / تحديث نموذج" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="⬇ تنزيل / تحديث" Command="{Binding DownloadModelCommand}"
+                                Style="{StaticResource MaterialDesignRaisedButton}" Height="30" Width="140"
+                                IsEnabled="{Binding IsModelBusy, Converter={StaticResource InverseBoolConverter}}"
+                                FontFamily="{DynamicResource ArabicFont}" FontSize="12"/>
+                        <TextBox Text="{Binding DownloadModelName, UpdateSourceTrigger=PropertyChanged}" Width="180" Height="28"
+                                 Margin="8,0,0,0" FlowDirection="LeftToRight" TextAlignment="Left"/>
+                    </StackPanel>
+                    <ProgressBar Height="10" Margin="0,8,0,0" Minimum="0" Maximum="100"
+                                 Value="{Binding ModelProgress, Mode=OneWay}"
+                                 HorizontalAlignment="Stretch"/>
+                    <TextBlock Text="{Binding ModelStatus}" Margin="0,6,0,0" FontSize="11" TextWrapping="Wrap"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+
+                    <TextBlock Text="ملاحظة: يتطلب تشغيل Ollama محليًا (http://localhost:11434)"
+                               Margin="0,12,0,0" FontSize="11" TextWrapping="Wrap"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="التوليد">
+                <StackPanel Margin="12">
+                    <TextBlock Text="درجة التعقيد" Margin="0,8,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <ComboBox ItemsSource="{Binding ComplexityOptions}" SelectedItem="{Binding GenerationComplexity, Mode=TwoWay}"
+                              Width="200" HorizontalAlignment="Right"
+                              FontFamily="{DynamicResource ArabicFont}" FontSize="12"/>
+
+                    <TextBlock Text="المهلة القصوى (دقائق)" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBox Text="{Binding GenerationTimeLimitMinutes}" Width="80" HorizontalAlignment="Right"
+                             TextAlignment="Center" FlowDirection="LeftToRight"/>
+
+                    <TextBlock Text="البذرة العشوائية (0 = عشوائي)" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBox Text="{Binding GenerationSeed}" Width="120" HorizontalAlignment="Right"
+                             TextAlignment="Center" FlowDirection="LeftToRight"/>
+
+                    <TextBlock Text="عدد المتغيّرات المولَّدة" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBox Text="{Binding GenerationVariants}" Width="80" HorizontalAlignment="Right"
+                             TextAlignment="Center" FlowDirection="LeftToRight"/>
+
+                    <CheckBox IsChecked="{Binding DraftMode}" Content="وضع المسودة (توليد سريع تقريبي)"
+                              Margin="0,16,0,0" HorizontalAlignment="Right"
+                              FontFamily="{DynamicResource ArabicFont}" FontSize="13"/>
+
+                    <CheckBox IsChecked="{Binding RelaxConstraints}" Content="إرخاء القيود عند تعذّر الحل"
+                              Margin="0,8,0,0" HorizontalAlignment="Right"
+                              FontFamily="{DynamicResource ArabicFont}" FontSize="13"/>
+
+                    <TextBlock Text="أقصى عدد مخالفات مسموح" Margin="0,16,0,4" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                    <TextBox Text="{Binding MaxConflictsAllowed}" Width="80" HorizontalAlignment="Right"
+                             TextAlignment="Center" FlowDirection="LeftToRight"/>
+
+                    <TextBlock Text="ملاحظة: تُطبَّق هذه الخيارات عند التوليد التالي."
+                               Margin="0,12,0,0" FontSize="11" TextWrapping="Wrap"
+                               Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,16,0,0">
+            <Button Content="استعادة الافتراضي" Command="{Binding ResetToDefaultsCommand}"
+                    Style="{StaticResource MaterialDesignFlatButton}" Width="130" Height="36"
+                    FontFamily="{DynamicResource ArabicFont}" FontSize="13"/>
+            <Button Content="حفظ" Command="{Binding SaveSettingsCommand}"
+                    Style="{StaticResource MaterialDesignRaisedButton}" Width="100" Height="36"
+                    Margin="8,0,0,0" Click="OnSaveClick"
+                    FontFamily="{DynamicResource ArabicFont}" FontSize="13"/>
+            <Button Content="إلغاء" Click="OnCloseClick"
+                    Style="{StaticResource MaterialDesignFlatButton}" Width="80" Height="36"
+                    Margin="8,0,0,0" FontFamily="{DynamicResource ArabicFont}" FontSize="13"/>
+        </StackPanel>
+    </Grid>
+</Window>

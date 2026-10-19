@@ -1,0 +1,938 @@
+<Window x:Class="AwadTimetable.UI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AwadTimetable.UI.Views"
+        xmlns:vm="clr-namespace:AwadTimetable.UI.ViewModels"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle, FallbackValue='نظام عوض للجداول المدرسية'}"
+        Height="900" Width="1400"
+        WindowState="Maximized"
+        FlowDirection="RightToLeft"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/Colors.xaml" />
+                <ResourceDictionary Source="../Themes/ClassicStyles.xaml" />
+                <ResourceDictionary Source="../Themes/DataGridStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- جسر لتمرير DataContext إلى أعمدة DataGrid (لا ترث السياق) -->
+            <local:BindingProxy x:Key="VmProxy" Data="{Binding}"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>     <!-- شريط القوائم -->
+            <RowDefinition Height="Auto"/>     <!-- شريط الأدوات -->
+            <RowDefinition Height="*"/>        <!-- المحتوى الرئيسي -->
+            <RowDefinition Height="Auto"/>     <!-- شريط الحالة -->
+        </Grid.RowDefinitions>
+
+        <!-- شريط القوائم (كلاسيكي أبيض كما في aSc) -->
+        <Border Grid.Row="0" Background="White"
+                BorderBrush="{StaticResource OutlineBrush}" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- القائمة الرئيسية -->
+                <Menu Grid.Column="0" VerticalAlignment="Center" Background="Transparent"
+                      FontFamily="{DynamicResource ArabicFont}" FontSize="13" Margin="4,2">
+                    <MenuItem Header="ملف" FontFamily="{DynamicResource ArabicFont}">
+                        <MenuItem Header="جديد (Ctrl+N)" Command="{Binding NewTimetableCommand}" InputGestureText="Ctrl+N" />
+                        <MenuItem Header="فتح (Ctrl+O)" Command="{Binding OpenTimetableCommand}" InputGestureText="Ctrl+O" />
+                        <MenuItem Header="حفظ (Ctrl+S)" Command="{Binding SaveTimetableCommand}" InputGestureText="Ctrl+S" />
+                        <MenuItem Header="حفظ باسم..." Command="{Binding SaveAsTimetableCommand}" />
+                        <Separator/>
+                        <MenuItem Header="حفظ في قاعدة البيانات" Command="{Binding SaveToDatabaseCommand}" />
+                        <MenuItem Header="فتح من قاعدة البيانات" Command="{Binding OpenFromDatabaseCommand}" />
+                        <MenuItem Header="مشاركة (QR / رابط)" Command="{Binding ShareTimetableCommand}" />
+                        <Separator/>
+                        <MenuItem Header="استيراد" ItemsSource="{Binding ImportMenuItems}" />
+                        <MenuItem Header="تصدير" ItemsSource="{Binding ExportMenuItems}" />
+                        <Separator/>
+                        <MenuItem Header="طباعة (Ctrl+P)" Command="{Binding PrintCommand}" InputGestureText="Ctrl+P" />
+                        <MenuItem Header="معاينة الطباعة" Command="{Binding PrintPreviewCommand}" />
+                        <MenuItem Header="قوالب الطباعة والمعاينة" Command="{Binding PrintTemplatesCommand}" />
+                        <MenuItem Header="بطاقة القاعة (PDF)" Command="{Binding PrintRoomCardCommand}" />
+                        <Separator/>
+                        <MenuItem Header="خروج (Alt+F4)" Command="{Binding ExitCommand}" InputGestureText="Alt+F4" />
+                    </MenuItem>
+
+                    <MenuItem Header="تحرير" FontFamily="{DynamicResource ArabicFont}">
+                        <MenuItem Header="تراجع (Ctrl+Z)" Command="{Binding UndoCommand}" InputGestureText="Ctrl+Z" />
+                        <MenuItem Header="إعادة (Ctrl+Y)" Command="{Binding RedoCommand}" InputGestureText="Ctrl+Y" />
+                        <Separator/>
+                        <MenuItem Header="قص (Ctrl+X)" Command="{Binding CutCommand}" InputGestureText="Ctrl+X" />
+                        <MenuItem Header="نسخ (Ctrl+C)" Command="{Binding CopyCommand}" InputGestureText="Ctrl+C" />
+                        <MenuItem Header="لصق (Ctrl+V)" Command="{Binding PasteCommand}" InputGestureText="Ctrl+V" />
+                        <Separator/>
+                        <MenuItem Header="بحث (Ctrl+F)" Command="{Binding SearchCommand}" InputGestureText="Ctrl+F" />
+                    </MenuItem>
+
+                    <MenuItem Header="الجدول" FontFamily="{DynamicResource ArabicFont}">
+                        <MenuItem Header="توليد جدول جديد" Command="{Binding GenerateTimetableCommand}" />
+                        <MenuItem Header="تحسين الجدول" Command="{Binding OptimizeTimetableCommand}" />
+                        <MenuItem Header="فحص التضاربات" Command="{Binding CheckConflictsCommand}" />
+                        <MenuItem Header="تقرير المستشار" Command="{Binding AdvisorReportCommand}" />
+                        <MenuItem Header="خطة الانتظار (تحديد المعلمين والحصص)" Command="{Binding WaitingPlanCommand}" />
+                        <MenuItem Header="إنشاء صفوف الانتظار تلقائياً (حسب النصاب)" Command="{Binding CreateWaitingClassesCommand}" />
+                        <MenuItem Header="الإشراف (الفسح)" Command="{Binding SupervisionCommand}" />
+                        <Separator/>
+                        <MenuItem Header="إضافة حصة" Command="{Binding AddLessonCommand}" />
+                        <MenuItem Header="تقسيم الحصة (Split)" Command="{Binding SplitLessonCommand}" />
+                        <MenuItem Header="إضافة قيد" Command="{Binding AddConstraintCommand}" />
+                    </MenuItem>
+
+                    <MenuItem Header="إدارة" FontFamily="{DynamicResource ArabicFont}">
+                        <MenuItem Header="المعلمون" Command="{Binding ShowTeachersCommand}" />
+                        <MenuItem Header="المواد" Command="{Binding ShowSubjectsCommand}" />
+                        <MenuItem Header="الغرف" Command="{Binding ShowRoomsCommand}" />
+                        <MenuItem Header="الفصول" Command="{Binding ShowClassesCommand}" />
+                        <Separator/>
+                        <MenuItem Header="تصدير/استيراد مكوّن">
+                            <MenuItem Header="تصدير المعلمين" Command="{Binding ExportComponentCommand}" CommandParameter="teachers"/>
+                            <MenuItem Header="استيراد المعلمين" Command="{Binding ImportComponentCommand}" CommandParameter="teachers"/>
+                            <Separator/>
+                            <MenuItem Header="تصدير المواد" Command="{Binding ExportComponentCommand}" CommandParameter="subjects"/>
+                            <MenuItem Header="استيراد المواد" Command="{Binding ImportComponentCommand}" CommandParameter="subjects"/>
+                            <Separator/>
+                            <MenuItem Header="تصدير الفصول" Command="{Binding ExportComponentCommand}" CommandParameter="classes"/>
+                            <MenuItem Header="استيراد الفصول" Command="{Binding ImportComponentCommand}" CommandParameter="classes"/>
+                            <Separator/>
+                            <MenuItem Header="تصدير القاعات" Command="{Binding ExportComponentCommand}" CommandParameter="rooms"/>
+                            <MenuItem Header="استيراد القاعات" Command="{Binding ImportComponentCommand}" CommandParameter="rooms"/>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="استيراد الإسنادات (CSV/Excel)" Command="{Binding ImportAssignmentsCommand}"
+                                  ToolTip="ملف بأعمدة: المعلم، المادة، الفصل، عدد الحصص الأسبوعية"/>
+                        <MenuItem Header="المدارس / مساحات العمل" Command="{Binding ManageWorkspacesCommand}" />
+                        <MenuItem Header="التفريغ والندب" Command="{Binding EditTeacherAvailabilityCommand}" />
+                        <MenuItem Header="القيود" Command="{Binding ShowConstraintsCommand}" />
+                    </MenuItem>
+
+                    <MenuItem Header="ذكاء اصطناعي" FontFamily="{DynamicResource ArabicFont}">
+                        <MenuItem Header="مساعد الجدولة" Command="{Binding ShowAIChatCommand}" />
+                        <MenuItem Header="اقتراحات ذكية" Command="{Binding GetAISuggestionsCommand}" />
+                        <Separator/>
+                        <MenuItem Header="إعدادات AI" Command="{Binding ShowAISettingsCommand}" />
+                    </MenuItem>
+
+                    <MenuItem Header="مساعدة" FontFamily="{DynamicResource ArabicFont}">
+                        <MenuItem Header="دليل الاستخدام (F1)" Command="{Binding ShowHelpCommand}" InputGestureText="F1" />
+                        <MenuItem Header="اختصارات لوحة المفاتيح" Command="{Binding ShowShortcutsCommand}" />
+                        <Separator/>
+                        <MenuItem Header="معلومات البرنامج" Command="{Binding ShowAboutCommand}" />
+                    </MenuItem>
+                </Menu>
+
+                <!-- البحث والأزرار السريعة -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,6,0">
+                    <TextBox Width="240" Height="28" Margin="0,0,8,0"
+                             Style="{StaticResource ArabicTextBox}"
+                             ToolTip="بحث في الجدول..."
+                             Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Button Command="{Binding ShowAIChatCommand}" ToolTip="مساعد ذكي (Ctrl+I)"
+                            Style="{StaticResource MaterialDesignIconButton}" Content="🤖" Padding="7,5"/>
+                    <Button Command="{Binding ShowNotificationsCommand}" ToolTip="الإشعارات"
+                            Style="{StaticResource MaterialDesignIconButton}" Content="🔔" Padding="7,5"/>
+                    <Button Command="{Binding ShowSettingsCommand}" ToolTip="الإعدادات (Ctrl+،)"
+                            Style="{StaticResource MaterialDesignIconButton}" Content="⚙" Padding="7,5"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- شريط الأدوات: أيقونة + نص أسفلها (نمط شريط الأوامر في aSc) -->
+        <ToolBarTray Grid.Row="1" Background="White">
+            <ToolBar Style="{StaticResource MaterialDesignToolBar}" ClipToBounds="False">
+                <Button Command="{Binding NewTimetableCommand}" ToolTip="جديد (Ctrl+N)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="➕" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="جديد" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding OpenTimetableCommand}" ToolTip="فتح (Ctrl+O)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="📂" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="فتح" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding SaveTimetableCommand}" ToolTip="حفظ (Ctrl+S)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="💾" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="حفظ" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button Command="{Binding UndoCommand}" ToolTip="تراجع (Ctrl+Z)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="↩" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="تراجع" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding RedoCommand}" ToolTip="إعادة (Ctrl+Y)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="↪" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="إعادة" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button Command="{Binding GenerateTimetableCommand}" ToolTip="توليد جدول (Ctrl+G)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="📅" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="توليد" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding OptimizeTimetableCommand}" ToolTip="تحسين الجدول" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="🔄" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="تحسين" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding CheckConflictsCommand}" ToolTip="فحص التضاربات (Ctrl+Shift+C)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="⚠" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="تضاربات" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button Command="{Binding EditTeacherAvailabilityCommand}"
+                        ToolTip="التفريغ والندب: منع المعلم من التدريس في أوقات محددة" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="🚫" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="التفريغ" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button Command="{Binding AddLessonCommand}" ToolTip="إضافة حصة (Ctrl+L)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="➕" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="حصة" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding AddConstraintCommand}" ToolTip="إضافة قيد" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="📋" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="قيد" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding CopyLessonsCommand}" ToolTip="نسخ حصص فصل إلى فصل آخر أو نقل حصص معلم إلى بديل"
+                        AutomationProperties.Name="نسخ الحصص"
+                        MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="⧉" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="نسخ" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <Button Command="{Binding OpenPeriodTimesCommand}" ToolTip="توقيت الفترات (بداية ونهاية كل حصة، مع تخصيص حسب اليوم والمرحلة)"
+                        AutomationProperties.Name="توقيت الفترات"
+                        MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="⏱" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="توقيت" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding OpenStageWorkConfigCommand}" ToolTip="أيام العمل والحصص اليومية لكل مرحلة"
+                        AutomationProperties.Name="أيام العمل"
+                        MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="🗓" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="أيام" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding OpenSubstitutionCommand}" ToolTip="توليد بديل الغائبين بثلاث فئات (أول ← ثان ← ثالث)"
+                        AutomationProperties.Name="البديل والانتظار"
+                        MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="🕐" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="بديل" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <ToggleButton IsChecked="{Binding ColorByTeacher, Mode=TwoWay}"
+                              ToolTip="تلوين البطاقات بلون المعلم (للتفرقة أثناء المراجعة)"
+                              AutomationProperties.Name="تلوين حسب المعلم"
+                              MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="🎨" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="تلوين" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </ToggleButton>
+                <Separator/>
+                <Button Command="{Binding ShowAIChatCommand}" ToolTip="مساعد ذكي (Ctrl+I)" MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="🤖" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="مساعد" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Separator/>
+                <ToggleButton IsChecked="{Binding IsLeftPanelVisible, Mode=TwoWay}"
+                              ToolTip="إظهار/إخفاء شريط التنقل (نظرة عامة/الجدول/المعلمون...)"
+                              AutomationProperties.Name="لوحة التنقل اليمنى"
+                              MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="◧" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="تنقل" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </ToggleButton>
+                <ToggleButton IsChecked="{Binding IsRightPanelVisible, Mode=TwoWay}"
+                              ToolTip="إظهار/إخفاء لوحة الخصائص/المساعد الذكي"
+                              AutomationProperties.Name="لوحة الخصائص اليسرى"
+                              MinWidth="48" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="◨" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="خصائص" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </ToggleButton>
+                <Separator/>
+                <Button Command="{Binding ZoomOutCommand}" ToolTip="تصغير العرض" AutomationProperties.Name="تصغير" MinWidth="40" Padding="6,2">
+                    <TextBlock Text="➖" FontSize="15" HorizontalAlignment="Center"/>
+                </Button>
+                <Button Command="{Binding ZoomResetCommand}" ToolTip="إعادة التكبير إلى 100%" AutomationProperties.Name="تكبير 100%" MinWidth="52" Padding="6,2">
+                    <TextBlock Text="{Binding ZoomPercentText}" FontSize="11" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <Button Command="{Binding ZoomInCommand}" ToolTip="تكبير العرض" AutomationProperties.Name="تكبير" MinWidth="40" Padding="6,2">
+                    <TextBlock Text="➕" FontSize="15" HorizontalAlignment="Center"/>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- المحتوى الرئيسي -->
+        <Grid Grid.Row="2" Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding LeftPanelWidth}"/>   <!-- اللوحة اليسرى -->
+                    <ColumnDefinition Width="*"/>      <!-- شبكة الجدول -->
+                    <ColumnDefinition Width="{Binding RightPanelWidth}"/>    <!-- اللوحة اليمنى (AI Chat / الخصائص) -->
+                </Grid.ColumnDefinitions>
+
+            <!-- الشريط الجانبي: تبويبات أصلية عمودية داخل إطار -->
+            <Border Grid.Column="0" Margin="0,0,8,0"
+                    BorderBrush="{StaticResource OutlineBrush}" BorderThickness="1"
+                    Background="White">
+                <TabControl SelectedIndex="{Binding SelectedSidebarTab}"
+                            TabStripPlacement="Left"
+                            FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                            Padding="6">
+                    <TabItem Header="نظرة عامة">
+                        <local:OverviewView DataContext="{Binding}"/>
+                    </TabItem>
+                    <TabItem Header="الجدول">
+                        <StackPanel Margin="12">
+                            <TextBlock Text="الجدول الزمني" FontSize="16" FontWeight="Bold"
+                                       FontFamily="{DynamicResource ArabicFont}" Foreground="{StaticResource OnSurfaceBrush}"
+                                       Margin="0,0,0,12"/>
+                            <Button Content="📅 توليد الجدول (Ctrl+G)" Command="{Binding GenerateTimetableCommand}"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    FontFamily="{DynamicResource ArabicFont}" FontSize="13" Margin="0,0,0,8"/>
+                            <Button Content="🔄 تحسين الجدول" Command="{Binding OptimizeTimetableCommand}"
+                                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                                    FontFamily="{DynamicResource ArabicFont}" FontSize="13" Margin="0,0,0,8"/>
+                            <Button Content="⚠ فحص التضاربات" Command="{Binding CheckConflictsCommand}"
+                                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                                    FontFamily="{DynamicResource ArabicFont}" FontSize="13" Margin="0,0,0,8"/>
+                            <Separator Margin="0,8"/>
+                            <Button Content="➕ إضافة حصة" Command="{Binding AddLessonCommand}"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    FontFamily="{DynamicResource ArabicFont}" FontSize="13" Margin="0,0,0,4"/>
+                            <Button Content="📋 إضافة قيد" Command="{Binding AddConstraintCommand}"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    FontFamily="{DynamicResource ArabicFont}" FontSize="13"/>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="المعلمون">
+                        <local:TeachersView DataContext="{Binding Teachers}"/>
+                    </TabItem>
+                    <TabItem Header="المواد">
+                        <local:SubjectsView DataContext="{Binding Subjects}"/>
+                    </TabItem>
+                    <TabItem Header="الغرف">
+                        <local:RoomsView DataContext="{Binding Rooms}"/>
+                    </TabItem>
+                    <TabItem Header="الفصول">
+                        <local:ClassesView DataContext="{Binding Classes}"/>
+                    </TabItem>
+                    <TabItem Header="القيود">
+                        <local:ConstraintsView DataContext="{Binding Constraints}"/>
+                    </TabItem>
+                    <TabItem Header="الإحصائيات">
+                        <local:StatsView DataContext="{Binding}"/>
+                    </TabItem>
+                    <TabItem Header="الإسناد">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="طبقة الإسناد المركزية" FontSize="15" FontWeight="Bold"
+                                           FontFamily="{DynamicResource ArabicFont}"
+                                           Foreground="{StaticResource OnSurfaceBrush}" Margin="0,0,0,4"/>
+                                <TextBlock Text="معلم + مادة + فصل + عدد الحصص الأسبوعية"
+                                           FontFamily="{DynamicResource ArabicFont}" FontSize="11"
+                                           Foreground="{StaticResource OnSurfaceVariantBrush}"
+                                           TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                                <!-- محرر إضافة إسناد -->
+                                <Border Padding="8" Background="#F7F7F7"
+                                        BorderBrush="{StaticResource OutlineBrush}" BorderThickness="1" Margin="0,0,0,10">
+                                    <StackPanel>
+                                        <TextBlock Text="المعلم" FontFamily="{DynamicResource ArabicFont}" FontSize="11" Margin="0,0,0,2"/>
+                                        <ComboBox ItemsSource="{Binding Teachers.Teachers}" DisplayMemberPath="FullName"
+                                                  SelectedItem="{Binding NewAssignmentTeacher}" Margin="0,0,0,6"/>
+                                        <TextBlock Text="المادة" FontFamily="{DynamicResource ArabicFont}" FontSize="11" Margin="0,0,0,2"/>
+                                        <ComboBox ItemsSource="{Binding Subjects.Subjects}" DisplayMemberPath="Name"
+                                                  SelectedItem="{Binding NewAssignmentSubject}" Margin="0,0,0,6"/>
+                                        <TextBlock Text="الفصول (يمكن تحديد أكثر من شعبة)" FontFamily="{DynamicResource ArabicFont}" FontSize="11" Margin="0,0,0,2"/>
+                                        <Border BorderBrush="{StaticResource OutlineBrush}" BorderThickness="1" MaxHeight="120" Margin="0,0,0,6">
+                                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                                <ItemsControl ItemsSource="{Binding AssignmentClassOptions}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox Content="{Binding Label}" IsChecked="{Binding IsSelected}"
+                                                                      FontFamily="{DynamicResource ArabicFont}" FontSize="11" Margin="2,1"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </ScrollViewer>
+                                        </Border>
+                                        <TextBlock Text="عدد الحصص الأسبوعية" FontFamily="{DynamicResource ArabicFont}" FontSize="11" Margin="0,0,0,2"/>
+                                        <TextBox Text="{Binding NewAssignmentPeriods, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
+                                        <Button Content="➕ إضافة إسناد" Command="{Binding AddAssignmentCommand}"
+                                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                                FontFamily="{DynamicResource ArabicFont}" FontSize="12"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Button Content="📥 توليد الحصص من الإسناد" Command="{Binding GenerateFromAssignmentsCommand}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}"
+                                        FontFamily="{DynamicResource ArabicFont}" FontSize="12" Margin="0,0,0,10"
+                                        ToolTip="ينشئ حصصًا غير مُسندة (في الشريط السفلي) بعدد حصص كل إسناد"/>
+
+                                <TextBlock FontFamily="{DynamicResource ArabicFont}" FontSize="11" Margin="0,0,0,6"
+                                           Foreground="{StaticResource OnSurfaceVariantBrush}">
+                                    <Run Text="عدد الإسنادات:"/><Run Text="{Binding AssignmentsCount, Mode=OneWay}"/>
+                                </TextBlock>
+
+                                <ItemsControl ItemsSource="{Binding Assignments}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Padding="8" Margin="0,0,0,6" Background="White"
+                                                    BorderBrush="{StaticResource OutlineBrush}" BorderThickness="1">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <!-- ملخص (وضع العرض) -->
+                                                    <StackPanel Grid.Column="0" Orientation="Horizontal"
+                                                                Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}">
+                                                        <CheckBox IsChecked="{Binding IsEnabled}" VerticalAlignment="Center" Margin="0,0,6,0"
+                                                                  ToolTip="تفعيل/تعطيل الإسناد (المعطَّل لا يولّد حصصًا)"/>
+                                                        <TextBlock Text="{Binding Summary}" TextWrapping="Wrap"
+                                                                   FontFamily="{DynamicResource ArabicFont}" FontSize="11"
+                                                                   VerticalAlignment="Center"/>
+                                                    </StackPanel>
+
+                                                    <!-- حقول التحرير (وضع التحرير) -->
+                                                    <StackPanel Grid.Column="0"
+                                                                Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                        <ComboBox ItemsSource="{Binding DataContext.Teachers.Teachers, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                                  DisplayMemberPath="FullName" SelectedItem="{Binding Teacher}" Margin="0,0,0,4"/>
+                                                        <ComboBox ItemsSource="{Binding DataContext.Subjects.Subjects, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                                  DisplayMemberPath="Name" SelectedItem="{Binding Subject}" Margin="0,0,0,4"/>
+                                                        <ComboBox ItemsSource="{Binding DataContext.Classes.Classes, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                                  DisplayMemberPath="FullName" SelectedItem="{Binding Class}" Margin="0,0,0,4"/>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="الحصص/أسبوع:" FontFamily="{DynamicResource ArabicFont}" FontSize="11"
+                                                                       VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                                            <TextBox Text="{Binding WeeklyPeriods, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+
+                                                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Margin="6,0,0,0">
+                                                        <Button Content="✏️" Padding="6,2"
+                                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                                ToolTip="تحرير الإسناد" Command="{Binding ToggleEditCommand}"/>
+                                                        <Button Content="🗑" Padding="6,2"
+                                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                                ToolTip="حذف الإسناد"
+                                                                Command="{Binding DataContext.RemoveAssignmentCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                                CommandParameter="{Binding}"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <TabItem Header="القواعد">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="8">
+                            <StackPanel>
+                                <TextBlock Text="بنود القواعد (وقت انتهاء، ربط معلمين، …)" FontFamily="{DynamicResource ArabicFont}"
+                                           FontWeight="Bold" Margin="0,0,0,6"/>
+                                <TextBlock FontFamily="{DynamicResource ArabicFont}" FontSize="11" Opacity="0.7" TextWrapping="Wrap"
+                                           Text="كل بند له أولوية: صلبة / عالية / متوسطة / منخفضة / تجاهل عند التوليد. البنود التي يضيفها المساعد تظهر هنا أيضًا."
+                                           Margin="0,0,0,8"/>
+
+                                <Button Content="➕ إضافة قاعدة (محرر موجّه)"
+                                        Command="{Binding AddRuleCommand}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}"
+                                        HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
+
+                                <TextBlock FontFamily="{DynamicResource ArabicFont}" FontSize="11" Margin="0,0,0,6">
+                                    <Run Text="عدد البنود:"/><Run Text="{Binding RulesCount, Mode=OneWay}"/>
+                                </TextBlock>
+
+                                <!-- القوائم المصنّفة حسب العلاقة -->
+                                <ItemsControl ItemsSource="{Binding RuleGroups}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Margin="0,0,0,10">
+                                                <TextBlock Text="{Binding Header}" FontFamily="{DynamicResource ArabicFont}"
+                                                           FontWeight="Bold" Margin="0,0,0,4"/>
+                                                <ItemsControl ItemsSource="{Binding Items}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border BorderBrush="#33808080" BorderThickness="1" CornerRadius="4"
+                                                                    Padding="6" Margin="0,0,0,4">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <!-- وضع العرض -->
+                                                                    <StackPanel Grid.Column="0"
+                                                                                Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}">
+                                                                        <CheckBox IsChecked="{Binding IsEnabled}" Content="{Binding Title}"
+                                                                                  FontFamily="{DynamicResource ArabicFont}" FontSize="11"/>
+                                                                        <TextBlock Text="{Binding Summary}" TextWrapping="Wrap"
+                                                                                   FontFamily="{DynamicResource ArabicFont}" FontSize="10" Opacity="0.75"/>
+                                                                        <TextBlock Text="{Binding SourceText}" FontFamily="{DynamicResource ArabicFont}"
+                                                                                   FontSize="10" Opacity="0.6"/>
+                                                                    </StackPanel>
+
+                                                                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Margin="6,0,0,0">
+                                                                        <Button Content="✏️" Padding="6,2" Style="{StaticResource MaterialDesignFlatButton}"
+                                                                                ToolTip="تحرير القاعدة"
+                                                                                Command="{Binding DataContext.EditRuleCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=2}}"
+                                                                                CommandParameter="{Binding}"/>
+                                                                        <Button Content="🗑" Padding="6,2" Style="{StaticResource MaterialDesignFlatButton}"
+                                                                                ToolTip="حذف البند"
+                                                                                Command="{Binding DataContext.RemoveRuleCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=2}}"
+                                                                                CommandParameter="{Binding}"/>
+                                                                    </StackPanel>
+                                                                </Grid>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </Border>
+
+            <!-- منطقة الجدول الرئيسية -->
+            <Grid Grid.Column="1" Margin="8,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- شريط معلومات الجدول -->
+                <Border Grid.Row="0" Margin="0,0,0,8" Padding="12,8"
+                        Background="White"
+                        BorderBrush="{StaticResource OutlineBrush}" BorderThickness="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="المدرسة:" FontSize="12" VerticalAlignment="Center"
+                                           Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,4,0"
+                                           FontFamily="{DynamicResource ArabicFont}"/>
+                                <TextBlock Text="{Binding CurrentSchoolName, FallbackValue='غير محدد'}"
+                                           FontSize="12" VerticalAlignment="Center" FontWeight="SemiBold"
+                                           Foreground="{StaticResource PrimaryHueMidBrush}"
+                                           FontFamily="{DynamicResource ArabicFont}"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding CurrentTimetableName, FallbackValue='لا يوجد جدول محدد'}"
+                                       FontSize="16" FontWeight="Bold" FontFamily="{DynamicResource ArabicFont}"/>
+                            <TextBlock Text="{Binding TimetableStatusText, FallbackValue='مسودة'}"
+                                       FontSize="11" Foreground="{StaticResource OnSurfaceVariantBrush}" FontFamily="{DynamicResource ArabicFont}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <TextBlock Text="إجمالي الحصص:" FontFamily="{DynamicResource ArabicFont}" FontSize="12" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding TotalLessonsCount, FallbackValue=0}" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="0,0,16,0"/>
+
+                            <TextBlock Text="تضاربات:" FontFamily="{DynamicResource ArabicFont}" FontSize="12" VerticalAlignment="Center" Margin="16,0,8,0" Foreground="{StaticResource WarningColorBrush}"/>
+                            <TextBlock Text="{Binding ConflictsCount, FallbackValue=0}" FontWeight="Bold" FontSize="14" Foreground="{StaticResource WarningColorBrush}" VerticalAlignment="Center" Margin="0,0,16,0"/>
+
+                            <TextBlock Text="جودة:" FontFamily="{DynamicResource ArabicFont}" FontSize="12" VerticalAlignment="Center" Margin="16,0,8,0" Foreground="{StaticResource SuccessColorBrush}"/>
+                            <TextBlock Text="{Binding QualityScoreText, FallbackValue='0%'}" FontWeight="Bold" FontSize="14" Foreground="{StaticResource SuccessColorBrush}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- شريط اختيار العرض (بأسلوب aSc: مصفوفة المدرسة أو جدول كيان واحد) -->
+                <Border Grid.Row="1" Margin="0,0,0,8" Padding="10,6"
+                        Background="#F7F7F7"
+                        BorderBrush="{StaticResource OutlineBrush}" BorderThickness="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="عرض:" FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                                       FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+
+                            <RadioButton GroupName="TimetableViewMode" Content="مصفوفة المدرسة"
+                                         AutomationProperties.Name="مصفوفة المدرسة"
+                                         VerticalAlignment="Center" Margin="0,0,12,0"
+                                         FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                                         IsChecked="{Binding ViewMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=SchoolMatrix}"/>
+                            <RadioButton GroupName="TimetableViewMode" Content="فصل"
+                                         AutomationProperties.Name="عرض حسب الفصل"
+                                         VerticalAlignment="Center" Margin="0,0,12,0"
+                                         FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                                         IsChecked="{Binding ViewMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=ByClass}"/>
+                            <RadioButton GroupName="TimetableViewMode" Content="معلم"
+                                         AutomationProperties.Name="عرض حسب المعلم"
+                                         VerticalAlignment="Center" Margin="0,0,12,0"
+                                         FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                                         IsChecked="{Binding ViewMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=ByTeacher}"/>
+                            <RadioButton GroupName="TimetableViewMode" Content="قاعة"
+                                         AutomationProperties.Name="عرض حسب القاعة"
+                                         VerticalAlignment="Center" Margin="0,0,12,0"
+                                         FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                                         IsChecked="{Binding ViewMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=ByRoom}"/>
+                            <RadioButton GroupName="TimetableViewMode" Content="مادة"
+                                         AutomationProperties.Name="عرض حسب المادة"
+                                         VerticalAlignment="Center" Margin="0,0,12,0"
+                                         FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                                         IsChecked="{Binding ViewMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=BySubject}"/>
+
+                            <TextBlock Text="{Binding EntityPickerLabel}"
+                                       FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                                       VerticalAlignment="Center" Margin="8,0,6,0"/>
+                            <ComboBox Width="280" Height="26"
+                                      AutomationProperties.Name="محدد الكيان"
+                                      ItemsSource="{Binding EntityOptions}"
+                                      SelectedItem="{Binding SelectedEntityOption, Mode=TwoWay}"
+                                      DisplayMemberPath="Name"
+                                      IsEnabled="{Binding IsEntityPickerEnabled}"
+                                      FontFamily="{DynamicResource ArabicFont}" FontSize="12"/>
+                        </StackPanel>
+
+                        <TextBlock Grid.Column="1" Text="{Binding SelectedViewTitle}"
+                                   FontFamily="{DynamicResource ArabicFont}" FontSize="12" FontWeight="Bold"
+                                   Foreground="{StaticResource PrimaryBrush}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </Grid>
+                </Border>
+
+                <!-- شبكة الجدول: مصفوفة المدرسة (فصول × فترات × أيام) -->
+                <DataGrid x:Name="TimetableGrid"
+                          Grid.Row="2"
+                          LayoutTransform="{Binding ZoomTransform}"
+                          Visibility="{Binding Data.IsMatrixMode, Source={StaticResource VmProxy}, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=invert}"
+                          ItemsSource="{Binding TimetableGridRows}"
+                          Style="{StaticResource TimetableDataGrid}"
+                          SelectedCellsChanged="OnTimetableSelectedCellsChanged"
+                          ContextMenu="{Binding LessonContextMenu}"
+                          PreviewMouseLeftButtonDown="TimetableGrid_PreviewMouseLeftButtonDown"
+                          MouseMove="TimetableGrid_MouseMove"
+                          AllowDrop="True"
+                          DragOver="TimetableGrid_DragOver"
+                          Drop="TimetableGrid_Drop">
+
+                    <DataGrid.Columns>
+                        <!-- عمود الفصل: يظهر في مصفوفة المدرسة فقط (يختفي في عروض الكيان الواحد) -->
+                        <DataGridTextColumn Header="الفصل"
+                                            Binding="{Binding ClassName}"
+                                            Width="92" IsReadOnly="True"
+                                            Visibility="{Binding Data.IsMatrixMode, Source={StaticResource VmProxy}, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                                    <Setter Property="Margin" Value="4,0"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <!-- عمود الفترة -->
+                        <DataGridTextColumn Header="الحصة"
+                                            Binding="{Binding PeriodLabel}"
+                                            Width="48" IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontSize" Value="10"/>
+                                    <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="ToolTip" Value="{Binding PeriodName}"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <!-- أعمدة أيام الأسبوع: كل عمود يعرض حصص يومه -->
+                        <DataGridTemplateColumn Header="السبت" Width="*" CellTemplate="{StaticResource CellSaturday}"/>
+                        <DataGridTemplateColumn Header="الأحد" Width="*" CellTemplate="{StaticResource CellSunday}"/>
+                        <DataGridTemplateColumn Header="الاثنين" Width="*" CellTemplate="{StaticResource CellMonday}"/>
+                        <DataGridTemplateColumn Header="الثلاثاء" Width="*" CellTemplate="{StaticResource CellTuesday}"/>
+                        <DataGridTemplateColumn Header="الأربعاء" Width="*" CellTemplate="{StaticResource CellWednesday}"/>
+                        <DataGridTemplateColumn Header="الخميس" Width="*" CellTemplate="{StaticResource CellThursday}"/>
+                        <DataGridTemplateColumn Header="الجمعة" Width="*" CellTemplate="{StaticResource CellFriday}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- عرض aSc: الأيام صفوفاً (كل يوم يحوي صفوف الحصص)، الفصول أعمدة، مع تمرير كامل -->
+                <ScrollViewer x:Name="AscGridScrollViewer" Grid.Row="2"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto"
+                              CanContentScroll="False"
+                              SizeChanged="AscGridScrollViewer_SizeChanged"
+                              Visibility="{Binding Data.IsMatrixMode, Source={StaticResource VmProxy}, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Border x:Name="AscGridHost"
+                            LayoutTransform="{Binding ZoomTransform}"
+                            Background="White" BorderBrush="{StaticResource GridLineBrush}" BorderThickness="1"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            AllowDrop="True"
+                            GiveFeedback="AscGrid_GiveFeedback"
+                            PreviewMouseLeftButtonDown="AscGrid_PreviewMouseLeftButtonDown"
+                            MouseMove="AscGrid_MouseMove"
+                            DragOver="AscGrid_DragOver"
+                            Drop="AscGrid_Drop">
+                        <Grid>
+                            <Grid x:Name="AscMatrixGrid"/>
+                            <Canvas x:Name="AscGhostLayer" IsHitTestVisible="False" Panel.ZIndex="999"/>
+                        </Grid>
+                    </Border>
+                </ScrollViewer>
+
+                <StackPanel Grid.Row="3">
+                <!-- بطاقات المعلم: في انتظار التوليد (تُسحب إلى الجدول) -->
+                <Border Margin="0,8,0,0" Padding="8"
+                        Background="#E8F0FE" BorderBrush="{StaticResource PrimaryBrush}" BorderThickness="1"
+                        Visibility="{Binding PendingCardsCount, Converter={StaticResource CountToVisibilityConverter}}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="بطاقات المعلم — في انتظار التوليد:" FontFamily="{DynamicResource ArabicFont}"
+                                       FontSize="12" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding PendingCardsCount}" FontFamily="{DynamicResource ArabicFont}"
+                                       FontSize="12" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}"
+                                       Margin="6,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="(اسحب أي بطاقة إلى الشبكة، أو ولّد الجدول)" FontFamily="{DynamicResource ArabicFont}"
+                                       FontSize="10" Foreground="{StaticResource OnSurfaceVariantBrush}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled"
+                                      Margin="0,6,0,0">
+                            <ItemsControl ItemsSource="{Binding PendingCards}"
+                                          x:Name="PendingTray"
+                                          AllowDrop="False"
+                                          GiveFeedback="AscGrid_GiveFeedback"
+                                          PreviewMouseLeftButtonDown="ProblemTray_PreviewMouseLeftButtonDown"
+                                          MouseMove="ProblemTray_MouseMove">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="{Binding Lesson.CardBackgroundBrush}" CornerRadius="3"
+                                                Padding="6,4" Margin="0,0,6,0" Cursor="Hand"
+                                                ToolTip="{Binding Lesson.TooltipText}">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Title}" FontSize="11" FontWeight="Bold"
+                                                           Foreground="{Binding Lesson.CardForegroundBrush}"
+                                                           FontFamily="{DynamicResource ArabicFont}"
+                                                           TextTrimming="CharacterEllipsis" MaxWidth="180"/>
+                                                <TextBlock Text="{Binding Reason}" FontSize="9" Opacity="0.85"
+                                                           Foreground="{Binding Lesson.CardForegroundBrush}"
+                                                           FontFamily="{DynamicResource ArabicFont}"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+
+                <!-- لوحة الحصص التي تحتاج انتباهًا (تُسحب إلى الجدول) -->
+                <Border Margin="0,8,0,0" Padding="8"
+                        Background="#FFF7ED" BorderBrush="{StaticResource WarningColorBrush}" BorderThickness="1"
+                        Visibility="{Binding ProblemCount, Converter={StaticResource CountToVisibilityConverter}}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="حصص تحتاج انتباهًا:" FontFamily="{DynamicResource ArabicFont}"
+                                       FontSize="12" FontWeight="Bold" Foreground="{StaticResource WarningColorBrush}"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding ProblemCount}" FontFamily="{DynamicResource ArabicFont}"
+                                       FontSize="12" FontWeight="Bold" Foreground="{StaticResource WarningColorBrush}"
+                                       Margin="6,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="(اسحب أي حصة إلى الشبكة لوضعها)" FontFamily="{DynamicResource ArabicFont}"
+                                       FontSize="10" Foreground="{StaticResource OnSurfaceVariantBrush}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled"
+                                      Margin="0,6,0,0">
+                            <ItemsControl ItemsSource="{Binding ProblemLessons}"
+                                          x:Name="ProblemTray"
+                                          AllowDrop="False"
+                                          GiveFeedback="AscGrid_GiveFeedback"
+                                          PreviewMouseLeftButtonDown="ProblemTray_PreviewMouseLeftButtonDown"
+                                          MouseMove="ProblemTray_MouseMove">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="{Binding Lesson.CardBackgroundBrush}" CornerRadius="3"
+                                                Padding="6,4" Margin="0,0,6,0" Cursor="Hand"
+                                                ToolTip="{Binding Lesson.TooltipText}">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Title}" FontSize="11" FontWeight="Bold"
+                                                           Foreground="{Binding Lesson.CardForegroundBrush}"
+                                                           FontFamily="{DynamicResource ArabicFont}"
+                                                           TextTrimming="CharacterEllipsis" MaxWidth="180"/>
+                                                <TextBlock Text="{Binding Reason}" FontSize="9" Opacity="0.85"
+                                                           Foreground="{Binding Lesson.CardForegroundBrush}"
+                                                           FontFamily="{DynamicResource ArabicFont}"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+                </StackPanel>
+            </Grid>
+
+            <!-- اللوحة الجانبية اليمنى -->
+            <Grid Grid.Column="2" Margin="8,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- تبويبات اللوحة الجانبية (أصلية) -->
+                <TabControl Grid.Row="0" Grid.RowSpan="2"
+                            SelectedIndex="{Binding RightPanelTab}"
+                            FontFamily="{DynamicResource ArabicFont}" FontSize="12"
+                            Background="White" Padding="6">
+                    <TabItem Header="الخصائص">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ContentControl Content="{Binding SelectedItemPropertiesView}"/>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <TabItem Header="مساعد ذكي">
+                        <ContentControl Content="{Binding AiChatPanelViewModel}"/>
+                    </TabItem>
+
+                    <TabItem Header="التضاربات">
+                        <Grid Margin="8">
+                            <ListBox ItemsSource="{Binding ConflictsList}"
+                                     Background="Transparent" BorderThickness="0"
+                                     FontFamily="{DynamicResource ArabicFont}" FontSize="12">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="0,4"
+                                                   Foreground="{StaticResource WarningColorBrush}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <TextBlock Text="✓ لا توجد تضاربات"
+                                       Visibility="{Binding ConflictsCount, Converter={StaticResource CountToVisibilityConverter}, ConverterParameter=invert}"
+                                       FontFamily="{DynamicResource ArabicFont}" FontSize="13"
+                                       Foreground="{StaticResource SuccessColorBrush}"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem Header="القيود">
+                        <local:ConstraintsView DataContext="{Binding Constraints}"/>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+
+        <!-- شريط الحالة (كلاسيكي رمادي فاتح) -->
+        <Border Grid.Row="3" Background="#F0F0F0"
+                BorderBrush="#D6D6D6" BorderThickness="0,1,0,0" Padding="8,3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding TimetableStatusText}" FontSize="11" FontFamily="{DynamicResource ArabicFont}" VerticalAlignment="Center"/>
+                    <TextBlock Text=" | " FontSize="11" Foreground="{StaticResource OnSurfaceVariantBrush}" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding CurrentDateTime, StringFormat='yyyy/MM/dd HH:mm'}" FontSize="11" FontFamily="{DynamicResource ArabicFont}" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <ProgressBar Width="90" Height="8" Margin="0,0,8,0" IsIndeterminate="True"
+                                 Visibility="{Binding IsGenerating, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <TextBlock Text="{Binding GenerationStatusText}" FontSize="11"
+                               FontFamily="{DynamicResource ArabicFont}" VerticalAlignment="Center"/>
+                    <Button Content="إلغاء" Margin="12,0,0,0" Padding="10,1" FontSize="11"
+                            FontFamily="{DynamicResource ArabicFont}"
+                            Command="{Binding CancelGenerationCommand}"
+                            Visibility="{Binding IsGenerating, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock Text="النسخة 2.1.0" FontSize="10" Foreground="{StaticResource OnSurfaceVariantBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <TextBlock Text="من برمجة عوض لافي الزبيدي" FontSize="10" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <TextBlock Text="| جميع الحقوق محفوظة" FontSize="10" Foreground="{StaticResource OnSurfaceVariantBrush}" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,76 @@
+<Window x:Class="AwadTimetable.UI.Views.WaitingScheduleDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="جدول الانتظار (المعلم البديل)"
+        Height="720" Width="1000"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource ArabicFont}">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="جدول الانتظار — بديل لكل حصة" FontSize="18" FontWeight="Bold"
+                       Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+            <TextBlock Text="انتظار 1: معلم ملزم لكل (فصل، فترة). انتظار 2 و3: احتياط لنفس الفترة يُستخدم عند غياب الأساسي. التوزيع بعدالة حسب النصاب."
+                       FontSize="11" TextWrapping="Wrap"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="عدد الفئات:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+            <TextBox x:Name="TierCountTextBox" Width="50" Text="3" TextAlignment="Center"
+                     FlowDirection="LeftToRight" Margin="0,0,16,0"/>
+            <TextBlock Text="عدد الحصص اليومية:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+            <TextBox x:Name="PeriodsTextBox" Width="50" Text="7" TextAlignment="Center"
+                     FlowDirection="LeftToRight" Margin="0,0,16,0"/>
+            <Button Content="توليد جدول الانتظار" Click="OnGenerateClick" MinWidth="150" Padding="12,6"
+                    Background="{StaticResource PrimaryBrush}" Foreground="White" BorderThickness="0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="12"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="DutiesGrid" Grid.Column="0" AutoGenerateColumns="False" IsReadOnly="True"
+                      HeadersVisibility="Column" GridLinesVisibility="All" RowHeaderWidth="0"
+                      FontFamily="{DynamicResource ArabicFont}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="اليوم" Binding="{Binding DayText}" Width="90"/>
+                    <DataGridTextColumn Header="الفترة" Binding="{Binding Period}" Width="60"/>
+                    <DataGridTextColumn Header="الفصل" Binding="{Binding ClassName}" Width="160"/>
+                    <DataGridTextColumn Header="معلم الانتظار 1" Binding="{Binding TeacherName}" Width="*"/>
+                    <DataGridTextColumn Header="الفئة" Binding="{Binding Tier}" Width="60"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <DataGrid x:Name="LoadsGrid" Grid.Column="2" AutoGenerateColumns="False" IsReadOnly="True"
+                      HeadersVisibility="Column" GridLinesVisibility="All" RowHeaderWidth="0"
+                      FontFamily="{DynamicResource ArabicFont}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="المعلم" Binding="{Binding TeacherName}" Width="*"/>
+                    <DataGridTextColumn Header="النصاب" Binding="{Binding BaseLoad}" Width="60"/>
+                    <DataGridTextColumn Header="انتظار" Binding="{Binding WaitingLoad}" Width="60"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <TextBlock x:Name="SummaryText" Grid.Row="3" Margin="0,10,0,0" FontSize="11"
+                   TextWrapping="Wrap" Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="إغلاق" MinWidth="100" Padding="12,6" Click="OnCloseClick"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

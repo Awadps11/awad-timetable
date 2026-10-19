@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="windows-1256"?>
+<timetable ascttversion="2027.7.1" importtype="database" options="export:idprefix:%CHRID,import:idprefix:%TEMPID,groupstype1,decimalseparatordot,lessonsincludeclasseswithoutstudents,handlestudentsafterlessons" defaultexport="1" displayname="aSc Timetables 2012 XML" displaycountries="">
+   <periods options="canadd,export:silent" columns="period,name,short,starttime,endtime">
+      <period name="1" short="1" period="0" starttime="7:00" endtime="7:45"/>
+      <period name="2" short="2" period="1" starttime="7:45" endtime="8:30"/>
+      <period name="3" short="3" period="2" starttime="8:30" endtime="9:15"/>
+      <period name="4" short="4" period="3" starttime="9:30" endtime="10:15"/>
+      <period name="5" short="5" period="4" starttime="10:15" endtime="11:00"/>
+      <period name="6" short="6" period="5" starttime="11:00" endtime="11:45"/>
+      <period name="7" short="7" period="6" starttime="11:45" endtime="12:30"/>
+   </periods>
+   <breaks options="canadd,export:silent" columns="break,name,short,starttime,endtime"/>
+   <daysdefs options="canadd,export:silent" columns="id,days,name,short">
+      <daysdef id="4CC5BCC0321E6C3D" name="أي يوم" short="X" days="10000,01000,00100,00010,00001"/>
+      <daysdef id="F454EF5D7C200B73" name="كل يوم" short="E" days="11111"/>
+      <daysdef id="C9FE4FBE4A887BFA" name="الأحد" short="احد" days="10000"/>
+      <daysdef id="91F75DDD5777E5AB" name="الإثنين" short="اثنين" days="01000"/>
+      <daysdef id="6FC23683D2A3A6F3" name="الثلاثاء" short="ثلاثاء" days="00100"/>
+      <daysdef id="97F7478446EA3B4E" name="الأربعاء" short="اربعاء" days="00010"/>
+      <daysdef id="E0AF6264E1C1E891" name="الخميس" short="خميس" days="00001"/>
+   </daysdefs>
+   <weeksdefs options="canadd,export:silent" columns="id,weeks,name,short">
+      <weeksdef id="5070C25AC1777FEB" name="كل الأسابيع" short="الكل" weeks="1"/>
+   </weeksdefs>
+   <termsdefs options="canadd,export:silent" columns="id,terms,name,short">
+      <termsdef id="DBB971A2C8E6A5A9" name="السنة بالكامل" short="السنة" terms="1"/>
+   </termsdefs>
+   <subjects options="canadd,export:silent" columns="id,name,short,partner_id">
+      <subject id="2ADDCE4CEDF37941" name="القران الكريم والدراسات الإسلامية" short="دراسات " partner_id=""/>
+      <subject id="854C1C50079892B1" name="اللغة العربية " short="عربي" partner_id=""/>
+      <subject id="57E868DA91430428" name="الدراسات الاجتماعية" short="اجتماعيات " partner_id=""/>
+      <subject id="B9D5E967F7DA0031" name="التاريخ " short="تاريخ" partner_id=""/>
+      <subject id="A69D85EB1BA248CF" name="الرياضيات " short="رياضيات " partner_id=""/>
+      <subject id="A8517A53A816DA37" name="العلوم " short="علوم " partner_id=""/>
+      <subject id="130C660C8E2FB06F" name="اللغة الإنجليزية " short="E" partner_id=""/>
+      <subject id="E046BD4EE7C97ECF" name="المهارات الرقمية " short="رقمية" partner_id=""/>
+      <subject id="10B13086A0C6E420" name="التربية الفنية " short="فنية " partner_id=""/>
+      <subject id="583387C057836DB8" name="التربية البدنية والدفاع عن النفس" short="بدنية" partner_id=""/>
+      <subject id="55468089BF23B335" name="التفكير الناقد" short="ناقد" partner_id=""/>
+      <subject id="4D5DB1CB9C9F5FB4" name="المهارات الحياتية والأسرية" short="حياتية" partner_id=""/>
+      <subject id="AAD1CB88E7F6302A" name="القران الكريم وتفسيره " short="تفسير" partner_id=""/>
+      <subject id="DACBA6DE959AF40C" name="الكفايات اللغوية " short="كفايات " partner_id=""/>
+      <subject id="95E56461E4687CCA" name="الأحياء" short="أحياء" partner_id=""/>
+      <subject id="7C1DFF93F26EF728" name="التوحيد" short="توحيد" partner_id=""/>
+      <subject id="37B189E656E3D578" name="الفنون" short="فنون" partner_id=""/>
+      <subject id="5F6D6AF6EC9B0AF9" name="الكيمياء" short="كيمياء" partner_id=""/>
+      <subject id="AC99DDB27431EC6F" name="اللياقة والثقافة الصحية" short="لياقة" partner_id=""/>
+      <subject id="DD798000F122CBEF" name="البحث ومصادر التعلم " short="بحث" partner_id=""/>
+      <subject id="92CDB8B0ADCAD061" name="الجغرافيا" short="جغرافيا" partner_id=""/>
+      <subject id="D1DFB7A2B6251E73" name="الفيزياء" short="فيزياء" partner_id=""/>
+      <subject id="BA78B87E30789D1C" name="علم الأرض والفضاء" short="علم الأرض" partner_id=""/>
+      <subject id="E790D10EF8225B8C" name="علوم ادارية" short="ادارية" partner_id=""/>
+      <subject id="C83502BA2590F3EA" name="نشاط متوسط" short="نشاط متوسط" partner_id=""/>
+      <subject id="3D7916AC36A35077" name="نشاط 1" short="نشاط 1" partner_id=""/>
+      <subject id="2A4081076DC4DC44" name="نشاط 2" short="نشاط2" partner_id=""/>
+      <subject id="68260EDFFFBC4142" name="نشاط 3" short="نشاط3" partner_id=""/>
+      <subject id="1678E10B05D94653" name="نشاط 4" short="نشاط 4" partner_id=""/>
+      <subject id="B7DAA5BB0B304D33" name="نشاط 5" short="نشاط 5" partner_id=""/>
+      <subject id="9DF3B6AEAFEF5634" name="نشاط 6" short="نشاط 6" partner_id=""/>
+   </subjects>
+   <teachers options="canadd,export:silent" columns="id,name,short,gender,color,email,mobile,partner_id,firstname,lastname">
+      <teacher id="4875E6BBB4575B52" firstname="أحمد" lastname="قملان" name="أحمد قملان" short="بن قملان" gender="M" color="#00FF00" email="" mobile="" partner_id=""/>
+      <teacher id="5C8DE9DB42C8B919" firstname="عبده" lastname="الزيلعي" name="عبده الزيلعي" short="الزيلعي" gender="M" color="#FF0000" email="" mobile="" partner_id=""/>
+      <teacher id="87DF602A19649FE8" firstname="فضل" lastname="الراشدي" name="فضل الراشدي" short="فضل" gender="F" color="#0000FF" email="" mobile="" partner_id=""/>
+      <teacher id="2CB261D65704E368" firstname="عبدالعزيز" lastname="حامد" name="عبدالعزيز حامد" short="عبدالعزيز" gender="M" color="#FFCCFF" email="" mobile="" partner_id=""/>
+      <teacher id="292E88079003D96B" firstname="سالم" lastname="الراشدي" name="سالم الراشدي" short="أبو قابص" gender="M" color="#FF6666" email="" mobile="" partner_id=""/>
+      <teacher id="B945E8D08CB73F93" firstname="عبدالله" lastname="مسفر" name="عبدالله مسفر" short="عبداله مسفر" gender="F" color="#00FF80" email="" mobile="" partner_id=""/>
+      <teacher id="5B1CEE36632B1262" firstname="أحمد" lastname="عبدالله" name="أحمد عبدالله" short="بن عيد" gender="M" color="#FFCC66" email="" mobile="" partner_id=""/>
+      <teacher id="9B4697DE4AA7EED9" firstname="عبده" lastname="العذيقي" name="عبده العذيقي" short="العذيقي" gender="M" color="#009933" email="" mobile="" partner_id=""/>
+      <teacher id="ABD019C4EADE8BE0" firstname="عبيد" lastname="صالح" name="عبيد صالح" short="عبيد صالح" gender="M" color="#66FFFF" email="" mobile="" partner_id=""/>
+      <teacher id="0768B22612AA61D7" firstname="" lastname="الحسين" name="الحسين" short="الحسين" gender="M" color="#DDFF97" email="" mobile="" partner_id=""/>
+      <teacher id="3AC531B384787C41" firstname="أحمد" lastname="العلوي" name="أحمد العلوي" short="العلوي" gender="M" color="#00C0FF" email="" mobile="" partner_id=""/>
+      <teacher id="F8925A849FA7E2E8" firstname="إبراهيم" lastname="الراشدي" name="إبراهيم الراشدي" short="إبراهيم هاشم" gender="M" color="#669900" email="" mobile="" partner_id=""/>
+      <teacher id="19DE42D91032FF54" firstname="إبراهيم" lastname="الزبيدي" name="إبراهيم الزبيدي" short="إبراهيم متعب" gender="M" color="#66FF66" email="" mobile="" partner_id=""/>
+      <teacher id="B5875D20FA9BB154" firstname="نايف" lastname="الراشدي" name="نايف الراشدي" short="نايف الراشدي" gender="M" color="#FFFFCC" email="" mobile="" partner_id=""/>
+      <teacher id="5A4F76592BF476BE" firstname="مطر" lastname="السهيمي" name="مطر السهيمي" short="مطر" gender="M" color="#6666FF" email="" mobile="" partner_id=""/>
+      <teacher id="062741C518CA8A7E" firstname="علي" lastname="الراشدي" name="علي الراشدي" short="علي هاشم" gender="M" color="#993333" email="" mobile="" partner_id=""/>
+      <teacher id="BAE54A6B3167968D" firstname="علي" lastname="الزبيدي" name="علي الزبيدي" short="علي الزبيدي" gender="M" color="#CCFFFF" email="" mobile="" partner_id=""/>
+      <teacher id="F46167D63A2393D0" firstname="علي" lastname="الصروي" name="علي الصروي" short="علي الصروي" gender="M" color="#33CC33" email="" mobile="" partner_id=""/>
+      <teacher id="94A4FC7B70AB01EC" firstname="عوض" lastname="كريدم" name="عوض كريدم" short="عوض كريدم" gender="M" color="#99FF66" email="" mobile="" partner_id=""/>
+      <teacher id="28DE9FF516282695" firstname="يحيى" lastname="الزبيدي" name="يحيى الزبيدي" short="يحيى الزبيدي" gender="M" color="#3333FF" email="" mobile="" partner_id=""/>
+      <teacher id="1EAA4FEE1EAD9257" firstname="حمزة" lastname="الحليسي" name="حمزة الحليسي" short="الحليسي" gender="M" color="#00CCFF" email="" mobile="" partner_id=""/>
+      <teacher id="A643BFB0B5EED2D9" firstname="طالع" lastname="الناشري" name="طالع الناشري" short="الناشري" gender="M" color="#993366" email="" mobile="" partner_id=""/>
+      <teacher id="C24865199F1D1EF1" firstname="أحمد" lastname="الزبيدي" name="أحمد الزبيدي" short="أحمد عمر" gender="M" color="#FFFFFF" email="" mobile="" partner_id=""/>
+      <teacher id="2298A8D4C2E3AFC5" firstname="محمد" lastname="الخيري" name="محمد الخيري" short="الخيري" gender="M" color="#00CC00" email="" mobile="" partner_id=""/>
+      <teacher id="66BA0DCB5645B237" firstname="عبدالرحمن" lastname="الحسني" name="عبدالرحمن الحسني" short="الحسني" gender="M" color="#808080" email="" mobile="" partner_id=""/>
+      <teacher id="A44EEF2B3B7CF7DC" firstname="عبدالله" lastname="المسعري" name="عبدالله المسعري" short="المسعري" gender="M" color="#FFFF00" email="" mobile="" partner_id=""/>
+      <teacher id="E2FC4F85C7442071" firstname="أحمد" lastname="العبدلي" name="أحمد العبدلي" short="أحمد العبدلي" gender="M" color="#FF00FF" email="" mobile="" partner_id=""/>
+      <teacher id="FA52ECD7D4C2E9E1" firstname="حمزة" lastname="الراشدي" name="حمزة الراشدي" short="حمزة الراشدي" gender="M" color="#FF9966" email="" mobile="" partner_id=""/>
+      <teacher id="6C0D9EAE83E57E25" firstname="غندور" lastname="السهيمي" name="غندور السهيمي" short="غندور" gender="M" color="#00FFFF" email="" mobile="" partner_id=""/>
+      <teacher id="713E88EC4EF6DC84" firstname="أحمد" lastname="الشاووش" name="أحمد الشاووش" short="الشاووش" gender="M" color="#808000" email="" mobile="" partner_id=""/>
+      <teacher id="54B972E5A546BB6D" firstname="صالح" lastname="عبيد" name="صالح عبيد" short="صالح عبيد" gender="M" color="#008080" email="" mobile="" partner_id=""/>
+      <teacher id="D842CF4BBA0C5156" firstname="عوض" lastname="لافي" name="عوض لافي" short="عوض لافي" gender="M" color="#FF8080" email="" mobile="" partner_id=""/>
+      <teacher id="246FA4FAEED225FB" firstname="محمد" lastname="عبيد" name="محمد عبيد" short="محمد عبيد" gender="M" color="#80FF80" email="" mobile="" partner_id=""/>
+      <teacher id="F6C9752E166A5655" firstname="حسن" lastname="صالح" name="حسن صالح" short="حسن صالح" gender="M" color="#8000FF" email="" mobile="" partner_id=""/>
+      <teacher id="16AC4A46D51CD5D1" firstname="محمد" lastname="خلف" name="محمد خلف" short="محمد خلف" gender="M" color="#0080FF" email="" mobile="" partner_id=""/>
+      <teacher id="B9C7262CF4AF540D" firstname="عبدالرحمن" lastname="مسعود" name="عبدالرحمن مسعود" short="بن مسعود" gender="F" color="#FFCCCC" email="" mobile="" partner_id=""/>
+      <teacher id="BE71DEB20239B640" firstname="متعب" lastname="سعيد" name="متعب سعيد" short="متعب سعيد" gender="M" color="#FF8000" email="" mobile="" partner_id=""/>
+      <teacher id="383A67E9E1E34F7A" firstname="صالح" lastname="مشاري" name="صالح مشاري" short="صالح مشاري" gender="M" color="#CC6600" email="" mobile="" partner_id=""/>
+   </teachers>
+   <buildings options="canadd,export:silent" columns="id,name,partner_id"/>
+   <classrooms options="canadd,export:silent" columns="id,name,short,capacity,buildingid,partner_id"/>
+   <grades options="canadd,export:silent" columns="grade,name,short">
+      <grade name="الصف الدراسي 1" short="G 1" grade="1"/>
+      <grade name="الصف الدراسي 2" short="G 2" grade="2"/>
+      <grade name="الصف الدراسي 3" short="G 3" grade="3"/>
+      <grade name="الصف الدراسي 4" short="G 4" grade="4"/>
+      <grade name="الصف الدراسي 5" short="G 5" grade="5"/>
+      <grade name="الصف الدراسي 6" short="G 6" grade="6"/>
+      <grade name="الصف الدراسي 7" short="G 7" grade="7"/>
+      <grade name="الصف الدراسي 8" short="G 8" grade="8"/>
+      <grade name="الصف الدراسي 9" short="G 9" grade="9"/>
+      <grade name="الصف الدراسي 10" short="G 10" grade="10"/>
+      <grade name="الصف الدراسي 11" short="G 11" grade="11"/>
+      <grade name="الصف الدراسي 12" short="G 12" grade="12"/>
+      <grade name="الصف الدراسي 13" short="G 13" grade="13"/>
+      <grade name="الصف الدراسي 14" short="G 14" grade="14"/>
+      <grade name="الصف الدراسي 15" short="G 15" grade="15"/>
+      <grade name="الصف الدراسي 16" short="G 16" grade="16"/>
+      <grade name="الصف الدراسي 17" short="G 17" grade="17"/>
+      <grade name="الصف الدراسي 18" short="G 18" grade="18"/>
+      <grade name="الصف الدراسي 19" short="G 19" grade="19"/>
+      <grade name="الصف الدراسي 20" short="G 20" grade="20"/>
+   </grades>
+   <classes options="canadd,export:silent" columns="id,name,short,classroomids,teacherid,grade,partner_id">
+      <class id="CAF4CEEB4E711453" name="أول متوسط 1" short="1/1" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="4CDC03E785519E45" name="أول متوسط 2" short="2/1" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="B1D7450A32E238FC" name="ثاني متوسط 1" short="1/2" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="22899936CD298F06" name="ثاني متوسط 2" short="2/2" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="3CE34F4E8F2081F4" name="ثالث متوسط1" short="1/3" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="6EB0DA4C1A22961A" name="ثالث متوسط 2" short="2/3" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="3C0AB36ADA642932" name="أول ثانوي1" short="1ث/1" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="1728FB8E9E558C84" name="أول ثانوي 2" short="1ث/2" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="61B1B2AC390F8222" name="ثاني ثانوي 1" short="2 ث/1" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="098E847549EEDF6E" name="ثاني ثانوي 2" short="2 ث/2" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="3BEBF272D84CD1D9" name="ثالث ثانوي 1" short="3 ث /1" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="F04F1FB8DA3FC17C" name="ثالث ثانوي 2" short="3 ث /2" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="2A85237F8D65096B" name="انتظار1" short="انتظار1" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="FFA511A7FC21F92F" name="انتظار2" short="انتظار2" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="92F145C18C457BE5" name="انتظار3" short="انتظار3" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="E0716314A0CD5C0C" name="انتظار متوسط 1" short="انتظار 1" teacherid="" classroomids="" grade="" partner_id=""/>
+      <class id="5C963A9BEB0FE248" name="انتظار متوسط 2" short="انتظار 2" teacherid="" classroomids="" grade="" partner_id=""/>
+   </classes>
+   <groups options="canadd,export:silent" columns="id,classid,name,entireclass,divisiontag,studentcount,studentids">
+      <group id="0BBC3C4190279584" name="الفصل بالكامل" classid="CAF4CEEB4E711453" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="3771E5C2B83F2FFE" name="المجموعة 1" classid="CAF4CEEB4E711453" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="168532192ED052BB" name="المجموعة  2" classid="CAF4CEEB4E711453" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="28C1BE2572B3B843" name="أولاد" classid="CAF4CEEB4E711453" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="4FB664F5488E4DB8" name="بنات" classid="CAF4CEEB4E711453" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="0806BF19D77436AC" name="الفصل بالكامل" classid="4CDC03E785519E45" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="42B8A71219EE1B9C" name="المجموعة 1" classid="4CDC03E785519E45" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="D142C8207DD3DD31" name="المجموعة  2" classid="4CDC03E785519E45" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="98AFB9FCDB4B7E1E" name="أولاد" classid="4CDC03E785519E45" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="9A95F07517E6526E" name="بنات" classid="4CDC03E785519E45" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="D65F5CF9AA4E1716" name="الفصل بالكامل" classid="B1D7450A32E238FC" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="6C20B724D8939111" name="المجموعة 1" classid="B1D7450A32E238FC" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="CA8A873610F4386F" name="المجموعة  2" classid="B1D7450A32E238FC" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="9140B011E0B129DB" name="أولاد" classid="B1D7450A32E238FC" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="AB7F27857B812710" name="بنات" classid="B1D7450A32E238FC" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="92C8A6822A1C3875" name="الفصل بالكامل" classid="22899936CD298F06" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="9D745FFE1B8C9B3D" name="المجموعة 1" classid="22899936CD298F06" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="73F64A571DF182F0" name="المجموعة  2" classid="22899936CD298F06" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="4D941532FDDD05CA" name="أولاد" classid="22899936CD298F06" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="891BE3F7162341AE" name="بنات" classid="22899936CD298F06" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="98FE3FA89021F9A9" name="الفصل بالكامل" classid="3CE34F4E8F2081F4" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="1FA61D2E045AB425" name="المجموعة 1" classid="3CE34F4E8F2081F4" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="395D723B00186077" name="المجموعة  2" classid="3CE34F4E8F2081F4" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="E5C4AFE19AF61F12" name="أولاد" classid="3CE34F4E8F2081F4" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="5AF42961FDE50F74" name="بنات" classid="3CE34F4E8F2081F4" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="DD72BBC9BA6401F4" name="الفصل بالكامل" classid="6EB0DA4C1A22961A" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="1E5256B8712ED204" name="المجموعة 1" classid="6EB0DA4C1A22961A" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="4188192D3C91967D" name="المجموعة  2" classid="6EB0DA4C1A22961A" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="9F5F3EDACA689699" name="أولاد" classid="6EB0DA4C1A22961A" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="A82047722D3D3040" name="بنات" classid="6EB0DA4C1A22961A" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="5984C2E7501FE638" name="الفصل بالكامل" classid="3C0AB36ADA642932" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="DB61D6B1E1CF7234" name="المجموعة 1" classid="3C0AB36ADA642932" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="B19B210BFDD1497F" name="المجموعة  2" classid="3C0AB36ADA642932" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="5578EF203EF17984" name="أولاد" classid="3C0AB36ADA642932" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="890CCFCA8399A740" name="بنات" classid="3C0AB36ADA642932" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="3F79CE0989FF8D9A" name="الفصل بالكامل" classid="1728FB8E9E558C84" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="A93D7706608FD9D6" name="المجموعة 1" classid="1728FB8E9E558C84" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="EBA1B02E63E23DF2" name="المجموعة  2" classid="1728FB8E9E558C84" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="1A44A51C57F73225" name="أولاد" classid="1728FB8E9E558C84" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="7716C985ACBE0F77" name="بنات" classid="1728FB8E9E558C84" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="1EE420BE99961F01" name="الفصل بالكامل" classid="61B1B2AC390F8222" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="B7CF8BA0082EFAC2" name="المجموعة 1" classid="61B1B2AC390F8222" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="859B848D01B002B7" name="المجموعة  2" classid="61B1B2AC390F8222" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="09BEE689DAD1E14E" name="أولاد" classid="61B1B2AC390F8222" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="E3813D3CD4984403" name="بنات" classid="61B1B2AC390F8222" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="73B625F4598AC34B" name="الفصل بالكامل" classid="098E847549EEDF6E" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="06B0DC5ADB47816D" name="المجموعة 1" classid="098E847549EEDF6E" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="E88FB46E88600D36" name="المجموعة  2" classid="098E847549EEDF6E" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="8FAFE743193105A4" name="أولاد" classid="098E847549EEDF6E" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="C440C5C2D400BCF2" name="بنات" classid="098E847549EEDF6E" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="FEE18736F2A70D5A" name="الفصل بالكامل" classid="3BEBF272D84CD1D9" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="96C859CFB03052EA" name="المجموعة 1" classid="3BEBF272D84CD1D9" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="D527E4A20AB52A44" name="المجموعة  2" classid="3BEBF272D84CD1D9" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="AAB3E11168E22C6D" name="أولاد" classid="3BEBF272D84CD1D9" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="13ABCA2DB6AFBF62" name="بنات" classid="3BEBF272D84CD1D9" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="AA6D5151A62882C1" name="الفصل بالكامل" classid="F04F1FB8DA3FC17C" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="316487AB271577D7" name="المجموعة 1" classid="F04F1FB8DA3FC17C" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="B1143335F1CBD69C" name="المجموعة  2" classid="F04F1FB8DA3FC17C" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="FBB974A2594A434E" name="أولاد" classid="F04F1FB8DA3FC17C" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="BF923565993B4B5F" name="بنات" classid="F04F1FB8DA3FC17C" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="2D525903C47F39EF" name="الفصل بالكامل" classid="2A85237F8D65096B" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="5108D7330D44C91D" name="المجموعة 1" classid="2A85237F8D65096B" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="E10415CDA3A1CDDD" name="المجموعة  2" classid="2A85237F8D65096B" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="113771E503780251" name="أولاد" classid="2A85237F8D65096B" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="E5A67C4DBB40CB3D" name="بنات" classid="2A85237F8D65096B" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="3B317B90D6E43E16" name="الفصل بالكامل" classid="FFA511A7FC21F92F" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="166ACEA4DDC90D39" name="المجموعة 1" classid="FFA511A7FC21F92F" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="4D3BAED99B9A4BB4" name="المجموعة  2" classid="FFA511A7FC21F92F" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="75215B3C7D58ACBC" name="أولاد" classid="FFA511A7FC21F92F" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="EE4B2204501B4A35" name="بنات" classid="FFA511A7FC21F92F" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="12EDBECB0E1A04BB" name="الفصل بالكامل" classid="92F145C18C457BE5" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="B60F202F19F7D758" name="المجموعة 1" classid="92F145C18C457BE5" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="8304DEA0E36A2F5D" name="المجموعة  2" classid="92F145C18C457BE5" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="99A489ED12848D66" name="أولاد" classid="92F145C18C457BE5" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="BF7E9983226D4080" name="بنات" classid="92F145C18C457BE5" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="747A169DCF32A1AE" name="الفصل بالكامل" classid="E0716314A0CD5C0C" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="3B539824F2865A97" name="المجموعة 1" classid="E0716314A0CD5C0C" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="3384B69D577EDFBB" name="المجموعة  2" classid="E0716314A0CD5C0C" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="F277CA3F736522A0" name="أولاد" classid="E0716314A0CD5C0C" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="EE52930A5EAA80DB" name="بنات" classid="E0716314A0CD5C0C" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="8E1396CE90A4D8A6" name="الفصل بالكامل" classid="5C963A9BEB0FE248" studentids="" entireclass="1" divisiontag="0" studentcount=""/>
+      <group id="7EED5F66F95D12BD" name="المجموعة 1" classid="5C963A9BEB0FE248" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="01C05419C6F159B2" name="المجموعة  2" classid="5C963A9BEB0FE248" studentids="" entireclass="0" divisiontag="1" studentcount=""/>
+      <group id="CD5D9647F4CB1FDA" name="أولاد" classid="5C963A9BEB0FE248" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+      <group id="20E3EA8224F83B42" name="بنات" classid="5C963A9BEB0FE248" studentids="" entireclass="0" divisiontag="2" studentcount=""/>
+   </groups>
+   <students options="canadd,export:silent" columns="id,classid,name,number,email,mobile,partner_id,firstname,lastname"/>
+   <studentsubjects options="canadd,export:silent" columns="studentid,subjectid,seminargroup,importance,alternatefor"/>
+   <lessons options="canadd,export:silent" columns="id,subjectid,classids,groupids,teacherids,classroomids,periodspercard,periodsperweek,daysdefid,weeksdefid,termsdefid,seminargroup,capacity,partner_id">
+      <lesson id="839C9B81FB91D114" classids="CAF4CEEB4E711453" subjectid="2ADDCE4CEDF37941" periodspercard="1" periodsperweek="5.0" teacherids="87DF602A19649FE8" classroomids="" groupids="0BBC3C4190279584" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="1981C49056C9123E" classids="CAF4CEEB4E711453" subjectid="57E868DA91430428" periodspercard="1" periodsperweek="3.0" teacherids="E2FC4F85C7442071" classroomids="" groupids="0BBC3C4190279584" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="81F249872CB3CA47" classids="CAF4CEEB4E711453" subjectid="A69D85EB1BA248CF" periodspercard="1" periodsperweek="6.0" teacherids="5A4F76592BF476BE" classroomids="" groupids="0BBC3C4190279584" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="E43DC0F23123427D" classids="CAF4CEEB4E711453" subjectid="A8517A53A816DA37" periodspercard="1" periodsperweek="4.0" teacherids="6C0D9EAE83E57E25" classroomids="" groupids="0BBC3C4190279584" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="7D2E93BE85D89822" classids="CAF4CEEB4E711453" subjectid="130C660C8E2FB06F" periodspercard="1" periodsperweek="4.0" teacherids="F46167D63A2393D0" classroomids="" groupids="0BBC3C4190279584" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="E27B08E93A88B855" classids="CAF4CEEB4E711453" subjectid="10B13086A0C6E420" periodspercard="2" periodsperweek="2.0" teacherids="F6C9752E166A5655" classroomids="" groupids="0BBC3C4190279584" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="D99752BAFD7B6C65" classids="CAF4CEEB4E711453" subjectid="583387C057836DB8" periodspercard="1" periodsperweek="2.0" teacherids="16AC4A46D51CD5D1" classroomids="" groupids="0BBC3C4190279584" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="045E56F7715A5E5A" classids="4CDC03E785519E45" subjectid="2ADDCE4CEDF37941" periodspercard="1" periodsperweek="5.0" teacherids="87DF602A19649FE8" classroomids="" groupids="0806BF19D77436AC" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="E0785C8BB1D2B162" classids="4CDC03E785519E45" subjectid="57E868DA91430428" periodspercard="1" periodsperweek="3.0" teacherids="E2FC4F85C7442071" classroomids="" groupids="0806BF19D77436AC" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+      <lesson id="4EE15241F5C6D365" classids="4CDC03E785519E45" subjectid="A69D85EB1BA248CF" periodspercard="1" periodsperweek="6.0" teacherids="5A4F76592BF476BE" classroomids="" groupids="0806BF19D77436AC" capacity="*" seminargroup="" termsdefid="DBB971A2C8E6A5A9" weeksdefid="5070C25AC1777FEB" daysdefid="4CC5BCC0321E6C3D" partner_id=""/>
+   </lessons>
+   <cards options="canadd,export:silent" columns="lessonid,period,days,weeks,terms,classroomids">
+      <card lessonid="839C9B81FB91D114" classroomids="" period="3" weeks="1" terms="1" days="00001"/>
+      <card lessonid="839C9B81FB91D114" classroomids="" period="5" weeks="1" terms="1" days="01000"/>
+      <card lessonid="839C9B81FB91D114" classroomids="" period="5" weeks="1" terms="1" days="00010"/>
+      <card lessonid="839C9B81FB91D114" classroomids="" period="2" weeks="1" terms="1" days="00100"/>
+      <card lessonid="839C9B81FB91D114" classroomids="" period="1" weeks="1" terms="1" days="10000"/>
+      <card lessonid="1981C49056C9123E" classroomids="" period="6" weeks="1" terms="1" days="00010"/>
+      <card lessonid="1981C49056C9123E" classroomids="" period="1" weeks="1" terms="1" days="01000"/>
+      <card lessonid="1981C49056C9123E" classroomids="" period="5" weeks="1" terms="1" days="00001"/>
+      <card lessonid="81F249872CB3CA47" classroomids="" period="0" weeks="1" terms="1" days="00001"/>
+      <card lessonid="81F249872CB3CA47" classroomids="" period="5" weeks="1" terms="1" days="10000"/>
+   </cards>
+   <classroomsupervisions options="canadd,export:silent" columns="classroomid,teacherid,day,week,term,period,break"/>
+</timetable>

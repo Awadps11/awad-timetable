@@ -1,0 +1,600 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.UI\\AwadTimetable.UI.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.AI\\AwadTimetable.AI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.AI\\AwadTimetable.AI.csproj",
+        "projectName": "AwadTimetable.AI",
+        "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.AI\\AwadTimetable.AI.csproj",
+        "packagesPath": "C:\\Users\\besta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.AI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\besta\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj": {
+                "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1504",
+            "NU1903"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.ML.OnnxRuntime": {
+              "target": "Package",
+              "version": "[1.18.0, )"
+            },
+            "Microsoft.SemanticKernel": {
+              "target": "Package",
+              "version": "[1.19.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.3.0, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj",
+        "projectName": "AwadTimetable.Core",
+        "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj",
+        "packagesPath": "C:\\Users\\besta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\besta\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1504",
+            "NU1903"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.3.0, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Data\\AwadTimetable.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Data\\AwadTimetable.Data.csproj",
+        "projectName": "AwadTimetable.Data",
+        "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Data\\AwadTimetable.Data.csproj",
+        "packagesPath": "C:\\Users\\besta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\besta\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.AI\\AwadTimetable.AI.csproj": {
+                "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.AI\\AwadTimetable.AI.csproj"
+              },
+              "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj": {
+                "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1504",
+            "NU1903"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.3.0, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Solver\\AwadTimetable.Solver.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Solver\\AwadTimetable.Solver.csproj",
+        "projectName": "AwadTimetable.Solver",
+        "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Solver\\AwadTimetable.Solver.csproj",
+        "packagesPath": "C:\\Users\\besta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Solver\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\besta\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj": {
+                "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1504",
+            "NU1903"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "Google.OrTools": {
+              "target": "Package",
+              "version": "[9.10.4067, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.3.0, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.UI\\AwadTimetable.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.UI\\AwadTimetable.UI.csproj",
+        "projectName": "AwadTimetable.UI",
+        "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.UI\\AwadTimetable.UI.csproj",
+        "packagesPath": "C:\\Users\\besta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\besta\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.AI\\AwadTimetable.AI.csproj": {
+                "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.AI\\AwadTimetable.AI.csproj"
+              },
+              "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj": {
+                "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Core\\AwadTimetable.Core.csproj"
+              },
+              "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Data\\AwadTimetable.Data.csproj": {
+                "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Data\\AwadTimetable.Data.csproj"
+              },
+              "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Solver\\AwadTimetable.Solver.csproj": {
+                "projectPath": "C:\\Users\\besta\\Desktop\\awad timetable\\AwadTimetable.Solver\\AwadTimetable.Solver.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1504",
+            "NU1903"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "FluentIcons.WPF": {
+              "target": "Package",
+              "version": "[1.1.164, )"
+            },
+            "MaterialDesignColors": {
+              "target": "Package",
+              "version": "[2.1.4, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.3.0, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

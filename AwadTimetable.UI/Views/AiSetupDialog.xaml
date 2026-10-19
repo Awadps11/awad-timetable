@@ -1,0 +1,47 @@
+<Window x:Class="AwadTimetable.UI.Views.AiSetupDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="إعداد المساعد الذكي"
+        Height="320" Width="520"
+        WindowStartupLocation="CenterOwner"
+        FlowDirection="RightToLeft"
+        ResizeMode="NoResize"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource ArabicFont}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="المساعد الذكي" FontSize="18" FontWeight="Bold"
+                   Foreground="{DynamicResource PrimaryHueMidBrush}" Margin="0,0,0,8"/>
+
+        <TextBlock x:Name="StatusText" Grid.Row="1" TextWrapping="Wrap" FontSize="12"
+                   Foreground="{StaticResource OnSurfaceVariantBrush}" Margin="0,0,0,8"/>
+
+        <StackPanel Grid.Row="2" Margin="0,0,0,8">
+            <ProgressBar x:Name="Progress" Height="10" Minimum="0" Maximum="100" Value="0" Visibility="Collapsed"/>
+            <TextBlock x:Name="ProgressText" FontSize="11" Margin="0,4,0,0"
+                       Foreground="{StaticResource OnSurfaceVariantBrush}"/>
+        </StackPanel>
+
+        <CheckBox x:Name="NoAskCheck" Grid.Row="3" VerticalAlignment="Top"
+                  Content="لا تسألني مرة أخرى عند بدء التشغيل" FontSize="11"/>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button x:Name="DownloadButton" Content="تنزيل النموذج الآن" MinWidth="150" Margin="0,0,8,0"
+                    Padding="12,6" Click="OnDownloadClick"
+                    Background="{StaticResource PrimaryBrush}" Foreground="White" BorderThickness="0"/>
+            <Button x:Name="LaterButton" Content="لاحقاً" MinWidth="90" Margin="0,0,8,0"
+                    Padding="12,6" Click="OnLaterClick"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"/>
+            <Button x:Name="DisableButton" Content="تعطيل المساعد" MinWidth="110"
+                    Padding="12,6" Click="OnDisableClick"
+                    Background="{StaticResource SurfaceVariantBrush}" BorderThickness="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

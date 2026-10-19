@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AwadTimetable.Data</name>
+    </assembly>
+    <members>
+        <member name="T:AwadTimetable.Data.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:AwadTimetable.Data.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AwadTimetable.Data.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AwadTimetable.Data.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.Repository`1">
+            <summary>
+            تنفيذ مستودع عام
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.Data.Repositories.Repository`1.SyncSchoolShadow(`0)">
+            <summary>
+            ضبط عمود الظل SchoolId1 (المفتاح الأجنبي للمدرسة) من خاصية SchoolId.
+            EF ينشئ SchoolId1 تلقائياً لأن SchoolId كائن قيمة، وتركه فارغاً يسبب Foreign key constraint failed.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.Repository`1.TeacherAvailabilityRepository">
+            <summary>
+            مستودع توفر المعلم
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.SchoolRepository">
+            <summary>
+            مستودع المدارس
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.TeacherRepository">
+            <summary>
+            مستودع المعلمين
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.SubjectRepository">
+            <summary>
+            مستودع المواد
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.RoomRepository">
+            <summary>
+            مستودع الغرف
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.ClassRepository">
+            <summary>
+            مستودع الفصول
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.LessonRepository">
+            <summary>
+            مستودع الحصص
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.TimetableRepository">
+            <summary>
+            مستودع الجداول
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.IRepository`1">
+            <summary>
+            واجهة مستودع عام
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.ISchoolRepository">
+            <summary>
+            مستودع المدارس
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.ITeacherRepository">
+            <summary>
+            مستودع المعلمين
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.ISubjectRepository">
+            <summary>
+            مستودع المواد
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.IRoomRepository">
+            <summary>
+            مستودع الغرف
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.IClassRepository">
+            <summary>
+            مستودع الفصول
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.ILessonRepository">
+            <summary>
+            مستودع الحصص
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.ITimetableRepository">
+            <summary>
+            مستودع الجداول
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.Repositories.ITeacherAvailabilityRepository">
+            <summary>
+            مستودع توفر المعلم
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.TimetableDbContext">
+            <summary>
+            سياق قاعدة البيانات
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.Data.TimetableDbContextFactory">
+            <summary>
+            مصنع سياق قاعدة البيانات وقت التصميم للـ Migrations
+            </summary>
+        </member>
+    </members>
+</doc>

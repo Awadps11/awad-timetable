@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AwadTimetable.AI</name>
+    </assembly>
+    <members>
+        <member name="T:AwadTimetable.AI.Agents.SchedulingAgent">
+            <summary>
+            وكيل الجدولة الذكي
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Agents.SchedulingAgent.ConstraintParserAgent">
+            <summary>
+            وكيل تحليل القيود
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Agents.SchedulingAgent.ConflictResolutionAgent">
+            <summary>
+            وكيل حل التضاربات
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Clients.InMemoryConversationMemory">
+            <summary>
+            ذاكرة محادثة في الذاكرة (In-Memory)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Clients.OllamaClient">
+            <summary>
+            عميل Ollama المحلي
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.AI.Clients.OllamaClient.ListModelDetailsAsync(System.Threading.CancellationToken)">
+            <summary>تفاصيل النماذج المثبتة (الاسم والحجم وتاريخ التعديل)</summary>
+        </member>
+        <member name="M:AwadTimetable.AI.Clients.OllamaClient.PullModelAsync(System.String,System.IProgress{AwadTimetable.AI.Clients.OllamaPullProgress},System.Threading.CancellationToken)">
+            <summary>
+            تنزيل أو تحديث نموذج عبر Ollama (/api/pull) مع تتبّع التقدّم.
+            يقرأ استجابة NDJSON ويبلّغ عن نسبة التقدّم عند توفر الإجمالي.
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.AI.Clients.OllamaClient.DeleteModelAsync(System.String,System.Threading.CancellationToken)">
+            <summary>حذف نموذج مثبّت</summary>
+        </member>
+        <member name="M:AwadTimetable.AI.Clients.OllamaClient.CreateModelFromGgufAsync(System.String,System.String,System.String,System.IProgress{System.String},System.Threading.CancellationToken)">
+            <summary>
+            إنشاء نموذج من ملف GGUF محلي (داخل مجلد التطبيق) عبر Modelfile مؤقت و/api/create
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Clients.OllamaClient.OllamaChatRequest">
+            <summary>أنواع Ollama الداخلية</summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Clients.OllamaModelDetails">
+            <summary>تفاصيل نموذج مثبّت في Ollama</summary>
+        </member>
+        <member name="M:AwadTimetable.AI.Clients.OllamaModelDetails.#ctor(System.String,System.Int64,System.DateTime,System.String)">
+            <summary>تفاصيل نموذج مثبّت في Ollama</summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Clients.OllamaPullProgress">
+            <summary>تقدّم تنزيل نموذج</summary>
+        </member>
+        <member name="M:AwadTimetable.AI.Clients.OllamaPullProgress.#ctor(System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>تقدّم تنزيل نموذج</summary>
+        </member>
+        <member name="P:AwadTimetable.AI.Clients.OllamaPullProgress.Percent">
+            <summary>النسبة المئوية 0..100 إن توفر الإجمالي، وإلا -1</summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Clients.OpenAiCompatibleClient">
+            <summary>
+            عميل متوافق مع OpenAI Chat Completions (LM Studio، LocalAI، vLLM، OpenAI…).
+            يسمح بربط أي نموذج مستقبلي يوفر واجهة /v1/chat/completions دون تغيير التطبيق.
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.ILlmClient">
+            <summary>
+            واجهة عميل النموذج اللغوي
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.ChatRequest">
+            <summary>
+            طلب محادثة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.ChatMessage">
+            <summary>
+            رسالة محادثة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.ToolCall">
+            <summary>
+            استدعاء أداة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.FunctionCall">
+            <summary>
+            استدعاء دالة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.FunctionDefinition">
+            <summary>
+            تعريف دالة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.FunctionSchema">
+            <summary>
+            مخطط دالة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.JsonSchema">
+            <summary>
+            مخطط JSON
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.JsonSchemaProperty">
+            <summary>
+            خاصية مخطط JSON
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.ChatResponse">
+            <summary>
+            رد محادثة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.Usage">
+            <summary>
+            استخدام التوكنز
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.EmbeddingResponse">
+            <summary>
+            رد التضمين (Embedding)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.IAiTool">
+            <summary>
+            واجهة الأدوات (Function Calling)
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.ToolResult">
+            <summary>
+            نتيجة تنفيذ أداة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.IToolRegistry">
+            <summary>
+            سجل الأدوات
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.IConversationMemory">
+            <summary>
+            ذاكرة المحادثة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.ISchedulingAgent">
+            <summary>
+            وكيل الذكاء الاصطناعي للجدولة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.AgentResponse">
+            <summary>
+            رد الوكيل
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.ExecutedAction">
+            <summary>
+            إجراء منفذ
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.PendingAction">
+            <summary>
+            إجراء معلق
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.AgentState">
+            <summary>
+            حالة الوكيل
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.IAICommandHandler">
+            <summary>
+            واجهة معالج أوامر الذكاء الاصطناعي
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.CommandDefinition">
+            <summary>
+            تعريف أمر
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.CommandParameter">
+            <summary>
+            معامل أمر
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.CommandResult">
+            <summary>
+            نتيجة أمر
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.AgentContext">
+            <summary>
+            سياق وكيل الذكاء الاصطناعي
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Interfaces.AgentConfiguration">
+            <summary>
+            إعدادات الوكيل
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.ToolRegistry">
+            <summary>
+            سجل الأدوات الافتراضي
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.BaseTool">
+            <summary>
+            أداة أساسية
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.CreateLessonTool">
+            <summary>
+            أداة إنشاء حصة
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.AddConstraintTool">
+            <summary>
+            أداة إضافة قيد
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.CheckConflictsTool">
+            <summary>
+            أداة فحص التضاربات
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.OptimizeTimetableTool">
+            <summary>
+            أداة تحسين الجدول
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.ExplainScheduleTool">
+            <summary>
+            أداة شرح الجدول
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.ImportFromExcelTool">
+            <summary>
+            أداة استيراد من Excel
+            </summary>
+        </member>
+        <member name="T:AwadTimetable.AI.Tools.ImportFromImageTool">
+            <summary>
+            أداة استيراد من صورة (OCR + LLM)
+            </summary>
+        </member>
+    </members>
+</doc>
