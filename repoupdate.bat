@@ -3,26 +3,26 @@ chcp 65001 > nul
 title AwadTimetable - Git Updater
 
 echo ==========================================
-echo      جاري فحص حالة الملفات في المشروع...
+echo      NOW ANLYZIZ...
 echo ==========================================
 git status
 
 echo.
-set /p commit_msg="اكتب وصف التحديث (أو اضغط Enter للوصف التلقائي): "
+set /p commit_msg="Type a discpition or press ENTER ): "
 if "%commit_msg%"=="" set commit_msg=Update AwadTimetable %date% %time%
 
 echo.
-echo [1/3] جاري إضافة الملفات (git add)...
+echo [1/3] UPDATEEING (git add)...
 git add .
 
-echo [2/3] جاري حفظ التغييرات (git commit)...
+echo [2/3] SAVVING (git commit)...
 git commit -m "%commit_msg%"
 
-echo [3/3] جاري الرفع إلى GitHub (git push)...
+echo [3/3] UPLAODING  GitHub (git push)...
 git push
 
 echo.
 echo ==========================================
-echo          تم تحديث الريبو بنجاح!
+echo         DONE!
 echo ==========================================
 pause
