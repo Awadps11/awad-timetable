@@ -107,6 +107,9 @@ public partial class MainWindowViewModel : ObservableObject
 
     private CancellationTokenSource? _generationCts;
 
+    private SetupWizardWindow? _setupWizardWindow;
+    private const string SetupWizardProgressKeyPrefix = "SetupWizard.Progress.";
+
     // نماذج عرض الإدارة (تُسند في المُنشئ)
     public TeacherManagementViewModel Teachers { get; }
     public SubjectManagementViewModel Subjects { get; }
@@ -1231,6 +1234,98 @@ public partial class MainWindowViewModel : ObservableObject
             _logger.LogInformation("تم إنشاء جدول جديد: {Name} (مساحة عمل: {SchoolId})",
                 _currentTimetable.Name, _currentTimetable.SchoolId.Value);
         }
+    }
+
+    /// <summary>يفتح معالج الإعداد المتتابع، وينشئ جدولاً أولاً عند عدم وجود جدول مفتوح.</summary>
+    [RelayCommand]
+    private async Task OpenSetupWizardAsync()
+    {
+        if (_currentTimetable == null)
+        {
+            await NewTimetable();
+            if (_currentTimetable == null) return;
+        }
+
+        if (_setupWizardWindow is { IsVisible: true })
+        {
+            _setupWizardWindow.Activate();
+            return;
+        }
+
+        var settings = _services.GetService<ISettingsService>();
+        var progressKey = GetSetupWizardProgressKey(_currentTimetable);
+        var savedStep = settings?.Get(progressKey, 0) ?? 0;
+        var window = new SetupWizardWindow(
+            savedStep,
+            NavigateToSetupStep,
+            OpenTeacherAvailabilityFromWizard,
+            GenerateLessonsFromWizard,
+            GenerateTimetableFromWizard)
+        {
+            Owner = Application.Current?.MainWindow
+        };
+
+        window.StepChanged += step => SaveSetupWizardProgress(progressKey, step);
+        window.Closed += (_, _) => _setupWizardWindow = null;
+        _setupWizardWindow = window;
+        window.Show();
+    }
+
+    private static string GetSetupWizardProgressKey(Timetable timetable)
+        => $"{SetupWizardProgressKeyPrefix}{(Guid)timetable.Id:D}";
+
+    private void SaveSetupWizardProgress(string key, int step)
+    {
+        try
+        {
+            var settings = _services.GetService<ISettingsService>();
+            if (settings == null) return;
+            settings.Set(key, step);
+            _ = settings.SaveAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "تعذر حفظ تقدم معالج الإعداد");
+        }
+    }
+
+    private void NavigateToSetupStep(int step)
+    {
+        // فهارس تبويبات الشريط الجانبي كما عُرّفت في MainWindow.xaml.
+        SelectedSidebarTab = step switch
+        {
+            1 => 2, // المعلمون
+            2 => 3, // المواد
+            3 => 5, // الفصول
+            4 => 4, // الغرف
+            5 => 8, // الإسناد
+            6 => 6, // القيود
+            _ => 1  // إعداد التوقيت أو التوليد
+        };
+
+        if (step == 0)
+        {
+            OpenStageWorkConfig();
+            OpenPeriodTimes();
+        }
+    }
+
+    private void OpenTeacherAvailabilityFromWizard()
+    {
+        SelectedSidebarTab = 2;
+        EditTeacherAvailability();
+    }
+
+    private void GenerateLessonsFromWizard()
+    {
+        SelectedSidebarTab = 8;
+        GenerateFromAssignments();
+    }
+
+    private void GenerateTimetableFromWizard()
+    {
+        SelectedSidebarTab = 1;
+        GenerateTimetableCommand.Execute(null);
     }
 
     /// <summary>يمسح بيانات العرض التابعة لمساحة العمل السابقة قبل تحميل المساحة الجديدة.</summary>

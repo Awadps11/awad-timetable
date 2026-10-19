@@ -64,3 +64,4 @@ C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Printing.deps
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Printing.dll
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Printing.pdb
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Printing.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Printing\obj\Debug\net8.0\AwadTimetable.Printing.sourcelink.json

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Awad Lafi Al-Zubaidi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.1.2.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.1.2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.1.2+c4e5def57a0dc1147b4ce88433bbb8e2a3d4004d")]
 [assembly: System.Reflection.AssemblyProductAttribute("نظام عوض للجداول المدرسية")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AwadTimetable.Solver")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.1.2.0")]

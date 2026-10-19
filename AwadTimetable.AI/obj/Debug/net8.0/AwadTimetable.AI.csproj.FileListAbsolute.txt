@@ -20,3 +20,4 @@ C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.AI.deps.json
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.AI.dll
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.AI.pdb
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.AI.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.AI\obj\Debug\net8.0\AwadTimetable.AI.sourcelink.json

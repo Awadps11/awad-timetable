@@ -338,3 +338,6 @@ C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\obj\Debug\net8.0-windows\
 C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\obj\Debug\net8.0-windows\Views\WorkspacesDialog.g.cs
 C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\obj\Debug\net8.0-windows\Views\RuleEditorDialog.baml
 C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\obj\Debug\net8.0-windows\Views\RuleEditorDialog.g.cs
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\obj\Debug\net8.0-windows\Views\SetupWizardWindow.baml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\obj\Debug\net8.0-windows\Views\SetupWizardWindow.g.cs
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.UI\obj\Debug\net8.0-windows\AwadTimetable.UI.sourcelink.json

@@ -781,6 +781,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="F:AwadTimetable.UI.ViewModels.MainWindowViewModel._currentSchoolName">
             <summary>اسم مساحة العمل/المدرسة الحالية — يُعرض في العنوان لمنع الخلط بين المدارس.</summary>
@@ -925,6 +926,9 @@
         </member>
         <member name="M:AwadTimetable.UI.ViewModels.MainWindowViewModel.LastTimetableAutoLoadAsync">
             <summary>فتح آخر جدول محفوظ من قاعدة البيانات عند بدء التشغيل (لا رسائل إن لم يوجد)</summary>
+        </member>
+        <member name="M:AwadTimetable.UI.ViewModels.MainWindowViewModel.OpenSetupWizardAsync">
+            <summary>يفتح معالج الإعداد المتتابع، وينشئ جدولاً أولاً عند عدم وجود جدول مفتوح.</summary>
         </member>
         <member name="M:AwadTimetable.UI.ViewModels.MainWindowViewModel.ClearReferenceLists">
             <summary>يمسح بيانات العرض التابعة لمساحة العمل السابقة قبل تحميل المساحة الجديدة.</summary>
@@ -1318,6 +1322,12 @@
         </member>
         <member name="P:AwadTimetable.UI.ViewModels.MainWindowViewModel.NewTimetableCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AwadTimetable.UI.ViewModels.MainWindowViewModel.NewTimetable"/>.</summary>
+        </member>
+        <member name="F:AwadTimetable.UI.ViewModels.MainWindowViewModel.openSetupWizardCommand">
+            <summary>The backing field for <see cref="P:AwadTimetable.UI.ViewModels.MainWindowViewModel.OpenSetupWizardCommand"/>.</summary>
+        </member>
+        <member name="P:AwadTimetable.UI.ViewModels.MainWindowViewModel.OpenSetupWizardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AwadTimetable.UI.ViewModels.MainWindowViewModel.OpenSetupWizardAsync"/>.</summary>
         </member>
         <member name="F:AwadTimetable.UI.ViewModels.MainWindowViewModel.openTimetableCommand">
             <summary>The backing field for <see cref="P:AwadTimetable.UI.ViewModels.MainWindowViewModel.OpenTimetableCommand"/>.</summary>
@@ -2627,6 +2637,17 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:AwadTimetable.UI.Views.SetupWizardWindow">
+            <summary>معالج غير حاجب لتنسيق إعداد البيانات والتوليد وعرض الجدول.</summary>
+            <summary>
+            SetupWizardWindow
+            </summary>
+        </member>
+        <member name="M:AwadTimetable.UI.Views.SetupWizardWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:AwadTimetable.UI.Views.ShareWindow">
             <summary>
             نافذة مشاركة الجدول: خادم محلي + رمز QR + رابط الشبكة
@@ -2799,36 +2820,6 @@
         <member name="M:AwadTimetable.UI.Views.TimetableView.InitializeComponent">
             <summary>
             InitializeComponent
-            </summary>
-        </member>
-        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
-            <summary>
-            GeneratedInternalTypeHelper
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            CreateInstance
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            GetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            SetPropertyValue
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
-            <summary>
-            CreateDelegate
-            </summary>
-        </member>
-        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
-            <summary>
-            AddEventHandler
             </summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">

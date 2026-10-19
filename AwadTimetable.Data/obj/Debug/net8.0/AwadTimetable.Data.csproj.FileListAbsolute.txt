@@ -26,3 +26,4 @@ C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.runtimec
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.dll
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.pdb
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Data.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Data\obj\Debug\net8.0\AwadTimetable.Data.sourcelink.json

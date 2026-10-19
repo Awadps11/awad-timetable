@@ -79,6 +79,8 @@
                     </MenuItem>
 
                     <MenuItem Header="الجدول" FontFamily="{DynamicResource ArabicFont}">
+                        <MenuItem Header="معالج إعداد الجدول خطوة بخطوة" Command="{Binding OpenSetupWizardCommand}" />
+                        <Separator/>
                         <MenuItem Header="توليد جدول جديد" Command="{Binding GenerateTimetableCommand}" />
                         <MenuItem Header="تحسين الجدول" Command="{Binding OptimizeTimetableCommand}" />
                         <MenuItem Header="فحص التضاربات" Command="{Binding CheckConflictsCommand}" />
@@ -158,6 +160,12 @@
                     <StackPanel>
                         <TextBlock Text="➕" FontSize="15" HorizontalAlignment="Center"/>
                         <TextBlock Text="جديد" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Command="{Binding OpenSetupWizardCommand}" ToolTip="إعداد الجدول خطوة بخطوة" MinWidth="58" Padding="6,2">
+                    <StackPanel>
+                        <TextBlock Text="🧭" FontSize="15" HorizontalAlignment="Center"/>
+                        <TextBlock Text="المعالج" FontSize="9" FontFamily="{DynamicResource ArabicFont}" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Button>
                 <Button Command="{Binding OpenTimetableCommand}" ToolTip="فتح (Ctrl+O)" MinWidth="48" Padding="6,2">

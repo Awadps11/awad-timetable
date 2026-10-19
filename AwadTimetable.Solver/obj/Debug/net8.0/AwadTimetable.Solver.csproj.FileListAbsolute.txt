@@ -20,3 +20,4 @@ C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Solver.deps.j
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Solver.dll
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Solver.pdb
 C:\Users\besta\AppData\Local\Temp\opencode\ui-verify\AwadTimetable.Solver.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Solver\obj\Debug\net8.0\AwadTimetable.Solver.sourcelink.json

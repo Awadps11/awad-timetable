@@ -298,3 +298,4 @@ C:\Users\besta\Desktop\awad timetable\AwadTimetable.Tests\bin\Debug\net8.0\AwadT
 C:\Users\besta\Desktop\awad timetable\AwadTimetable.Tests\bin\Debug\net8.0\AwadTimetable.Data.xml
 C:\Users\besta\Desktop\awad timetable\AwadTimetable.Tests\bin\Debug\net8.0\Fixtures\asc-export-2027.xml
 C:\Users\besta\Desktop\awad timetable\AwadTimetable.Tests\bin\Debug\net8.0\Fixtures\asc-full-2024.xml
+C:\Users\besta\Desktop\awad timetable\AwadTimetable.Tests\obj\Debug\net8.0\AwadTimetable.Tests.sourcelink.json
